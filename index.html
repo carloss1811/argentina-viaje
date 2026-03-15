@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argentina 2026 🇦🇷</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            patagonia: { 50:'#f0f9ff', 100:'#e0f2fe', 300:'#7dd3fc', 500:'#0ea5e9', 700:'#0369a1', 900:'#0c4a6e' },
+            boda: { 50:'#fefce8', 300:'#fde047', 500:'#eab308', 700:'#a16207' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .gradient-header { background: linear-gradient(135deg, #1e3a5f 0%, #1a6fa8 50%, #0ea5e9 100%); }
+    .gradient-patagonia { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #0ea5e9 100%); }
+    .boda-gradient { background: linear-gradient(135deg, #78350f 0%, #a16207 50%, #ca8a04 100%); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- HEADER -->
+  <header class="gradient-header text-white py-16 px-4 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200'); background-size: cover; background-position: center;"></div>
+    <div class="relative z-10">
+      <div class="text-6xl mb-4">🇦🇷</div>
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-3 tracking-tight">Argentina 2026</h1>
+      <p class="text-xl md:text-2xl font-medium text-blue-100">Viaje de familia · 28 marzo – 11 abril</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm">
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">📍 Buenos Aires</span>
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">💒 Boda en Luján</span>
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">🌊 Iguazú</span>
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">🧊 El Calafate</span>
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">🏔️ El Chaltén</span>
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">🦭 Ushuaia</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex gap-4 overflow-x-auto text-sm font-medium">
+      <a href="#el-viaje" class="text-blue-600 hover:text-blue-800 whitespace-nowrap">🗓️ El Viaje</a>
+      <a href="#patagonia" class="text-cyan-600 hover:text-cyan-800 whitespace-nowrap">🏔️ Patagonia</a>
+      <a href="#proximamente" class="text-gray-500 hover:text-gray-700 whitespace-nowrap">📌 Próximamente</a>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-4 py-10">
+
+    <!-- SECCIÓN: EL VIAJE -->
+    <section id="el-viaje">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
+        🗓️ El Viaje
+      </h2>
+      <p class="text-gray-500 mb-8 text-sm">28 de marzo – 5 de abril · Buenos Aires e Iguazú</p>
+
+      <div class="space-y-4">
+
+        <!-- 28 MAR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-blue-50 border-b border-blue-100">
+            <span class="text-2xl">✈️</span>
+            <div>
+              <span class="font-bold text-blue-800 text-sm uppercase tracking-wide">Viernes 28 marzo</span>
+              <span class="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Día 1</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Llegada</h3>
+                <p class="text-gray-600 text-sm mt-1">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
+                <div class="mt-3 bg-rose-50 rounded-xl p-3 border border-rose-100">
+                  <p class="text-sm font-semibold text-rose-800">🌹 Noche: Cena con espectáculo de Tango</p>
+                  <p class="text-sm text-rose-700 mt-0.5">Restaurante El Querandi — show de tango en vivo</p>
+                  <a href="https://maps.app.goo.gl/qFDakUTUP7PNcdAD9" target="_blank"
+                     class="mt-2 inline-flex items-center gap-1.5 text-xs bg-rose-600 text-white px-3 py-1.5 rounded-lg hover:bg-rose-700 transition-colors">
+                    📍 Ver en Google Maps
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 29 MAR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-amber-50 border-b border-amber-100">
+            <span class="text-2xl">🥩</span>
+            <div>
+              <span class="font-bold text-amber-800 text-sm uppercase tracking-wide">Sábado 29 marzo</span>
+              <span class="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Día 2</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Asado familiar</h3>
+            <p class="text-gray-600 text-sm mt-1">Asado con la familia de Cata, la novia. Primer encuentro con la familia argentina 🇦🇷❤️</p>
+          </div>
+        </div>
+
+        <!-- 30 MAR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
+            <span class="text-2xl">🌊</span>
+            <div>
+              <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Domingo 30 marzo</span>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 3</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">✈️ Buenos Aires → Iguazú</h3>
+            <div class="mt-2 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-700 inline-flex items-center gap-2">
+              ✈️ AEP → IGR · <strong>06:00 → 07:54</strong>
+            </div>
+            <p class="text-gray-600 text-sm mt-3">Llegada a Iguazú y excursiones por el <strong>lado argentino</strong> de las Cataratas. Las cataratas más impresionantes del mundo 🌈</p>
+            <p class="text-xs text-gray-400 mt-2 italic">Actividades detalladas próximamente</p>
+          </div>
+        </div>
+
+        <!-- 31 MAR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
+            <span class="text-2xl">🇧🇷</span>
+            <div>
+              <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Lunes 31 marzo</span>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 4</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">🌊 Iguazú — Lado brasileño</h3>
+            <p class="text-gray-600 text-sm mt-1">Excursiones por el <strong>lado brasileño</strong> de las Cataratas del Iguazú. Vistas panorámicas únicas desde Brasil 🇧🇷</p>
+            <p class="text-xs text-gray-400 mt-2 italic">Actividades detalladas próximamente</p>
+          </div>
+        </div>
+
+        <!-- 01 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
+            <span class="text-2xl">🌅</span>
+            <div>
+              <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Martes 1 abril</span>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 5</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">🌊 Iguazú → Buenos Aires</h3>
+            <p class="text-gray-600 text-sm mt-1">Último día en Iguazú con actividades por confirmar. Vuelo nocturno de regreso a Buenos Aires.</p>
+            <div class="mt-2 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-700 inline-flex items-center gap-2">
+              ✈️ IGR → EZE · <strong>22:35 → 00:15 (+1)</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 boda-gradient text-white">
+            <span class="text-2xl">💒</span>
+            <div>
+              <span class="font-bold text-sm uppercase tracking-wide">Miércoles 2 abril</span>
+              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 6</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Pre-boda</h3>
+            <p class="text-gray-600 text-sm mt-1">Preparativos y celebraciones previas a la boda de Rodrigo y Cata 💍</p>
+          </div>
+        </div>
+
+        <!-- 03 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-purple-50 border-b border-purple-100">
+            <span class="text-2xl">🏙️</span>
+            <div>
+              <span class="font-bold text-purple-800 text-sm uppercase tracking-wide">Jueves 3 abril</span>
+              <span class="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Día 7</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Día libre</h3>
+            <p class="text-gray-600 text-sm mt-1">Día para explorar Buenos Aires: La Boca, San Telmo, Palermo... o simplemente descansar antes del gran día.</p>
+          </div>
+        </div>
+
+        <!-- 04 ABR — BODA ⭐ -->
+        <div class="card-hover rounded-2xl shadow-lg overflow-hidden border-2 border-yellow-300">
+          <div class="boda-gradient text-white px-5 py-4">
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">💍</span>
+              <div>
+                <span class="font-bold text-sm uppercase tracking-wide">Viernes 4 abril</span>
+                <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 8 · EL DÍA GRANDE</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-amber-50 px-5 py-5">
+            <h3 class="font-bold text-gray-900 text-xl">⭐ Boda de Rodrigo y Cata</h3>
+            <p class="text-gray-700 text-sm mt-2">La celebración que nos reunió a todos. La boda se celebra en <strong>Luján</strong>, cerca de Buenos Aires — famoso por su Basílica y su encanto histórico.</p>
+            <div class="mt-3 inline-flex items-center gap-2 bg-amber-200 text-amber-900 px-3 py-1.5 rounded-lg text-sm font-medium">
+              📍 Luján, Provincia de Buenos Aires
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-gray-50 border-b border-gray-100">
+            <span class="text-2xl">😴</span>
+            <div>
+              <span class="font-bold text-gray-600 text-sm uppercase tracking-wide">Sábado 5 abril</span>
+              <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">Día 9</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Descanso post-boda</h3>
+            <p class="text-gray-600 text-sm mt-1">Merecido descanso tras la celebración. ¡Hasta aquí llega la parte común del viaje para algunos! 👋</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEPARADOR PATAGONIA -->
+    <section id="patagonia" class="mt-16">
+      <div class="gradient-patagonia rounded-3xl p-8 text-white text-center shadow-xl mb-8">
+        <div class="text-5xl mb-4">🏔️🧊🦭</div>
+        <h2 class="text-3xl font-extrabold mb-2">PATAGONIA</h2>
+        <p class="text-blue-100 text-lg font-medium">Solo para los valientes</p>
+        <p class="text-blue-200 text-sm mt-2">6 – 11 de abril · El Calafate · El Chaltén · Ushuaia</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-2 text-sm">
+          <span class="bg-white/20 px-3 py-1 rounded-full">Carlos</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full">Celia</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full">Loli</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full">Paula</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full">Piedad</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full">Visi</span>
+          <span class="bg-white/20 px-3 py-1 rounded-full">Marta</span>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- 06 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-cyan-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-cyan-50 border-b border-cyan-100">
+            <span class="text-2xl">🧊</span>
+            <div>
+              <span class="font-bold text-cyan-800 text-sm uppercase tracking-wide">Domingo 6 abril</span>
+              <span class="ml-2 text-xs bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">Patagonia · Día 1</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">✈️ Buenos Aires → El Calafate</h3>
+            <div class="mt-2 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-700 inline-flex items-center gap-2">
+              ✈️ EZE → El Calafate · <strong>06:20 → 09:40</strong>
+            </div>
+            <div class="mt-3 bg-cyan-50 rounded-xl p-3 border border-cyan-100">
+              <p class="text-sm font-semibold text-cyan-800">🧊 Tarde: Glaciar Perito Moreno</p>
+              <p class="text-sm text-cyan-700 mt-0.5">Patrimonio Natural de la Humanidad UNESCO. Uno de los pocos glaciares en avance del mundo.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-cyan-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-cyan-50 border-b border-cyan-100">
+            <span class="text-2xl">🚢</span>
+            <div>
+              <span class="font-bold text-cyan-800 text-sm uppercase tracking-wide">Lunes 7 abril</span>
+              <span class="ml-2 text-xs bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">Patagonia · Día 2</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">🏔️ Tour Todo Glaciares</h3>
+            <p class="text-gray-600 text-sm mt-1">Navegación por el Lago Argentino visitando los glaciares Upsala, Spegazzini y Perito Moreno. El tour más completo del Parque Nacional.</p>
+            <div class="mt-3 bg-indigo-50 rounded-xl p-3 border border-indigo-100">
+              <p class="text-sm font-semibold text-indigo-800">🚗 Noche: Viaje a El Chaltén</p>
+              <p class="text-sm text-indigo-700 mt-0.5">En furgoneta (~3h). Noche en El Chaltén — capital del trekking argentino.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-cyan-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-cyan-50 border-b border-cyan-100">
+            <span class="text-2xl">🥾</span>
+            <div>
+              <span class="font-bold text-cyan-800 text-sm uppercase tracking-wide">Martes 8 abril</span>
+              <span class="ml-2 text-xs bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">Patagonia · Día 3</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg mb-3">🏔️ El Chaltén — ¡Cada uno a su ritmo!</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="bg-orange-50 rounded-xl p-3 border border-orange-100">
+                <p class="font-bold text-orange-800 text-sm mb-1">🏃 Los Jóvenes</p>
+                <p class="text-orange-700 text-sm">Trekking <strong>Laguna de los Tres</strong></p>
+                <p class="text-orange-600 text-xs mt-1">Desde Hostería El Pilar → El Chaltén</p>
+                <p class="text-orange-600 text-xs">21 km · ~975m desnivel · 8-9h</p>
+              </div>
+              <div class="bg-pink-50 rounded-xl p-3 border border-pink-100">
+                <p class="font-bold text-pink-800 text-sm mb-1">👑 Golden Ladies</p>
+                <p class="text-pink-700 text-sm">Ruta corta por El Chaltén</p>
+                <p class="text-pink-600 text-xs mt-1">Miradores y paisajes increíbles</p>
+                <p class="text-pink-600 text-xs">Sin prisa, con estilo ✨</p>
+              </div>
+            </div>
+            <div class="mt-3 bg-indigo-50 rounded-xl p-3 border border-indigo-100">
+              <p class="text-sm font-semibold text-indigo-800">🚗 Tarde: Regreso a El Calafate en furgoneta</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-cyan-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-cyan-50 border-b border-cyan-100">
+            <span class="text-2xl">🦭</span>
+            <div>
+              <span class="font-bold text-cyan-800 text-sm uppercase tracking-wide">Miércoles 9 abril</span>
+              <span class="ml-2 text-xs bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">Patagonia · Día 4</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">✈️ El Calafate → Ushuaia</h3>
+            <div class="mt-2 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-700 inline-flex items-center gap-2">
+              ✈️ El Calafate → USH · <strong>12:20 → 13:40</strong>
+            </div>
+            <p class="text-gray-600 text-sm mt-3">Fin del mundo 🌎 La ciudad más austral del planeta. Actividades en Ushuaia por confirmar.</p>
+            <p class="text-xs text-gray-400 mt-2 italic">Actividades detalladas próximamente</p>
+          </div>
+        </div>
+
+        <!-- 10 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-cyan-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-cyan-50 border-b border-cyan-100">
+            <span class="text-2xl">🏔️</span>
+            <div>
+              <span class="font-bold text-cyan-800 text-sm uppercase tracking-wide">Jueves 10 abril</span>
+              <span class="ml-2 text-xs bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full">Patagonia · Día 5</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">📍 Ushuaia — Actividades</h3>
+            <p class="text-gray-600 text-sm mt-1">Día completo explorando Ushuaia y sus alrededores. Canal Beagle, Parque Nacional Tierra del Fuego...</p>
+            <p class="text-xs text-gray-400 mt-2 italic">Actividades detalladas próximamente</p>
+          </div>
+        </div>
+
+        <!-- 11 ABR -->
+        <div class="card-hover bg-white rounded-2xl shadow-sm border border-cyan-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
+            <span class="text-2xl">🏠</span>
+            <div>
+              <span class="font-bold text-sm uppercase tracking-wide">Viernes 11 abril</span>
+              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Patagonia · Día 6 · FIN</span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">✈️ Ushuaia → Buenos Aires → Casa</h3>
+            <p class="text-gray-600 text-sm mt-1">Últimas actividades por la mañana en Ushuaia. Vuelo de regreso y cada uno a su destino.</p>
+            <div class="mt-2 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-700 inline-flex items-center gap-2">
+              ✈️ USH → EZE · <strong>19:30 → 23:00</strong>
+            </div>
+            <p class="text-gray-500 text-sm mt-3 italic">Hasta la próxima aventura familiar 🥂</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROXIMAMENTE -->
+    <section id="proximamente" class="mt-16">
+      <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200">
+        <h2 class="text-xl font-bold text-gray-700 mb-4">📌 Próximamente</h2>
+        <ul class="space-y-2 text-sm text-gray-600">
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Alojamientos en Buenos Aires</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Alojamiento en Iguazú</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Hotel en El Chaltén</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Hotel en El Calafate</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Alojamiento en Ushuaia</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Actividades detalladas Iguazú</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Actividades detalladas Ushuaia</li>
+          <li class="flex items-center gap-2"><span class="text-orange-400">⏳</span> Links de Google Maps para todos los sitios</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-16 bg-gray-900 text-gray-400 text-center py-8 text-sm">
+    <p class="text-2xl mb-2">🇦🇷</p>
+    <p class="font-medium text-gray-300">Argentina 2026 · Viaje de familia</p>
+    <p class="mt-1 text-xs">Actualizado por ClaudIA 🤖 · 15 marzo 2026</p>
+  </footer>
+
+</body>
+</html>

@@ -293,5 +293,35 @@
     <p class="text-gray-600 text-xs">Hecho con ❤️ para la familia</p>
   </footer>
 
+
+  <script>
+  const wmoIcon = code => {
+    if (code === 0) return '☀️';
+    if (code <= 2) return '⛅';
+    if (code <= 3) return '☁️';
+    if (code <= 48) return '🌫️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '🌨️';
+    if (code <= 82) return '🌦️';
+    if (code <= 86) return '🌨️';
+    if (code <= 95) return '⛈️';
+    return '🌩️';
+  };
+  const fetchWeather = async (lat, lon, elementId, label) => {
+    try {
+      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=2`);
+      const d = await r.json();
+      const temp = Math.round(d.current.temperature_2m);
+      const icon = wmoIcon(d.current.weather_code);
+      const max = Math.round(d.daily.temperature_2m_max[0]);
+      const min = Math.round(d.daily.temperature_2m_min[0]);
+      const rain = d.daily.precipitation_probability_max[0];
+      document.getElementById(elementId).innerHTML = `${label}: <strong>${temp}°C</strong> ${icon} · <span class="text-xs text-gray-500">máx ${max}° mín ${min}° · 🌧️ ${rain}%</span>`;
+    } catch(e) { }
+  };
+  fetchWeather(-50.34, -72.27, 'weather-calafate', 'El Calafate');
+  fetchWeather(-49.33, -72.89, 'weather-chalten', 'El Chaltén');
+  fetchWeather(-54.80, -68.30, 'weather-ushuaia', 'Ushuaia');
+  </script>
 </body>
 </html>

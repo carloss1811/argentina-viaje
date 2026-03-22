@@ -170,6 +170,9 @@
                     <div class="flex items-center gap-2"><span>💃</span><span><strong>22:15</strong> — Comienza el show de tango</span></div>
                     <div class="flex items-center gap-2"><span>🏨</span><span>Al terminar, traslado de vuelta al hotel</span></div>
                   </div>
+                  <div class="bg-yellow-50 border border-yellow-200 rounded-lg px-3 py-2 mb-2 text-xs text-yellow-800">
+                    💳 <strong>Marta pagó la mitad</strong> — hay que reembolsarle su parte
+                  </div>
                   <a href="https://maps.app.goo.gl/qFDakUTUP7PNcdAD9" target="_blank"
                      class="inline-flex items-center gap-1.5 text-xs bg-rose-600 text-white px-3 py-1.5 rounded-lg hover:bg-rose-700 transition-colors">
                     📍 Ver en Google Maps
@@ -494,8 +497,8 @@
         </div>
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
           <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo esperado</p>
-          <p class="text-sm text-gray-700">Buenos Aires: <strong>~28°C</strong></p>
-          <p class="text-sm text-gray-700">Iguazú: <strong>~32°C</strong>, húmedo</p>
+          <div id="weather-ba" class="text-sm text-gray-700">Buenos Aires: <strong>~28°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
+          <div id="weather-iguazu" class="text-sm text-gray-700 mt-1">Iguazú: <strong>~32°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
           <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
         </div>
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
@@ -562,6 +565,37 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 30000);
+  </script>
+
+  <script>
+  // Iconos para weather codes de Open-Meteo
+  const wmoIcon = code => {
+    if (code === 0) return '☀️';
+    if (code <= 2) return '⛅';
+    if (code <= 3) return '☁️';
+    if (code <= 48) return '🌫️';
+    if (code <= 57) return '🌧️';
+    if (code <= 67) return '🌧️';
+    if (code <= 77) return '🌨️';
+    if (code <= 82) return '🌦️';
+    if (code <= 86) return '🌨️';
+    if (code <= 95) return '⛈️';
+    return '🌩️';
+  };
+  const fetchWeather = async (lat, lon, elementId, label) => {
+    try {
+      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=2`);
+      const d = await r.json();
+      const temp = Math.round(d.current.temperature_2m);
+      const icon = wmoIcon(d.current.weather_code);
+      const max = Math.round(d.daily.temperature_2m_max[0]);
+      const min = Math.round(d.daily.temperature_2m_min[0]);
+      const rain = d.daily.precipitation_probability_max[0];
+      document.getElementById(elementId).innerHTML = `${label}: <strong>${temp}°C</strong> ${icon} · <span class="text-xs text-gray-500">máx ${max}° mín ${min}° · 🌧️ ${rain}%</span>`;
+    } catch(e) { /* silencioso si falla */ }
+  };
+  fetchWeather(-34.60, -58.38, 'weather-ba', 'Buenos Aires');
+  fetchWeather(-25.60, -54.58, 'weather-iguazu', 'Iguazú');
   </script>
 </body>
 </html>

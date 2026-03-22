@@ -62,8 +62,12 @@
         <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">💒 Boda en Luján</span>
       </div>
       <div class="mt-3 flex flex-wrap justify-center gap-2">
-        <span id="hdr-ba" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Buenos Aires · cargando...</span>
-        <span id="hdr-iguazu" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Iguazú · cargando...</span>
+        <span id="hdr-time-es" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🕐 España: --:--</span>
+        <span id="hdr-time-ar" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🕐 Argentina: --:--</span>
+      </div>
+      <div class="mt-2 flex flex-wrap justify-center gap-2">
+        <span id="hdr-ba" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Buenos Aires ahora · cargando...</span>
+        <span id="hdr-iguazu" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Iguazú ahora · cargando...</span>
       </div>
       <!-- Countdown -->
       <div class="mt-6 no-print" id="countdown-timer">
@@ -228,6 +232,7 @@
           <div class="px-5 py-4">
             <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Asado familiar</h3>
             <p class="text-gray-600 text-sm mt-1">Asado con la familia de Cata, la novia. Primer encuentro con la familia argentina 🇦🇷❤️</p>
+            <p class="text-amber-700 text-sm mt-1 font-medium italic">🥩 "Asadito, corderito, con todo con todo" 🎉</p>
             <div class="mt-3 bg-amber-50 rounded-xl p-3 border border-amber-100">
               <div class="space-y-1 text-xs text-amber-800">
                 <div class="flex items-center gap-2"><span>🚪</span><span><strong>12:00</strong> — Salida del hotel</span></div>
@@ -740,6 +745,20 @@
     }
   }
   loadFX();
+  </script>
+
+  <script>
+  function updateClock() {
+    const now = new Date();
+    const fmtES = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', timeZone:'Europe/Madrid' });
+    const fmtAR = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', timeZone:'America/Argentina/Buenos_Aires' });
+    const es = document.getElementById('hdr-time-es');
+    const ar = document.getElementById('hdr-time-ar');
+    if (es) es.textContent = '🕐 España: ' + fmtES.format(now);
+    if (ar) ar.textContent = '🕐 Argentina: ' + fmtAR.format(now);
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
   </script>
 </body>
 </html>

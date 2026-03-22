@@ -171,7 +171,7 @@
                     <div class="flex items-center gap-2"><span>🏨</span><span>Al terminar, traslado de vuelta al hotel</span></div>
                   </div>
                   <div class="bg-yellow-50 border border-yellow-200 rounded-lg px-3 py-2 mb-2 text-xs text-yellow-800">
-                    💳 <strong>Marta pagó la mitad</strong> — hay que reembolsarle su parte
+                    💳 <strong>Marta pagó la mitad</strong>
                   </div>
                   <a href="https://maps.app.goo.gl/qFDakUTUP7PNcdAD9" target="_blank"
                      class="inline-flex items-center gap-1.5 text-xs bg-rose-600 text-white px-3 py-1.5 rounded-lg hover:bg-rose-700 transition-colors">
@@ -518,6 +518,14 @@
           <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Propinas</p>
           <p class="text-sm text-gray-700">En restaurantes: <strong>10–15%</strong> es lo habitual. No obligatoria pero muy bien recibida.</p>
         </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-green-200 p-4 sm:col-span-2">
+          <p class="text-sm font-bold text-gray-800 mb-2">💰 Cuentas del grupo — Tricount</p>
+          <p class="text-sm text-gray-600 mb-3">Lleva el control de gastos compartidos y quién le debe a quién.</p>
+          <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank"
+             class="inline-flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-green-700 transition-colors">
+            💰 Abrir Tricount del viaje
+          </a>
+        </div>
       </div>
     </section>
 
@@ -570,11 +578,12 @@
 
   <script>
   const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';
+  const TZ = { ba:'America%2FArgentina%2FBuenos_Aires', iguazu:'America%2FArgentina%2FBuenos_Aires' };
 
   async function loadWeather() {
     const locs = {
-      ba:     { lat:-34.60, lon:-58.38, label:'Buenos Aires' },
-      iguazu: { lat:-25.60, lon:-54.58, label:'Iguazú' },
+      ba:     { lat:-34.60, lon:-58.38, label:'Buenos Aires', tz:'America%2FArgentina%2FBuenos_Aires' },
+      iguazu: { lat:-25.60, lon:-54.58, label:'Iguazú', tz:'America%2FArgentina%2FBuenos_Aires' },
     };
     const dayLoc = {
       '2026-03-28':'ba','2026-03-29':'ba',
@@ -584,29 +593,26 @@
     const forecasts = {};
     for (const [key, cfg] of Object.entries(locs)) {
       try {
-        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code_dominant,precipitation_probability_max&timezone=auto&forecast_days=16`);
-        const d = await r.json();
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=${cfg.tz}&forecast_days=16`;
+        const d = await (await fetch(url)).json();
         forecasts[key] = d;
         const t = Math.round(d.current.temperature_2m);
         const icon = wmoIcon(d.current.weather_code);
-        // Header badge
         const hdr = document.getElementById('hdr-' + key);
         if (hdr) hdr.textContent = `🌡️ ${cfg.label} · ${t}°C ${icon}`;
-        // Info útil
         const info = document.getElementById('info-weather-' + key);
         if (info) info.innerHTML = `${cfg.label}: <strong>${t}°C</strong> ${icon}`;
       } catch(e) {}
     }
-    // Badges por día
     for (const [date, loc] of Object.entries(dayLoc)) {
       const el = document.getElementById('w-' + date);
       if (!el || !forecasts[loc]) continue;
-      const idx = (forecasts[loc].daily.time || []).indexOf(date);
-      if (idx === -1) { el.textContent = ''; continue; }
+      const idx = (forecasts[loc].daily?.time || []).indexOf(date);
+      if (idx < 0) { el.textContent = ''; continue; }
       const max = Math.round(forecasts[loc].daily.temperature_2m_max[idx]);
       const min = Math.round(forecasts[loc].daily.temperature_2m_min[idx]);
       const rain = forecasts[loc].daily.precipitation_probability_max[idx];
-      const icon = wmoIcon(forecasts[loc].daily.weather_code_dominant?.[idx] ?? 0);
+      const icon = wmoIcon(forecasts[loc].daily.weathercode?.[idx] ?? 0);
       el.textContent = `${icon} ${max}°/${min}° 💧${rain}%`;
     }
   }

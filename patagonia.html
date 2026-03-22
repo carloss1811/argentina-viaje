@@ -290,33 +290,28 @@
 
 
   <script>
-  const wmoIcon = code => {
-    if (code === 0) return '☀️';
-    if (code <= 2) return '⛅';
-    if (code <= 3) return '☁️';
-    if (code <= 48) return '🌫️';
-    if (code <= 67) return '🌧️';
-    if (code <= 77) return '🌨️';
-    if (code <= 82) return '🌦️';
-    if (code <= 86) return '🌨️';
-    if (code <= 95) return '⛈️';
-    return '🌩️';
-  };
-  const fetchWeather = async (lat, lon, elementId, label) => {
-    try {
-      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=2`);
-      const d = await r.json();
-      const temp = Math.round(d.current.temperature_2m);
-      const icon = wmoIcon(d.current.weather_code);
-      const max = Math.round(d.daily.temperature_2m_max[0]);
-      const min = Math.round(d.daily.temperature_2m_min[0]);
-      const rain = d.daily.precipitation_probability_max[0];
-      document.getElementById(elementId).innerHTML = `${label}: <strong>${temp}°C</strong> ${icon} · <span class="text-xs text-gray-500">máx ${max}° mín ${min}° · 🌧️ ${rain}%</span>`;
-    } catch(e) { }
-  };
-  fetchWeather(-50.34, -72.27, 'weather-calafate', 'El Calafate');
-  fetchWeather(-49.33, -72.89, 'weather-chalten', 'El Chaltén');
-  fetchWeather(-54.80, -68.30, 'weather-ushuaia', 'Ushuaia');
+  const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';
+  async function loadWeather() {
+    const locs = {
+      calafate: { lat:-50.34, lon:-72.27, label:'El Calafate', id:'weather-calafate', tz:'America%2FArgentina%2FBuenos_Aires' },
+      chalten:  { lat:-49.33, lon:-72.89, label:'El Chaltén',  id:'weather-chalten',  tz:'America%2FArgentina%2FBuenos_Aires' },
+      ushuaia:  { lat:-54.80, lon:-68.30, label:'Ushuaia',     id:'weather-ushuaia',  tz:'America%2FArgentina%2FUshuaia' },
+    };
+    for (const [, cfg] of Object.entries(locs)) {
+      try {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=${cfg.tz}&forecast_days=2`;
+        const d = await (await fetch(url)).json();
+        const t = Math.round(d.current.temperature_2m);
+        const icon = wmoIcon(d.current.weather_code);
+        const max = Math.round(d.daily.temperature_2m_max[0]);
+        const min = Math.round(d.daily.temperature_2m_min[0]);
+        const rain = d.daily.precipitation_probability_max[0];
+        const el = document.getElementById(cfg.id);
+        if (el) el.innerHTML = `${cfg.label}: <strong>${t}°C</strong> ${icon} · <span class="text-xs text-gray-500">máx ${max}° mín ${min}° · 🌧️ ${rain}%</span>`;
+      } catch(e) {}
+    }
+  }
+  loadWeather();
   </script>
 </body>
 </html>

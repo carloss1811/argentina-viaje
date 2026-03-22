@@ -61,6 +61,10 @@
         <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">📍 Buenos Aires</span>
         <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">💒 Boda en Luján</span>
       </div>
+      <div class="mt-3 flex flex-wrap justify-center gap-2">
+        <span id="hdr-ba" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Buenos Aires · cargando...</span>
+        <span id="hdr-iguazu" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Iguazú · cargando...</span>
+      </div>
       <!-- Countdown -->
       <div class="mt-6 no-print" id="countdown-timer">
         <p class="text-blue-200 text-xs uppercase tracking-widest mb-1">Salida en</p>
@@ -482,7 +486,42 @@
     </section>
 
 
-    <!-- ACCESO PATAGONIA    <!-- ACCESO PATAGONIA -->
+    <!-- INFORMACIÓN ÚTIL -->
+    <section class="mt-12 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas</p>
+          <p class="text-sm text-gray-700">1€ ≈ <strong>1.700 ARS</strong></p>
+          <p class="text-sm text-gray-700">1 USD ≈ <strong>1.570 ARS</strong></p>
+          <p class="text-xs text-gray-400 mt-1">Cambio orientativo — puede variar</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo actual</p>
+          <div id="info-weather-ba" class="text-sm text-gray-700">Buenos Aires: <span class="text-gray-400 text-xs">cargando...</span></div>
+          <div id="info-weather-iguazu" class="text-sm text-gray-700 mt-1">Iguazú: <span class="text-gray-400 text-xs">cargando...</span></div>
+          <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Frases útiles</p>
+          <p class="text-sm text-gray-700">"¿Dónde está?" → ¿Dónde queda?</p>
+          <p class="text-sm text-gray-700">"La cuenta" → La cuenta, por favor 🧾</p>
+          <p class="text-sm text-gray-700">Boludo/a = colega (sin ofensa entre amigos)</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
+          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
+          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
+          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
+          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Propinas</p>
+          <p class="text-sm text-gray-700">En restaurantes: <strong>10–15%</strong> es lo habitual. No obligatoria pero muy bien recibida.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACCESO PATAGONIA -->
     <section class="mt-16 mb-4">
       <a href="patagonia.html" class="block gradient-patagonia rounded-3xl p-8 text-white text-center shadow-xl hover:opacity-90 transition-opacity">
         <div class="text-5xl mb-4">🏔️🧊🦭🐧</div>
@@ -533,41 +572,37 @@
   const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';
 
   async function loadWeather() {
-    // Configuración: { loc_id: [lat, lon, label] }
     const locs = {
-      ba:     [-34.60, -58.38, 'Buenos Aires'],
-      iguazu: [-25.60, -54.58, 'Iguazú'],
+      ba:     { lat:-34.60, lon:-58.38, label:'Buenos Aires' },
+      iguazu: { lat:-25.60, lon:-54.58, label:'Iguazú' },
     };
-    // Días del viaje y su ubicación
-    const days = {
-      '2026-03-28': 'ba', '2026-03-29': 'ba',
-      '2026-03-30': 'iguazu', '2026-03-31': 'iguazu', '2026-04-01': 'iguazu',
-      '2026-04-02': 'ba', '2026-04-03': 'ba', '2026-04-04': 'ba', '2026-04-05': 'ba',
+    const dayLoc = {
+      '2026-03-28':'ba','2026-03-29':'ba',
+      '2026-03-30':'iguazu','2026-03-31':'iguazu','2026-04-01':'iguazu',
+      '2026-04-02':'ba','2026-04-03':'ba','2026-04-04':'ba','2026-04-05':'ba',
     };
-
     const forecasts = {};
-    for (const [loc, [lat, lon]] of Object.entries(locs)) {
+    for (const [key, cfg] of Object.entries(locs)) {
       try {
-        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code_dominant,precipitation_probability_max&timezone=auto&forecast_days=16`);
+        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code_dominant,precipitation_probability_max&timezone=auto&forecast_days=16`);
         const d = await r.json();
-        forecasts[loc] = { current: d.current, daily: d.daily };
-
-        // Header cartelito
-        const hdrEl = document.getElementById('hdr-' + loc);
-        if (hdrEl) {
-          const t = Math.round(d.current.temperature_2m);
-          const icon = wmoIcon(d.current.weather_code);
-          hdrEl.textContent = `🌡️ ${locs[loc][2]} ${t}°C ${icon}`;
-        }
+        forecasts[key] = d;
+        const t = Math.round(d.current.temperature_2m);
+        const icon = wmoIcon(d.current.weather_code);
+        // Header badge
+        const hdr = document.getElementById('hdr-' + key);
+        if (hdr) hdr.textContent = `🌡️ ${cfg.label} · ${t}°C ${icon}`;
+        // Info útil
+        const info = document.getElementById('info-weather-' + key);
+        if (info) info.innerHTML = `${cfg.label}: <strong>${t}°C</strong> ${icon}`;
       } catch(e) {}
     }
-
     // Badges por día
-    for (const [date, loc] of Object.entries(days)) {
+    for (const [date, loc] of Object.entries(dayLoc)) {
       const el = document.getElementById('w-' + date);
       if (!el || !forecasts[loc]) continue;
-      const idx = forecasts[loc].daily.time?.indexOf(date);
-      if (idx === -1 || idx === undefined) { el.textContent = ''; continue; }
+      const idx = (forecasts[loc].daily.time || []).indexOf(date);
+      if (idx === -1) { el.textContent = ''; continue; }
       const max = Math.round(forecasts[loc].daily.temperature_2m_max[idx]);
       const min = Math.round(forecasts[loc].daily.temperature_2m_min[idx]);
       const rain = forecasts[loc].daily.precipitation_probability_max[idx];

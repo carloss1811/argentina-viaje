@@ -397,7 +397,7 @@
     const forecasts = {};
     for (const [key, cfg] of Object.entries(locs)) {
       try {
-        const url = `https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=${cfg.tz}&forecast_days=16`;
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&hourly=relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=${cfg.tz}&forecast_days=16`;
         const d = await (await fetch(url)).json();
         forecasts[key] = d;
         const t = Math.round(d.current.temperature_2m);
@@ -418,7 +418,9 @@
       const min = Math.round(forecasts[loc].daily.temperature_2m_min[idx]);
       const rain = forecasts[loc].daily.precipitation_probability_max[idx];
       const icon = wmoIcon(forecasts[loc].daily.weathercode?.[idx] ?? 0);
-      el.textContent = `${icon} ${max}°/${min}° 💧${rain}%`;
+      const humIdx = (forecasts[loc].hourly?.time || []).indexOf(date + 'T12:00');
+      const hum = humIdx >= 0 ? forecasts[loc].hourly.relative_humidity_2m[humIdx] : null;
+      el.textContent = `${icon} ${max}°/${min}° ☔${rain}% ${hum !== null ? '💧' + hum + '%' : ''}`;
     }
   }
   loadWeather();

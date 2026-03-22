@@ -42,8 +42,6 @@
     .delay-8 { animation-delay: 0.40s; }
     .delay-9 { animation-delay: 0.45s; }
     #countdown-timer span { display: inline-block; min-width: 2.5ch; }
-    @media print {
-      .no-print { display: none !important; }
       body { background: white !important; }
       .card-hover { box-shadow: none !important; border: 1px solid #ddd !important; }
     }
@@ -56,9 +54,6 @@
     <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200'); background-size: cover; background-position: center;"></div>
     <div class="relative z-10">
       <!-- Print button -->
-      <button onclick="window.print()" class="no-print absolute top-0 right-0 mt-1 mr-1 md:mt-2 md:mr-4 inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white text-xs px-3 py-1.5 rounded-full transition-colors backdrop-blur">
-        🖨️ Imprimir
-      </button>
       <div class="text-6xl mb-4">🇦🇷</div>
       <h1 class="text-4xl md:text-6xl font-extrabold mb-3 tracking-tight">Argentina 2026</h1>
       <p class="text-xl md:text-2xl font-medium text-blue-100">Viaje de familia</p>
@@ -86,40 +81,6 @@
 
   <main class="max-w-3xl mx-auto px-4 py-10">
 
-    <!-- INFORMACIÓN ÚTIL -->
-    <section class="mt-12 mb-8 fade-in-up">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas</p>
-          <p class="text-sm text-gray-700">1€ ≈ <strong>1.700 ARS</strong></p>
-          <p class="text-sm text-gray-700">1 USD ≈ <strong>1.570 ARS</strong></p>
-          <p class="text-xs text-gray-400 mt-1">Cambio orientativo — puede variar</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo esperado</p>
-          <div id="weather-ba" class="text-sm text-gray-700">Buenos Aires: <strong>~28°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
-          <div id="weather-iguazu" class="text-sm text-gray-700 mt-1">Iguazú: <strong>~32°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
-          <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Frases útiles</p>
-          <p class="text-sm text-gray-700">"¿Dónde está?" → ¿Dónde queda?</p>
-          <p class="text-sm text-gray-700">"La cuenta" → La cuenta, por favor 🧾</p>
-          <p class="text-sm text-gray-700">Boludo/a = colega (sin ofensa entre amigos)</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
-          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
-          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
-          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
-          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Propinas</p>
-          <p class="text-sm text-gray-700">En restaurantes: <strong>10–15%</strong> es lo habitual. No es obligatoria pero sí muy bien recibida.</p>
-        </div>
-      </div>
-    </section>
 
     <!-- SECCIÓN: EL VIAJE -->
     <section id="el-viaje">
@@ -136,7 +97,7 @@
             <span class="text-2xl">✈️</span>
             <div>
               <span class="font-bold text-blue-800 text-sm uppercase tracking-wide">Sábado 28 marzo</span>
-              <span class="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Día 1</span>
+              <span class="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Día 1</span> <span id="w-2026-03-28" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -224,7 +185,7 @@
             <span class="text-2xl">🥩</span>
             <div>
               <span class="font-bold text-amber-800 text-sm uppercase tracking-wide">Domingo 29 marzo</span>
-              <span class="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Día 2</span>
+              <span class="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Día 2</span> <span id="w-2026-03-29" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -245,7 +206,7 @@
             <span class="text-2xl">🌊</span>
             <div>
               <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Lunes 30 marzo</span>
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 3</span>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 3</span> <span id="w-2026-03-30" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -335,7 +296,7 @@
             <span class="text-2xl">🇧🇷</span>
             <div>
               <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Martes 31 marzo</span>
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 4</span>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 4</span> <span id="w-2026-03-31" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -385,7 +346,7 @@
             <span class="text-2xl">🌅</span>
             <div>
               <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Miércoles 1 abril</span>
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 5</span>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 5</span> <span id="w-2026-04-01" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -427,7 +388,7 @@
             <span class="text-2xl">💒</span>
             <div>
               <span class="font-bold text-sm uppercase tracking-wide">Jueves 2 abril</span>
-              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 6</span>
+              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 6</span> <span id="w-2026-04-02" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -469,7 +430,7 @@
             <span class="text-2xl">🏙️</span>
             <div>
               <span class="font-bold text-purple-800 text-sm uppercase tracking-wide">Viernes 3 abril</span>
-              <span class="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Día 7</span>
+              <span class="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Día 7</span> <span id="w-2026-04-03" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -489,7 +450,7 @@
               <span class="text-3xl">💍</span>
               <div>
                 <span class="font-bold text-sm uppercase tracking-wide">Sábado 4 abril</span>
-                <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 8 · EL DÍA GRANDE</span>
+                <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 8 · EL DÍA GRANDE</span> <span id="w-2026-04-04" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
               </div>
             </div>
           </div>
@@ -508,7 +469,7 @@
             <span class="text-2xl">😴</span>
             <div>
               <span class="font-bold text-gray-600 text-sm uppercase tracking-wide">Domingo 5 abril</span>
-              <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">Día 9</span>
+              <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">Día 9</span> <span id="w-2026-04-05" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
             </div>
           </div>
           <div class="px-5 py-4">
@@ -569,34 +530,52 @@
   </script>
 
   <script>
-  // Iconos para weather codes de Open-Meteo
-  const wmoIcon = code => {
-    if (code === 0) return '☀️';
-    if (code <= 2) return '⛅';
-    if (code <= 3) return '☁️';
-    if (code <= 48) return '🌫️';
-    if (code <= 57) return '🌧️';
-    if (code <= 67) return '🌧️';
-    if (code <= 77) return '🌨️';
-    if (code <= 82) return '🌦️';
-    if (code <= 86) return '🌨️';
-    if (code <= 95) return '⛈️';
-    return '🌩️';
-  };
-  const fetchWeather = async (lat, lon, elementId, label) => {
-    try {
-      const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=auto&forecast_days=2`);
-      const d = await r.json();
-      const temp = Math.round(d.current.temperature_2m);
-      const icon = wmoIcon(d.current.weather_code);
-      const max = Math.round(d.daily.temperature_2m_max[0]);
-      const min = Math.round(d.daily.temperature_2m_min[0]);
-      const rain = d.daily.precipitation_probability_max[0];
-      document.getElementById(elementId).innerHTML = `${label}: <strong>${temp}°C</strong> ${icon} · <span class="text-xs text-gray-500">máx ${max}° mín ${min}° · 🌧️ ${rain}%</span>`;
-    } catch(e) { /* silencioso si falla */ }
-  };
-  fetchWeather(-34.60, -58.38, 'weather-ba', 'Buenos Aires');
-  fetchWeather(-25.60, -54.58, 'weather-iguazu', 'Iguazú');
+  const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';
+
+  async function loadWeather() {
+    // Configuración: { loc_id: [lat, lon, label] }
+    const locs = {
+      ba:     [-34.60, -58.38, 'Buenos Aires'],
+      iguazu: [-25.60, -54.58, 'Iguazú'],
+    };
+    // Días del viaje y su ubicación
+    const days = {
+      '2026-03-28': 'ba', '2026-03-29': 'ba',
+      '2026-03-30': 'iguazu', '2026-03-31': 'iguazu', '2026-04-01': 'iguazu',
+      '2026-04-02': 'ba', '2026-04-03': 'ba', '2026-04-04': 'ba', '2026-04-05': 'ba',
+    };
+
+    const forecasts = {};
+    for (const [loc, [lat, lon]] of Object.entries(locs)) {
+      try {
+        const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code_dominant,precipitation_probability_max&timezone=auto&forecast_days=16`);
+        const d = await r.json();
+        forecasts[loc] = { current: d.current, daily: d.daily };
+
+        // Header cartelito
+        const hdrEl = document.getElementById('hdr-' + loc);
+        if (hdrEl) {
+          const t = Math.round(d.current.temperature_2m);
+          const icon = wmoIcon(d.current.weather_code);
+          hdrEl.textContent = `🌡️ ${locs[loc][2]} ${t}°C ${icon}`;
+        }
+      } catch(e) {}
+    }
+
+    // Badges por día
+    for (const [date, loc] of Object.entries(days)) {
+      const el = document.getElementById('w-' + date);
+      if (!el || !forecasts[loc]) continue;
+      const idx = forecasts[loc].daily.time?.indexOf(date);
+      if (idx === -1 || idx === undefined) { el.textContent = ''; continue; }
+      const max = Math.round(forecasts[loc].daily.temperature_2m_max[idx]);
+      const min = Math.round(forecasts[loc].daily.temperature_2m_min[idx]);
+      const rain = forecasts[loc].daily.precipitation_probability_max[idx];
+      const icon = wmoIcon(forecasts[loc].daily.weather_code_dominant?.[idx] ?? 0);
+      el.textContent = `${icon} ${max}°/${min}° 💧${rain}%`;
+    }
+  }
+  loadWeather();
   </script>
 </body>
 </html>

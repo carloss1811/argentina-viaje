@@ -36,8 +36,6 @@
     .delay-4 { animation-delay: 0.20s; }
     .delay-5 { animation-delay: 0.25s; }
     .delay-6 { animation-delay: 0.30s; }
-    @media print {
-      .no-print { display: none !important; }
       body { background: white !important; }
       .card-hover { box-shadow: none !important; border: 1px solid #ddd !important; }
     }
@@ -49,9 +47,6 @@
   <header class="gradient-patagonia text-white py-14 px-4 text-center relative overflow-hidden">
     <div class="relative z-10">
       <!-- Print button -->
-      <button onclick="window.print()" class="no-print absolute top-0 right-0 mt-1 mr-1 md:mt-2 md:mr-4 inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white text-xs px-3 py-1.5 rounded-full transition-colors backdrop-blur">
-        🖨️ Imprimir
-      </button>
       <a href="index.html" class="inline-flex items-center gap-2 text-blue-200 hover:text-white text-sm mb-6 transition-colors">
         ← Volver al viaje
       </a>

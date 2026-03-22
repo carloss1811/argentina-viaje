@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1e3a5f" />
   <title>Argentina 2026 🇦🇷</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -19,12 +20,33 @@
   </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; }
     .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
     .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
     .gradient-header { background: linear-gradient(135deg, #1e3a5f 0%, #1a6fa8 50%, #0ea5e9 100%); }
     .gradient-patagonia { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #0ea5e9 100%); }
     .boda-gradient { background: linear-gradient(135deg, #78350f 0%, #a16207 50%, #ca8a04 100%); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.5s ease both; }
+    .delay-1 { animation-delay: 0.05s; }
+    .delay-2 { animation-delay: 0.10s; }
+    .delay-3 { animation-delay: 0.15s; }
+    .delay-4 { animation-delay: 0.20s; }
+    .delay-5 { animation-delay: 0.25s; }
+    .delay-6 { animation-delay: 0.30s; }
+    .delay-7 { animation-delay: 0.35s; }
+    .delay-8 { animation-delay: 0.40s; }
+    .delay-9 { animation-delay: 0.45s; }
+    #countdown-timer span { display: inline-block; min-width: 2.5ch; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; }
+      .card-hover { box-shadow: none !important; border: 1px solid #ddd !important; }
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -33,12 +55,23 @@
   <header class="gradient-header text-white py-16 px-4 text-center relative overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200'); background-size: cover; background-position: center;"></div>
     <div class="relative z-10">
+      <!-- Print button -->
+      <button onclick="window.print()" class="no-print absolute top-0 right-0 mt-1 mr-1 md:mt-2 md:mr-4 inline-flex items-center gap-1.5 bg-white/15 hover:bg-white/25 text-white text-xs px-3 py-1.5 rounded-full transition-colors backdrop-blur">
+        🖨️ Imprimir
+      </button>
       <div class="text-6xl mb-4">🇦🇷</div>
       <h1 class="text-4xl md:text-6xl font-extrabold mb-3 tracking-tight">Argentina 2026</h1>
       <p class="text-xl md:text-2xl font-medium text-blue-100">Viaje de familia</p>
       <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm">
         <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">📍 Buenos Aires</span>
         <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">💒 Boda en Luján</span>
+      </div>
+      <!-- Countdown -->
+      <div class="mt-6 no-print" id="countdown-timer">
+        <p class="text-blue-200 text-xs uppercase tracking-widest mb-1">Salida en</p>
+        <p class="text-2xl font-bold text-white">
+          <span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m
+        </p>
       </div>
     </div>
   </header>
@@ -63,7 +96,7 @@
       <div class="space-y-4">
 
         <!-- 28 MAR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-1 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-blue-50 border-b border-blue-100">
             <span class="text-2xl">✈️</span>
             <div>
@@ -143,7 +176,7 @@
         </div>
 
         <!-- 29 MAR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-2 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-amber-50 border-b border-amber-100">
             <span class="text-2xl">🥩</span>
             <div>
@@ -158,7 +191,7 @@
         </div>
 
         <!-- 30 MAR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-3 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
             <span class="text-2xl">🌊</span>
             <div>
@@ -245,7 +278,7 @@
         </div>
 
         <!-- 31 MAR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
             <span class="text-2xl">🇧🇷</span>
             <div>
@@ -295,7 +328,7 @@
         </div>
 
         <!-- 01 ABR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-5 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
             <span class="text-2xl">🌅</span>
             <div>
@@ -337,7 +370,7 @@
         </div>
 
         <!-- 02 ABR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-6 bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 boda-gradient text-white">
             <span class="text-2xl">💒</span>
             <div>
@@ -379,7 +412,7 @@
         </div>
 
         <!-- 03 ABR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-7 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-purple-50 border-b border-purple-100">
             <span class="text-2xl">🏙️</span>
             <div>
@@ -398,7 +431,7 @@
         </div>
 
         <!-- 04 ABR — BODA ⭐ -->
-        <div class="card-hover rounded-2xl shadow-lg overflow-hidden border-2 border-yellow-300">
+        <div class="card-hover fade-in-up delay-8 rounded-2xl shadow-lg overflow-hidden border-2 border-yellow-300">
           <div class="boda-gradient text-white px-5 py-4">
             <div class="flex items-center gap-3">
               <span class="text-3xl">💍</span>
@@ -418,7 +451,7 @@
         </div>
 
         <!-- 05 ABR -->
-        <div class="card-hover bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="card-hover fade-in-up delay-9 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div class="flex items-center gap-3 px-5 py-3 bg-gray-50 border-b border-gray-100">
             <span class="text-2xl">😴</span>
             <div>
@@ -435,7 +468,41 @@
       </div>
     </section>
 
-    
+    <!-- INFORMACIÓN ÚTIL -->
+    <section class="mt-12 mb-8 fade-in-up">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas</p>
+          <p class="text-sm text-gray-700">1€ ≈ <strong>1.700 ARS</strong></p>
+          <p class="text-sm text-gray-700">1 USD ≈ <strong>1.570 ARS</strong></p>
+          <p class="text-xs text-gray-400 mt-1">Cambio orientativo — puede variar</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo esperado</p>
+          <p class="text-sm text-gray-700">Buenos Aires: <strong>~28°C</strong></p>
+          <p class="text-sm text-gray-700">Iguazú: <strong>~32°C</strong>, húmedo</p>
+          <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🔌 Electricidad</p>
+          <p class="text-sm text-gray-700">Tipo <strong>C / I</strong> · 220V</p>
+          <p class="text-sm text-gray-700">Enchufes europeos: ✅ sin adaptador</p>
+          <p class="text-sm text-gray-700">Enchufes UK: necesita adaptador</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
+          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
+          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
+          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
+          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Propinas</p>
+          <p class="text-sm text-gray-700">En restaurantes: <strong>10–15%</strong> es lo habitual. No es obligatoria pero sí muy bien recibida.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- ACCESO PATAGONIA -->
     <section class="mt-16 mb-4">
       <a href="patagonia.html" class="block gradient-patagonia rounded-3xl p-8 text-white text-center shadow-xl hover:opacity-90 transition-opacity">
@@ -447,15 +514,40 @@
       </a>
     </section>
 
-    <!-- PROXIMAMENTE -->
 
   </main>
 
   <!-- FOOTER -->
-  <footer class="mt-16 bg-gray-900 text-gray-400 text-center py-8 text-sm">
-    <p class="text-2xl mb-2">🇦🇷</p>
-    <p class="font-medium text-gray-300">Argentina 2026 · Viaje de familia</p>
+  <footer class="mt-16 bg-gray-900 text-white text-center py-10 text-sm">
+    <p class="text-3xl mb-3">🇦🇷</p>
+    <p class="text-lg font-bold text-white mb-1">Argentina 2026</p>
+    <p class="text-gray-400 mb-4">Viaje de familia · 28 marzo – 11 abril</p>
+    <div class="flex flex-wrap justify-center gap-4 text-gray-400 text-xs mb-4">
+      <a href="#el-viaje" class="hover:text-white transition-colors">🗓️ Itinerario</a>
+      <a href="patagonia.html" class="hover:text-white transition-colors">🏔️ Patagonia</a>
+    </div>
+    <p class="text-gray-600 text-xs">Hecho con ❤️ para la familia</p>
   </footer>
 
+  <script>
+    // Countdown to March 28, 2026
+    function updateCountdown() {
+      const departure = new Date('2026-03-28T00:00:00');
+      const now = new Date();
+      const diff = departure - now;
+      if (diff <= 0) {
+        document.getElementById('countdown-timer').innerHTML = '<p class="text-blue-200 text-sm font-semibold">¡El viaje ha comenzado! 🎉</p>';
+        return;
+      }
+      const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById('cd-days').textContent  = days;
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 30000);
+  </script>
 </body>
 </html>

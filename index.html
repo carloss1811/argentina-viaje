@@ -86,6 +86,41 @@
 
   <main class="max-w-3xl mx-auto px-4 py-10">
 
+    <!-- INFORMACIÓN ÚTIL -->
+    <section class="mt-12 mb-8 fade-in-up">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas</p>
+          <p class="text-sm text-gray-700">1€ ≈ <strong>1.700 ARS</strong></p>
+          <p class="text-sm text-gray-700">1 USD ≈ <strong>1.570 ARS</strong></p>
+          <p class="text-xs text-gray-400 mt-1">Cambio orientativo — puede variar</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo esperado</p>
+          <div id="weather-ba" class="text-sm text-gray-700">Buenos Aires: <strong>~28°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
+          <div id="weather-iguazu" class="text-sm text-gray-700 mt-1">Iguazú: <strong>~32°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
+          <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Frases útiles</p>
+          <p class="text-sm text-gray-700">"¿Dónde está?" → ¿Dónde queda?</p>
+          <p class="text-sm text-gray-700">"La cuenta" → La cuenta, por favor 🧾</p>
+          <p class="text-sm text-gray-700">Boludo/a = colega (sin ofensa entre amigos)</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
+          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
+          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
+          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
+          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Propinas</p>
+          <p class="text-sm text-gray-700">En restaurantes: <strong>10–15%</strong> es lo habitual. No es obligatoria pero sí muy bien recibida.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- SECCIÓN: EL VIAJE -->
     <section id="el-viaje">
       <h2 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
@@ -485,42 +520,8 @@
       </div>
     </section>
 
-    <!-- INFORMACIÓN ÚTIL -->
-    <section class="mt-12 mb-8 fade-in-up">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas</p>
-          <p class="text-sm text-gray-700">1€ ≈ <strong>1.700 ARS</strong></p>
-          <p class="text-sm text-gray-700">1 USD ≈ <strong>1.570 ARS</strong></p>
-          <p class="text-xs text-gray-400 mt-1">Cambio orientativo — puede variar</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo esperado</p>
-          <div id="weather-ba" class="text-sm text-gray-700">Buenos Aires: <strong>~28°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
-          <div id="weather-iguazu" class="text-sm text-gray-700 mt-1">Iguazú: <strong>~32°C</strong> <span class="text-gray-400 text-xs">(cargando...)</span></div>
-          <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Frases útiles</p>
-          <p class="text-sm text-gray-700">"¿Dónde está?" → ¿Dónde queda?</p>
-          <p class="text-sm text-gray-700">"La cuenta" → La cuenta, por favor 🧾</p>
-          <p class="text-sm text-gray-700">Boludo/a = colega (sin ofensa entre amigos)</p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
-          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
-          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
-          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
-          <p class="text-sm font-bold text-gray-800 mb-2">🗣️ Propinas</p>
-          <p class="text-sm text-gray-700">En restaurantes: <strong>10–15%</strong> es lo habitual. No es obligatoria pero sí muy bien recibida.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- ACCESO PATAGONIA -->
+    <!-- ACCESO PATAGONIA    <!-- ACCESO PATAGONIA -->
     <section class="mt-16 mb-4">
       <a href="patagonia.html" class="block gradient-patagonia rounded-3xl p-8 text-white text-center shadow-xl hover:opacity-90 transition-opacity">
         <div class="text-5xl mb-4">🏔️🧊🦭🐧</div>

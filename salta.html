@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7c2d12" />
+  <title>Salta &amp; Jujuy 2026 🌵</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            salta: { 50:'#fff7ed', 100:'#ffedd5', 300:'#fdba74', 500:'#f97316', 700:'#c2410c', 900:'#7c2d12' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .gradient-salta { background: linear-gradient(135deg, #7c2d12 0%, #c2410c 45%, #ea580c 100%); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up { animation: fadeInUp 0.5s ease both; }
+    .delay-1 { animation-delay: 0.05s; }
+    .delay-2 { animation-delay: 0.10s; }
+    .delay-3 { animation-delay: 0.15s; }
+    .delay-4 { animation-delay: 0.20s; }
+    .delay-5 { animation-delay: 0.25s; }
+    #countdown-timer span { display: inline-block; min-width: 2.5ch; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- HEADER -->
+  <header class="gradient-salta text-white py-16 px-4 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1548963670-7a5f56c5fd07?w=1200'); background-size: cover; background-position: center;"></div>
+    <div class="relative z-10">
+      <a href="patagonia.html" class="inline-flex items-center gap-2 text-orange-200 hover:text-white text-sm mb-6 transition-colors">
+        ← Volver a Patagonia
+      </a>
+      <div class="text-6xl mb-4">🌵🏜️🧂🦅</div>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight">SALTA &amp; JUJUY 2026</h1>
+      <p class="text-xl md:text-2xl font-medium text-orange-100">12 – 16 abril</p>
+      <div class="mt-4 flex flex-wrap justify-center gap-3 text-sm">
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">👥 Piedad · Visi · Marta</span>
+        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">✈️ JetSmart</span>
+      </div>
+      <div class="mt-3 flex flex-wrap justify-center gap-2">
+        <span id="hdr-time-es" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-orange-100">🕐 España: --:--</span>
+        <span id="hdr-time-ar" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-orange-100">🕐 Argentina: --:--</span>
+      </div>
+      <div class="mt-2 flex flex-wrap justify-center gap-2">
+        <span id="hdr-salta"      class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-orange-100">🌡️ Salta · cargando...</span>
+        <span id="hdr-purmamarca" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-orange-100">🌡️ Purmamarca · cargando...</span>
+      </div>
+      <!-- Countdown -->
+      <div class="mt-6" id="countdown-timer">
+        <p class="text-orange-200 text-xs uppercase tracking-widest mb-1">Salida a Salta en</p>
+        <p class="text-2xl font-bold text-white">
+          <span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex gap-1 overflow-x-auto text-sm font-medium scrollbar-hide">
+        <a href="#sec-llegada"   class="text-gray-600 hover:text-orange-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-orange-50 transition-colors">✈️ Llegada</a>
+        <a href="#sec-salinas"   class="text-gray-600 hover:text-amber-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-amber-50 transition-colors">🧂 Salinas</a>
+        <a href="#sec-quebrada"  class="text-gray-600 hover:text-orange-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-orange-50 transition-colors">🏔️ Quebrada</a>
+        <a href="#sec-cafayate"  class="text-gray-600 hover:text-purple-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-purple-50 transition-colors">🍷 Cafayate</a>
+        <a href="#sec-info-salta" class="text-gray-600 hover:text-indigo-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-indigo-50 transition-colors">🧮 Calculadora</a>
+      </div>
+      <a href="patagonia.html" class="ml-3 flex-shrink-0 bg-orange-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-orange-700 transition-colors whitespace-nowrap">
+        ← Patagonia
+      </a>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto px-4 py-10">
+
+    <!-- QUÉ INCLUYE EL TOUR -->
+    <section class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">🗺️ Qué incluye el tour</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-green-50 rounded-2xl border border-green-200 p-4">
+          <p class="text-sm font-bold text-green-800 mb-2">✅ Incluido</p>
+          <ul class="space-y-1 text-sm text-green-700">
+            <li>✅ Guía bilingüe (español/inglés)</li>
+            <li>✅ Excursiones programadas</li>
+            <li>✅ Traslados incluidos</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 rounded-2xl border border-red-200 p-4">
+          <p class="text-sm font-bold text-red-800 mb-2">❌ No incluido</p>
+          <ul class="space-y-1 text-sm text-red-700">
+            <li>❌ Alojamiento</li>
+            <li>❌ Comidas</li>
+            <li>❌ Entradas a museos y parques</li>
+            <li>❌ Entradas a bodegas</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL VIAJE -->
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">🗓️ El Viaje</h2>
+      <p class="text-gray-500 mb-8 text-sm">Salta · Purmamarca · Cafayate</p>
+
+      <div class="space-y-4">
+
+        <!-- DÍA 1 — 12 ABRIL -->
+        <div id="sec-llegada"></div>
+        <div class="card-hover fade-in-up delay-1 bg-white rounded-2xl shadow-sm border border-orange-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-orange-50 border-b border-orange-100">
+            <span class="text-2xl">✈️</span>
+            <div>
+              <span class="font-bold text-orange-800 text-sm uppercase tracking-wide">Domingo 12 abril</span>
+              <span class="ml-2 text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Día 1</span>
+              <span id="w-2026-04-12" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">📍 Llegada a Salta</h3>
+
+            <!-- VUELO LLEGADA -->
+            <div class="mt-3 bg-gray-50 rounded-xl p-3 border border-gray-200">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-sm font-bold text-gray-700">✈️ JetSmart JA3012</span>
+              </div>
+              <p class="text-sm text-gray-800">Llegada a Salta — <strong>09:02</strong></p>
+              <p class="text-xs text-gray-500 mt-1">María Piedad · Visi · Marta</p>
+            </div>
+
+            <!-- HOTEL -->
+            <div class="mt-3 bg-indigo-50 rounded-xl p-4 border border-indigo-200">
+              <p class="text-xs font-bold text-indigo-800 uppercase tracking-wide mb-2">🏨 Alojamiento · 12-13 abril</p>
+              <p class="text-sm font-semibold text-indigo-900">Hotel Amerian</p>
+              <p class="text-xs text-indigo-600 mb-2">📮 Salta, Argentina</p>
+              <a href="https://www.google.com/maps/search/Hotel+Amerian+Salta" target="_blank"
+                 class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
+                📍 Google Maps
+              </a>
+            </div>
+
+            <!-- CITY TOUR -->
+            <div class="mt-3 bg-orange-50 rounded-xl p-4 border border-orange-200">
+              <p class="text-sm font-bold text-orange-800 mb-2">🏛️ City tour Salta</p>
+              <div class="space-y-1.5 text-xs text-orange-800">
+                <div class="flex items-center gap-2"><span>⛪</span><span>Catedral Basílica de Salta</span></div>
+                <div class="flex items-center gap-2"><span>🏛️</span><span>Centro Cultural de las Américas</span></div>
+                <div class="flex items-center gap-2"><span>🏛️</span><span>Museo Histórico del Norte (Cabildo)</span></div>
+                <div class="flex items-center gap-2"><span>⛪</span><span>Basílica Menor de San Francisco</span></div>
+                <div class="flex items-center gap-2"><span>🏯</span><span>Convento San Bernardo</span></div>
+                <div class="flex items-center gap-2"><span>🗿</span><span>Monumento a Güemes</span></div>
+              </div>
+            </div>
+
+            <!-- CERRO SAN BERNARDO -->
+            <div class="mt-3 bg-amber-50 rounded-xl p-4 border border-amber-200">
+              <p class="text-sm font-bold text-amber-800 mb-1">🚡 Ascenso Cerro San Bernardo</p>
+              <p class="text-xs text-amber-700">Vista panorámica de la ciudad de Salta desde lo alto</p>
+            </div>
+
+            <!-- SAN LORENZO + MERCADO -->
+            <div class="mt-3 bg-orange-50 rounded-xl p-3 border border-orange-100">
+              <div class="space-y-1 text-xs text-orange-800">
+                <div class="flex items-center gap-2"><span>🛍️</span><span>Visita a San Lorenzo</span></div>
+                <div class="flex items-center gap-2"><span>🪆</span><span>Mercado Artesanal de Salta</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 2 — 13 ABRIL -->
+        <div id="sec-salinas"></div>
+        <div class="card-hover fade-in-up delay-2 bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-amber-50 border-b border-amber-100">
+            <span class="text-2xl">🧂</span>
+            <div>
+              <span class="font-bold text-amber-800 text-sm uppercase tracking-wide">Lunes 13 abril</span>
+              <span class="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Día 2</span>
+              <span id="w-2026-04-13" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">🌅 Salinas Grandes – Purmamarca</h3>
+            <p class="text-gray-600 text-sm mt-1">Salida desde Salta por la mañana hacia la Quebrada de Humahuaca</p>
+
+            <!-- PURMAMARCA -->
+            <div class="mt-3 bg-yellow-50 rounded-xl p-4 border border-yellow-200">
+              <p class="text-sm font-bold text-yellow-800 mb-2">🏘️ Purmamarca</p>
+              <div class="space-y-1.5 text-xs text-yellow-800">
+                <div class="flex items-center gap-2"><span>🌈</span><span>Cerro de los Siete Colores — postal icónica del noroeste</span></div>
+                <div class="flex items-center gap-2"><span>⛪</span><span>Iglesia de Purmamarca</span></div>
+                <div class="flex items-center gap-2"><span>🪆</span><span>Mercado Artesanal de la plaza</span></div>
+              </div>
+            </div>
+
+            <!-- CUESTA DE LIPÁN + SALINAS -->
+            <div class="mt-3 bg-amber-50 rounded-xl p-4 border border-amber-200">
+              <p class="text-sm font-bold text-amber-800 mb-2">⬆️ Ascenso por Cuesta de Lipán</p>
+              <div class="mt-2 bg-white/70 rounded-lg p-3 border border-amber-100">
+                <p class="text-sm font-bold text-amber-900 mb-1">🧂 Salinas Grandes — Puna de Jujuy</p>
+                <p class="text-xs text-amber-700">Inmensa extensión de sal a 3.450 m de altitud · Proceso de extracción de sal · Paisaje de otro planeta</p>
+              </div>
+              <p class="text-xs text-amber-700 mt-2">⬇️ <strong>Descenso Cuesta de Lipán</strong> — avistamiento de cóndores 🦅</p>
+            </div>
+
+            <!-- HOTEL PURMAMARCA -->
+            <div class="mt-3 bg-indigo-50 rounded-xl p-4 border border-indigo-200">
+              <p class="text-xs font-bold text-indigo-800 uppercase tracking-wide mb-2">🏨 Alojamiento · 13-14 abril</p>
+              <p class="text-sm font-semibold text-indigo-900">Los Olivos Purmamarca</p>
+              <p class="text-xs text-indigo-600 mb-2">📮 Purmamarca, Jujuy</p>
+              <a href="https://www.google.com/maps/search/Los+Olivos+Purmamarca" target="_blank"
+                 class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
+                📍 Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 3 — 14 ABRIL -->
+        <div id="sec-quebrada"></div>
+        <div class="card-hover fade-in-up delay-3 bg-white rounded-2xl shadow-sm border border-orange-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-orange-50 border-b border-orange-100">
+            <span class="text-2xl">🏔️</span>
+            <div>
+              <span class="font-bold text-orange-800 text-sm uppercase tracking-wide">Martes 14 abril</span>
+              <span class="ml-2 text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">Día 3</span>
+              <span id="w-2026-04-14" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">🏔️ Quebrada de Humahuaca – regreso a Salta</h3>
+
+            <!-- UNESCO -->
+            <div class="mt-3 bg-orange-50 rounded-xl p-4 border border-orange-200">
+              <div class="flex items-start gap-2 mb-2">
+                <span class="text-lg">🏛️</span>
+                <div>
+                  <p class="text-sm font-bold text-orange-800">Quebrada de Humahuaca</p>
+                  <span class="text-xs bg-orange-200 text-orange-800 px-2 py-0.5 rounded-full font-semibold">🌍 Patrimonio de la Humanidad UNESCO</span>
+                </div>
+              </div>
+              <div class="space-y-1.5 text-xs text-orange-800 mt-3">
+                <div class="flex items-center gap-2"><span>🏚️</span><span>Posta de Hornillos</span></div>
+                <div class="flex items-center gap-2"><span>🌐</span><span>Huacalera → Trópico de Capricornio</span></div>
+                <div class="flex items-center gap-2"><span>⛪</span><span>Iglesia de Uquía — Ángeles Arcabuceros (s. XVII)</span></div>
+              </div>
+            </div>
+
+            <!-- HUMAHUACA -->
+            <div class="mt-3 bg-amber-50 rounded-xl p-4 border border-amber-200">
+              <p class="text-sm font-bold text-amber-800 mb-2">🏘️ Humahuaca</p>
+              <div class="space-y-1.5 text-xs text-amber-800">
+                <div class="flex items-center gap-2"><span>⛪</span><span>Catedral de Humahuaca</span></div>
+                <div class="flex items-center gap-2"><span>🗿</span><span>Monumento a la Independencia (El Indio)</span></div>
+                <div class="flex items-center gap-2"><span>🍽️</span><span>Almuerzo en Humahuaca</span></div>
+              </div>
+            </div>
+
+            <!-- MAIMARA -->
+            <div class="mt-3 bg-rose-50 rounded-xl p-3 border border-rose-100">
+              <div class="flex items-center gap-2">
+                <span>🎨</span>
+                <div>
+                  <p class="text-sm font-semibold text-rose-800">Paleta del Pintor — pueblo de Maimara</p>
+                  <p class="text-xs text-rose-600">De vuelta hacia Salta · Colinas multicolores al atardecer</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- HOTEL -->
+            <div class="mt-3 bg-indigo-50 rounded-xl p-4 border border-indigo-200">
+              <p class="text-xs font-bold text-indigo-800 uppercase tracking-wide mb-2">🏨 Alojamiento · 14-16 abril</p>
+              <p class="text-sm font-semibold text-indigo-900">Hotel Amerian</p>
+              <p class="text-xs text-indigo-600 mb-2">📮 Salta, Argentina</p>
+              <a href="https://www.google.com/maps/search/Hotel+Amerian+Salta" target="_blank"
+                 class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
+                📍 Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 4 — 15 ABRIL -->
+        <div id="sec-cafayate"></div>
+        <div class="card-hover fade-in-up delay-4 bg-white rounded-2xl shadow-sm border border-purple-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-purple-50 border-b border-purple-100">
+            <span class="text-2xl">🍷</span>
+            <div>
+              <span class="font-bold text-purple-800 text-sm uppercase tracking-wide">Miércoles 15 abril</span>
+              <span class="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Día 4</span>
+              <span id="w-2026-04-15" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">🍷 Cafayate — Valles y Vinos</h3>
+
+            <!-- VALLE DE LERMA -->
+            <div class="mt-3 bg-green-50 rounded-xl p-3 border border-green-100">
+              <p class="text-sm font-semibold text-green-800 mb-1">🌿 Valle de Lerma</p>
+              <p class="text-xs text-green-700">Campos de tabaco · Arquitectura colonial</p>
+            </div>
+
+            <!-- QUEBRADA RÍO LAS CONCHAS -->
+            <div class="mt-3 bg-orange-50 rounded-xl p-4 border border-orange-200">
+              <p class="text-sm font-bold text-orange-800 mb-2">🏜️ Quebrada del Río Las Conchas</p>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="bg-white rounded-lg p-2 border border-orange-100">
+                  <p class="font-semibold text-orange-800">🏖️ Los Médanos</p>
+                  <p class="text-orange-600">Dunas rojas</p>
+                </div>
+                <div class="bg-white rounded-lg p-2 border border-orange-100">
+                  <p class="font-semibold text-orange-800">🐸 El Sapo</p>
+                  <p class="text-orange-600">Formación rocosa</p>
+                </div>
+                <div class="bg-white rounded-lg p-2 border border-orange-100">
+                  <p class="font-semibold text-orange-800">⛪ El Obispo</p>
+                  <p class="text-orange-600">Roca imponente</p>
+                </div>
+                <div class="bg-white rounded-lg p-2 border border-orange-100">
+                  <p class="font-semibold text-orange-800">😈 Garganta del Diablo</p>
+                  <p class="text-orange-600">Cañón espectacular</p>
+                </div>
+                <div class="bg-white rounded-lg p-2 border border-orange-100">
+                  <p class="font-semibold text-orange-800">🏰 Los Castillos</p>
+                  <p class="text-orange-600">Torres de roca</p>
+                </div>
+                <div class="bg-white rounded-lg p-2 border border-orange-100">
+                  <p class="font-semibold text-orange-800">🎭 El Anfiteatro</p>
+                  <p class="text-orange-600">Acústica natural</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CAFAYATE -->
+            <div class="mt-3 bg-purple-50 rounded-xl p-4 border border-purple-200">
+              <p class="text-sm font-bold text-purple-800 mb-2">🍷 Cafayate — capital del Torrontés</p>
+              <div class="space-y-1.5 text-xs text-purple-800">
+                <div class="flex items-center gap-2"><span>🏠</span><span>Visita a bodegas locales</span></div>
+                <div class="flex items-center gap-2"><span>🥂</span><span>Degustación de Torrontés — el vino blanco más famoso del noroeste</span></div>
+              </div>
+            </div>
+
+            <div class="mt-3 bg-gray-50 rounded-lg px-4 py-2 text-xs text-gray-600 border border-gray-100">
+              🚗 Regreso a Salta por la misma ruta — la luz del atardecer cambia todo
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 5 — 16 ABRIL -->
+        <div class="card-hover fade-in-up delay-5 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div class="flex items-center gap-3 px-5 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white">
+            <span class="text-2xl">🏠</span>
+            <div>
+              <span class="font-bold text-sm uppercase tracking-wide">Jueves 16 abril</span>
+              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 5 · FIN</span>
+              <span id="w-2026-04-16" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+            </div>
+          </div>
+          <div class="px-5 py-4">
+            <h3 class="font-semibold text-gray-900 text-lg">☀️ Día libre + regreso a casa</h3>
+            <p class="text-gray-600 text-sm mt-1">Mañana libre en Salta para explorar, comprar recuerdos o simplemente disfrutar.</p>
+
+            <div class="mt-3 bg-gray-50 rounded-xl p-3 border border-gray-200">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-sm font-bold text-gray-700">✈️ JetSmart JA3019</span>
+              </div>
+              <p class="text-sm text-gray-800">Salida de Salta — <strong>15:10</strong></p>
+              <p class="text-xs text-gray-500 mt-1">María Piedad · Visi · Marta</p>
+            </div>
+
+            <div class="mt-3 bg-orange-50 rounded-lg px-4 py-2 text-xs text-orange-800 border border-orange-100">
+              🚐 Traslado al aeropuerto incluido
+            </div>
+
+            <p class="text-gray-500 text-sm mt-4 italic">¡Hasta la próxima aventura! 🥂</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div id="sec-info-salta"></div>
+    <!-- INFORMACIÓN ÚTIL -->
+    <section class="mt-12 mb-8 fade-in-up">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas <span id="fx-updated" class="text-xs font-normal text-gray-400"></span></p>
+          <div id="fx-eur" class="text-sm text-gray-700">1€ ≈ <strong>cargando...</strong></div>
+          <div id="fx-usd" class="text-sm text-gray-700 mt-1">1 USD ≈ <strong>cargando...</strong></div>
+          <p class="text-xs text-gray-400 mt-1">Tipo de cambio oficial en tiempo real</p>
+        </div>
+
+        <!-- CALCULADORA DIVISAS -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
+          <p class="text-sm font-bold text-gray-800 mb-3">🧮 Calculadora de divisas</p>
+          <div class="grid grid-cols-3 gap-2">
+            <div>
+              <label class="text-xs text-gray-500 mb-1 block">Euros (€)</label>
+              <input id="calc-eur" type="number" inputmode="decimal" placeholder="0"
+                class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" oninput="calcFrom('eur')">
+            </div>
+            <div>
+              <label class="text-xs text-gray-500 mb-1 block">Dólares (USD)</label>
+              <input id="calc-usd" type="number" inputmode="decimal" placeholder="0"
+                class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" oninput="calcFrom('usd')">
+            </div>
+            <div>
+              <label class="text-xs text-gray-500 mb-1 block">Pesos (ARS)</label>
+              <input id="calc-ars" type="number" inputmode="decimal" placeholder="0"
+                class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300" oninput="calcFrom('ars')">
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo actual</p>
+          <div id="info-weather-salta"      class="text-sm text-gray-700">Salta: <span class="text-gray-400 text-xs">cargando...</span></div>
+          <div id="info-weather-purmamarca" class="text-sm text-gray-700 mt-1">Purmamarca: <span class="text-gray-400 text-xs">cargando...</span></div>
+          <p class="text-xs text-gray-400 mt-1">Otoño austral — noches frescas, días templados</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">😂 Chiste del viaje</p>
+          <p class="text-sm text-gray-700 italic">— ¿Qué le dijo el Cerro de los Siete Colores a la Garganta del Diablo?</p>
+          <p class="text-sm font-semibold text-gray-800 mt-1">— "Vos sí que tenés profundidad, yo sólo tengo colorinches" 🌈</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
+          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
+          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
+          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
+          <p class="text-xs text-gray-400 mt-1">Altitud máxima ~3.450m — cuidado con el apunamiento</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-green-200 p-4 sm:col-span-2">
+          <p class="text-sm font-bold text-gray-800 mb-2">💰 Cuentas del grupo — Tricount</p>
+          <p class="text-sm text-gray-600 mb-3">Lleva el control de gastos compartidos y quién le debe a quién.</p>
+          <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank"
+             class="inline-flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-green-700 transition-colors">
+            💰 Abrir Tricount del viaje
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-16 bg-gray-900 text-white text-center py-10 text-sm">
+    <p class="text-3xl mb-3">🌵🏜️</p>
+    <p class="text-lg font-bold text-white mb-1">Salta &amp; Jujuy 2026</p>
+    <p class="text-gray-400 mb-4">12 – 16 abril · Salta · Purmamarca · Cafayate</p>
+    <div class="flex flex-wrap justify-center gap-4 text-gray-400 text-xs mb-4">
+      <a href="index.html"     class="hover:text-white transition-colors">✈️ Buenos Aires</a>
+      <a href="patagonia.html" class="hover:text-white transition-colors">🏔️ Patagonia</a>
+    </div>
+    <p class="text-gray-600 text-xs">Hecho con ❤️ para la familia</p>
+  </footer>
+
+  <!-- SCRIPTS -->
+
+  <script>
+  // Countdown to April 12, 2026 09:02 ART (UTC-3)
+  function updateCountdown() {
+    const departure = new Date('2026-04-12T09:02:00-03:00');
+    const now = new Date();
+    const diff = departure - now;
+    if (diff <= 0) {
+      document.getElementById('countdown-timer').innerHTML = '<p class="text-orange-200 text-sm font-semibold">¡El viaje ha comenzado! 🎉</p>';
+      return;
+    }
+    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('cd-days').textContent  = days;
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 30000);
+  </script>
+
+  <script>
+  const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';
+
+  async function loadWeather() {
+    const locs = {
+      salta:      { lat:-24.79, lon:-65.41, label:'Salta',      tz:'America%2FArgentina%2FSalta' },
+      purmamarca: { lat:-23.74, lon:-65.50, label:'Purmamarca', tz:'America%2FArgentina%2FSalta' },
+    };
+    const dayLoc = {
+      '2026-04-12': 'salta',
+      '2026-04-13': 'purmamarca',
+      '2026-04-14': 'salta',
+      '2026-04-15': 'salta',
+      '2026-04-16': 'salta',
+    };
+    const forecasts = {};
+    for (const [key, cfg] of Object.entries(locs)) {
+      try {
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${cfg.lat}&longitude=${cfg.lon}&current=temperature_2m,weather_code&hourly=relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&timezone=${cfg.tz}&forecast_days=16`;
+        const d = await (await fetch(url)).json();
+        forecasts[key] = d;
+        const t = Math.round(d.current.temperature_2m);
+        const icon = wmoIcon(d.current.weather_code);
+        const hdr = document.getElementById('hdr-' + key);
+        if (hdr) hdr.textContent = `🌡️ ${cfg.label} · ${t}°C ${icon}`;
+        const info = document.getElementById('info-weather-' + key);
+        if (info) info.innerHTML = `${cfg.label}: <strong>${t}°C</strong> ${icon}`;
+      } catch(e) {}
+    }
+    for (const [date, loc] of Object.entries(dayLoc)) {
+      const el = document.getElementById('w-' + date);
+      if (!el || !forecasts[loc]) continue;
+      const idx = (forecasts[loc].daily?.time || []).indexOf(date);
+      if (idx < 0) { el.textContent = ''; continue; }
+      const max  = Math.round(forecasts[loc].daily.temperature_2m_max[idx]);
+      const min  = Math.round(forecasts[loc].daily.temperature_2m_min[idx]);
+      const rain = forecasts[loc].daily.precipitation_probability_max[idx];
+      const icon = wmoIcon(forecasts[loc].daily.weathercode?.[idx] ?? 0);
+      const humIdx = (forecasts[loc].hourly?.time || []).indexOf(date + 'T12:00');
+      const hum = humIdx >= 0 ? forecasts[loc].hourly.relative_humidity_2m[humIdx] : null;
+      el.textContent = `${icon} ${max}°/${min}° ☔${rain}% ${hum !== null ? '💧' + hum + '%' : ''}`;
+    }
+  }
+  loadWeather();
+  </script>
+
+  <script>
+  // Tipo de cambio en tiempo real + calculadora
+  let fxRates = { EUR_ARS: 1700, USD_ARS: 1570, EUR_USD: 1.08 }; // fallback
+
+  async function loadFX() {
+    try {
+      const r = await fetch('https://open.er-api.com/v6/latest/EUR');
+      const d = await r.json();
+      if (d.result === 'success') {
+        fxRates.EUR_ARS = d.rates.ARS;
+        fxRates.USD_ARS = d.rates.ARS / d.rates.USD;
+        fxRates.EUR_USD = d.rates.USD;
+        const fmt = n => Math.round(n).toLocaleString('es-ES');
+        const el_eur = document.getElementById('fx-eur');
+        const el_usd = document.getElementById('fx-usd');
+        const el_upd = document.getElementById('fx-updated');
+        if (el_eur) el_eur.innerHTML = `1€ ≈ <strong>${fmt(fxRates.EUR_ARS)} ARS</strong>`;
+        if (el_usd) el_usd.innerHTML = `1 USD ≈ <strong>${fmt(fxRates.USD_ARS)} ARS</strong>`;
+        if (el_upd) el_upd.textContent = '· actualizado';
+      }
+    } catch(e) {}
+  }
+
+  function calcFrom(src) {
+    const eur = document.getElementById('calc-eur');
+    const usd = document.getElementById('calc-usd');
+    const ars = document.getElementById('calc-ars');
+    if (!eur || !usd || !ars) return;
+    const val = parseFloat(src === 'eur' ? eur.value : src === 'usd' ? usd.value : ars.value) || 0;
+    const round = n => +n.toFixed(2);
+    if (src === 'eur') {
+      usd.value = round(val * fxRates.EUR_USD);
+      ars.value = round(val * fxRates.EUR_ARS);
+    } else if (src === 'usd') {
+      eur.value = round(val / fxRates.EUR_USD);
+      ars.value = round(val * fxRates.USD_ARS);
+    } else {
+      eur.value = round(val / fxRates.EUR_ARS);
+      usd.value = round(val / fxRates.USD_ARS);
+    }
+  }
+  loadFX();
+  </script>
+
+  <script>
+  function updateClock() {
+    const now = new Date();
+    const fmtES = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', timeZone:'Europe/Madrid' });
+    const fmtAR = new Intl.DateTimeFormat('es-ES', { hour:'2-digit', minute:'2-digit', timeZone:'America/Argentina/Salta' });
+    const es = document.getElementById('hdr-time-es');
+    const ar = document.getElementById('hdr-time-ar');
+    if (es) es.textContent = '🕐 España: ' + fmtES.format(now);
+    if (ar) ar.textContent = '🕐 Argentina: ' + fmtAR.format(now);
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+  </script>
+
+</body>
+</html>

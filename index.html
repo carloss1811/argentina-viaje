@@ -49,6 +49,9 @@
     .tl-dot { display: none; }
     /* Offset para anclas con nav sticky */
     [id^="sec-"] { scroll-margin-top: 150px; }
+    /* Nav hide/show on scroll */
+    nav { transition: transform 0.3s ease; }
+    nav.nav-hidden { transform: translateY(-100%); }
     /* Nav scrollbar hide (page tabs) */
     .no-sb::-webkit-scrollbar { display:none; }
     .no-sb { -ms-overflow-style:none; scrollbar-width:none; }
@@ -754,6 +757,19 @@
   }
   fixScrollMargin();
   window.addEventListener('resize', fixScrollMargin);
+
+  // Ocultar nav al hacer scroll hacia abajo, mostrar al subir
+  (function() {
+    const nav = document.querySelector('nav');
+    let lastY = 0;
+    window.addEventListener('scroll', function() {
+      const y = window.scrollY;
+      if (y < 60) { nav.classList.remove('nav-hidden'); }
+      else if (y > lastY + 4) { nav.classList.add('nav-hidden'); }
+      else if (y < lastY - 4) { nav.classList.remove('nav-hidden'); }
+      lastY = y;
+    }, { passive: true });
+  })();
   </script>
 </body>
 </html>

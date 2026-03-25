@@ -42,6 +42,8 @@
     .tl-item { position:relative; margin-bottom:2rem; }
     .tl-dot { display: none; }
     [id^="sec-"] { scroll-margin-top: 150px; }
+    nav { transition: transform 0.3s ease; }
+    nav.nav-hidden { transform: translateY(-100%); }
     .no-sb::-webkit-scrollbar { display:none; }
     .no-sb { -ms-overflow-style:none; scrollbar-width:none; }
     .nav-sb { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.5) transparent; padding-bottom: 6px; }
@@ -497,6 +499,18 @@
   }
   fixScrollMargin();
   window.addEventListener('resize', fixScrollMargin);
+
+  (function() {
+    const nav = document.querySelector('nav');
+    let lastY = 0;
+    window.addEventListener('scroll', function() {
+      const y = window.scrollY;
+      if (y < 60) { nav.classList.remove('nav-hidden'); }
+      else if (y > lastY + 4) { nav.classList.add('nav-hidden'); }
+      else if (y < lastY - 4) { nav.classList.remove('nav-hidden'); }
+      lastY = y;
+    }, { passive: true });
+  })();
   </script>
 </body>
 </html>

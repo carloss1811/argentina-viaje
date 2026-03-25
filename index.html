@@ -47,9 +47,14 @@
     .timeline::before { display: none; }
     .tl-item { position:relative; margin-bottom:2rem; }
     .tl-dot { display: none; }
-    /* Nav scrollbar hide */
+    /* Nav scrollbar hide (page tabs) */
     .no-sb::-webkit-scrollbar { display:none; }
     .no-sb { -ms-overflow-style:none; scrollbar-width:none; }
+    /* Nav scrollbar visible (section tabs) */
+    .nav-sb { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.5) transparent; padding-bottom: 6px; }
+    .nav-sb::-webkit-scrollbar { height: 4px; }
+    .nav-sb::-webkit-scrollbar-track { background: transparent; }
+    .nav-sb::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius: 4px; }
     #countdown-timer span { display:inline-block; min-width:2.5ch; }
   </style>
 </head>
@@ -67,7 +72,7 @@
         <a href="salta.html" class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🌵 Salta</a>
       </div>
       <div class="relative">
-        <div class="flex gap-2 overflow-x-auto no-sb py-2 border-t border-white/10">
+        <div class="flex gap-2 overflow-x-auto nav-sb py-2 border-t border-white/10" style="padding-right:3rem">
           <a href="#sec-llegada"     class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">✈️ Llegada</a>
           <a href="#sec-iguazu"      class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🌊 Iguazú</a>
           <a href="#sec-boda"        class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">💒 Boda</a>

@@ -574,13 +574,23 @@
 
   (function() {
     const navTop = document.querySelector('.nav-top');
-    let lastY = 0;
+    let lastY = window.scrollY;
+    let ticking = false;
     window.addEventListener('scroll', function() {
-      const y = window.scrollY;
-      if (y < 60) { navTop.classList.remove('nav-hidden'); }
-      else if (y > lastY + 4) { navTop.classList.add('nav-hidden'); }
-      else if (y < lastY - 4) { navTop.classList.remove('nav-hidden'); }
-      lastY = y;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function() {
+        const y = window.scrollY;
+        if (y < 60) {
+          navTop.classList.remove('nav-hidden');
+        } else if (y > lastY + 10) {
+          navTop.classList.add('nav-hidden');
+        } else if (y < lastY - 10) {
+          navTop.classList.remove('nav-hidden');
+        }
+        lastY = y;
+        ticking = false;
+      });
     }, { passive: true });
   })();
   </script>

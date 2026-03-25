@@ -42,8 +42,8 @@
     .tl-item { position:relative; margin-bottom:2rem; }
     .tl-dot { display: none; }
     [id^="sec-"] { scroll-margin-top: 150px; }
-    nav { transition: transform 0.3s ease; }
-    nav.nav-hidden { transform: translateY(-100%); }
+    .nav-top { overflow: hidden; max-height: 120px; transition: max-height 0.3s ease; }
+    .nav-top.nav-hidden { max-height: 0; }
     .no-sb::-webkit-scrollbar { display:none; }
     .no-sb { -ms-overflow-style:none; scrollbar-width:none; }
     .nav-sb { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.5) transparent; padding-bottom: 6px; }
@@ -57,13 +57,15 @@
   <!-- NAV STICKY -->
   <nav class="bg-[#1e3a5f] sticky top-0 z-50 shadow-xl">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="flex items-center py-2">
-        <span class="text-white font-extrabold text-lg">🇦🇷 Argentina 2026</span>
-      </div>
-      <div class="grid grid-cols-3 border-t border-white/20 -mx-4">
-        <a href="index.html"     class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🏙️ B. Aires</a>
-        <a href="patagonia.html" class="bg-white text-[#1e3a5f] font-extrabold py-3 text-center text-base border-x border-white/20">🏔️ Patagonia</a>
-        <a href="salta.html"     class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🌵 Salta</a>
+      <div class="nav-top">
+        <div class="flex items-center py-2">
+          <span class="text-white font-extrabold text-lg">🇦🇷 Argentina 2026</span>
+        </div>
+        <div class="grid grid-cols-3 border-t border-white/20 -mx-4">
+          <a href="index.html"     class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🏙️ B. Aires</a>
+          <a href="patagonia.html" class="bg-white text-[#1e3a5f] font-extrabold py-3 text-center text-base border-x border-white/20">🏔️ Patagonia</a>
+          <a href="salta.html"     class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🌵 Salta</a>
+        </div>
       </div>
       <div class="relative">
         <div id="nav-sections-scroll" class="flex gap-2 overflow-x-auto no-sb py-2 border-t border-white/10" style="padding-right:3rem">
@@ -501,13 +503,13 @@
   window.addEventListener('resize', fixScrollMargin);
 
   (function() {
-    const nav = document.querySelector('nav');
+    const navTop = document.querySelector('.nav-top');
     let lastY = 0;
     window.addEventListener('scroll', function() {
       const y = window.scrollY;
-      if (y < 60) { nav.classList.remove('nav-hidden'); }
-      else if (y > lastY + 4) { nav.classList.add('nav-hidden'); }
-      else if (y < lastY - 4) { nav.classList.remove('nav-hidden'); }
+      if (y < 60) { navTop.classList.remove('nav-hidden'); }
+      else if (y > lastY + 4) { navTop.classList.add('nav-hidden'); }
+      else if (y < lastY - 4) { navTop.classList.remove('nav-hidden'); }
       lastY = y;
     }, { passive: true });
   })();

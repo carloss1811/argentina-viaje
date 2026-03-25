@@ -72,36 +72,40 @@
         <a href="salta.html" class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🌵 Salta</a>
       </div>
       <div class="relative">
-        <div class="flex gap-2 overflow-x-auto nav-sb py-2 border-t border-white/10" style="padding-right:3rem">
+        <div id="nav-sections-scroll" class="flex gap-2 overflow-x-auto no-sb py-2 border-t border-white/10" style="padding-right:3rem">
           <a href="#sec-llegada"     class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">✈️ Llegada</a>
           <a href="#sec-iguazu"      class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🌊 Iguazú</a>
           <a href="#sec-boda"        class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">💒 Boda</a>
           <a href="#sec-calculadora" class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🧮 Calculadora</a>
           <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank" class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">💰 Tricount</a>
         </div>
-        <div class="absolute right-0 top-0 bottom-0 w-10 pointer-events-none" style="background:linear-gradient(to left,#1e3a5f,transparent)"></div>
+        <div id="nav-sections-arrow" class="absolute right-0 top-0 bottom-0 w-10 flex items-center justify-end pointer-events-none transition-opacity" style="background:linear-gradient(to left,#1e3a5f 50%,transparent)">
+          <span class="text-white text-xl font-bold pr-1">›</span>
+        </div>
       </div>
     </div>
   </nav>
 
   <!-- HEADER -->
-  <header style="background:linear-gradient(135deg,#1e3a5f 0%,#1a6fa8 55%,#0ea5e9 100%);" class="text-white py-16 px-4 text-center relative overflow-hidden">
+  <header style="background:linear-gradient(135deg,#1e3a5f 0%,#1a6fa8 55%,#0ea5e9 100%);" class="text-white py-4 px-4 text-center relative overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image:url('https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200');background-size:cover;background-position:center;"></div>
     <div class="relative z-10 max-w-3xl mx-auto">
-      <div class="text-6xl mb-5">🇦🇷</div>
-      <h1 class="text-5xl font-extrabold mb-3 tracking-tight">Argentina 2026</h1>
-      <p class="text-2xl font-semibold text-blue-100 mb-6">Viaje de familia</p>
-      <div class="flex flex-wrap justify-center gap-3 mb-4">
-        <span id="hdr-time-es" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🕐 España: --:--</span>
-        <span id="hdr-time-ar" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🕐 Argentina: --:--</span>
-      </div>
-      <div class="flex flex-wrap justify-center gap-3 mb-6">
-        <span id="hdr-ba"     class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🌡️ Buenos Aires · cargando...</span>
-        <span id="hdr-iguazu" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🌡️ Iguazú · cargando...</span>
-      </div>
-      <div id="countdown-timer" class="bg-white/15 inline-block px-8 py-4 rounded-2xl backdrop-blur border border-white/20">
-        <p class="text-blue-200 text-sm uppercase tracking-widest mb-2 font-bold">Salida en</p>
-        <p class="text-4xl font-extrabold"><span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m</p>
+      <div class="text-3xl mb-1">🇦🇷</div>
+      <h1 class="text-3xl font-extrabold mb-0.5 tracking-tight">Argentina 2026</h1>
+      <p class="text-sm font-semibold text-blue-100 mb-2">Viaje de familia</p>
+      <p class="text-xs text-blue-200 mb-1">
+        <span id="hdr-time-es">🕐 España: --:--</span>
+        <span class="mx-2 opacity-40">|</span>
+        <span id="hdr-time-ar">🕐 Argentina: --:--</span>
+      </p>
+      <p class="text-xs text-blue-200 mb-2">
+        <span id="hdr-ba">🌡️ BsAs · cargando...</span>
+        <span class="mx-1 opacity-40">·</span>
+        <span id="hdr-iguazu">🌡️ Iguazú · cargando...</span>
+      </p>
+      <div id="countdown-timer" class="bg-white/15 inline-block px-5 py-2 rounded-xl backdrop-blur border border-white/20">
+        <p class="text-blue-200 text-xs uppercase tracking-widest mb-0.5 font-bold">Salida en</p>
+        <p class="text-2xl font-extrabold"><span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m</p>
       </div>
     </div>
   </header>
@@ -162,6 +166,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Sáb 28 mar</span>
               <h4 class="text-lg font-bold text-gray-900 mb-4">📍 Buenos Aires — Llegada</h4>
               <p class="text-base text-gray-600 mb-4">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
 
@@ -227,6 +232,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Dom 29 mar</span>
               <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Asado familiar</h4>
               <p class="text-base text-gray-600 mb-2">Asado con la familia de Cata, la novia. Primer encuentro con la familia argentina 🇦🇷❤️</p>
               <p class="text-amber-700 text-base font-bold italic mb-4">🥩 "Asadito, corderito, con todo con todo" 🎉</p>
@@ -253,6 +259,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Lun 30 mar</span>
               <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ Buenos Aires → Iguazú</h4>
               <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
               <div class="space-y-3 mb-4">
@@ -322,6 +329,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Mar 31 mar</span>
               <h4 class="text-lg font-bold text-gray-900 mb-3">🌊 Iguazú — Lado brasileño</h4>
               <p class="text-base text-gray-600 mb-4">Cataratas del Iguazú 🇧🇷 — <strong>Lado brasileño</strong> · Las vistas más amplias y panorámicas de todo el conjunto</p>
               <div class="bg-green-50 rounded-xl p-5 border border-green-200 mb-4">
@@ -356,6 +364,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Mié 1 abr</span>
               <h4 class="text-lg font-bold text-gray-900 mb-3">🌊 Iguazú → Buenos Aires</h4>
               <p class="text-base text-gray-600 mb-4">Último día en Iguazú con actividades por confirmar. Vuelo nocturno de regreso a Buenos Aires.</p>
               <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
@@ -396,6 +405,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Jue 2 abr</span>
               <h4 class="text-lg font-bold text-gray-900 mb-4">🎉 Pre-boda de Alberto y Cata</h4>
               <div class="bg-pink-50 rounded-xl p-5 border border-pink-200 mb-4">
                 <p class="text-xs font-bold text-pink-500 uppercase tracking-widest mb-2">💅 Mañana · Uñas</p>
@@ -437,6 +447,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Vie 3 abr</span>
               <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Día libre</h4>
               <p class="text-base text-gray-600">Día libre para explorar Buenos Aires o descansar antes del gran día.</p>
             </div>
@@ -455,6 +466,7 @@
               <span id="w-2026-04-04" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold inline-block mt-2"></span>
             </div>
             <div class="bg-amber-50 px-5 py-6">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Sáb 4 abr</span>
               <h4 class="text-xl font-extrabold text-gray-900 mb-3">⭐ Boda de Alberto y Cata</h4>
               <p class="text-base text-gray-700 mb-5">La celebración que nos reunió a todos. La boda se celebra en <strong>Luján</strong>, cerca de Buenos Aires — famoso por su Basílica y su encanto histórico.</p>
               <div class="bg-purple-50 rounded-xl p-5 border border-purple-100 mb-4">
@@ -487,6 +499,7 @@
               </div>
             </div>
             <div class="px-5 py-5">
+              <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Dom 5 abr</span>
               <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Descanso post-boda</h4>
               <p class="text-base text-gray-600">Merecido descanso tras la celebración. ¡Hasta aquí llega la parte común del viaje para algunos! 👋</p>
             </div>
@@ -688,6 +701,29 @@
     }
   }
   loadFX();
+  </script>
+
+  <!-- BOTÓN SUBIR ARRIBA -->
+  <button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    style="display:none;position:fixed;bottom:24px;right:24px;z-index:100;width:56px;height:56px;border-radius:50%;background:#1a6fa8;color:white;font-size:1.5rem;line-height:1;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.3);align-items:center;justify-content:center;">↑</button>
+
+  <script>
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('btn-top');
+    if (btn) btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  (function() {
+    const scroll = document.getElementById('nav-sections-scroll');
+    const arrow  = document.getElementById('nav-sections-arrow');
+    if (!scroll || !arrow) return;
+    function checkNavScroll() {
+      const atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4;
+      arrow.style.opacity = atEnd ? '0' : '1';
+    }
+    scroll.addEventListener('scroll', checkNavScroll);
+    window.addEventListener('resize', checkNavScroll);
+    checkNavScroll();
+  })();
   </script>
 
   <script>

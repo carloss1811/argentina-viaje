@@ -63,30 +63,35 @@
         <a href="salta.html"     class="text-white font-bold py-3 text-center text-base hover:bg-white/20 transition-colors">🌵 Salta</a>
       </div>
       <div class="relative">
-        <div class="flex gap-2 overflow-x-auto nav-sb py-2 border-t border-white/10" style="padding-right:3rem">
+        <div id="nav-sections-scroll" class="flex gap-2 overflow-x-auto no-sb py-2 border-t border-white/10" style="padding-right:3rem">
           <a href="#sec-calafate"  class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🧊 El Calafate</a>
           <a href="#sec-chalten"   class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🥾 El Chaltén</a>
           <a href="#sec-ushuaia"   class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🦭 Ushuaia</a>
           <a href="#sec-info-pat"  class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🧮 Calculadora</a>
           <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank" class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">💰 Tricount</a>
         </div>
-        <div class="absolute right-0 top-0 bottom-0 w-10 pointer-events-none" style="background:linear-gradient(to left,#1e3a5f,transparent)"></div>
+        <div id="nav-sections-arrow" class="absolute right-0 top-0 bottom-0 w-10 flex items-center justify-end pointer-events-none transition-opacity" style="background:linear-gradient(to left,#1e3a5f 50%,transparent)">
+          <span class="text-white text-xl font-bold pr-1">›</span>
+        </div>
       </div>
     </div>
   </nav>
 
   <!-- HEADER -->
-  <header style="background:linear-gradient(135deg,#134e4a 0%,#0d9488 50%,#2dd4bf 100%);" class="text-white py-16 px-4 text-center relative overflow-hidden">
+  <header style="background:linear-gradient(135deg,#134e4a 0%,#0d9488 50%,#2dd4bf 100%);" class="text-white py-4 px-4 text-center relative overflow-hidden">
     <div class="relative z-10 max-w-3xl mx-auto">
-      <div class="text-6xl mb-5">🏔️🧊🦭🐧</div>
-      <h1 class="text-5xl font-extrabold mb-3 tracking-tight">PATAGONIA 2026</h1>
-      <p class="text-2xl font-semibold text-teal-100 mb-6">6 – 11 abril</p>
-      <div class="flex flex-wrap justify-center gap-3 mb-4">
-        <span id="hdr-calafate" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-teal-100">🌡️ El Calafate · cargando...</span>
-        <span id="hdr-chalten"  class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-teal-100">🌡️ El Chaltén · cargando...</span>
-        <span id="hdr-ushuaia"  class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-teal-100">🌡️ Ushuaia · cargando...</span>
-        <span id="hdr-ba-pat"   class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-teal-100">🌡️ Buenos Aires · cargando...</span>
-      </div>
+      <div class="text-3xl mb-1">🏔️🧊🦭🐧</div>
+      <h1 class="text-3xl font-extrabold mb-0.5 tracking-tight">PATAGONIA 2026</h1>
+      <p class="text-sm font-semibold text-teal-100 mb-2">6 – 11 abril</p>
+      <p class="text-xs text-teal-200">
+        <span id="hdr-calafate">🌡️ Calafate · cargando...</span>
+        <span class="mx-1 opacity-40">·</span>
+        <span id="hdr-chalten">🌡️ Chaltén · cargando...</span>
+        <span class="mx-1 opacity-40">·</span>
+        <span id="hdr-ushuaia">🌡️ Ushuaia · cargando...</span>
+        <span class="mx-1 opacity-40">·</span>
+        <span id="hdr-ba-pat">🌡️ BsAs · cargando...</span>
+      </p>
     </div>
   </header>
 
@@ -107,6 +112,7 @@
             </div>
           </div>
           <div class="px-5 py-5">
+            <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Lun 6 abr</span>
             <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ Buenos Aires → El Calafate</h4>
             <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 mb-4">
               <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo</p>
@@ -145,6 +151,7 @@
             </div>
           </div>
           <div class="px-5 py-5">
+            <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Mar 7 abr</span>
             <h4 class="text-lg font-bold text-gray-900 mb-4">🚢 Experiencia Gourmet Glaciares — Crucero día completo</h4>
             <div class="bg-teal-50 rounded-xl p-5 border border-teal-200 mb-4">
               <div class="space-y-2 text-sm text-teal-800 mb-2">
@@ -180,6 +187,7 @@
             </div>
           </div>
           <div class="px-5 py-5">
+            <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Mié 8 abr</span>
             <h4 class="text-lg font-bold text-gray-900 mb-4">🏔️ El Chaltén — ¡Cada uno a su ritmo!</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div class="bg-orange-50 rounded-xl p-4 border border-orange-100">
@@ -213,6 +221,7 @@
             </div>
           </div>
           <div class="px-5 py-5">
+            <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Jue 9 abr</span>
             <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ El Calafate → Ushuaia</h4>
             <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 mb-4">
               <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo</p>
@@ -244,6 +253,7 @@
             </div>
           </div>
           <div class="px-5 py-5">
+            <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Vie 10 abr</span>
             <h4 class="text-lg font-bold text-gray-900 mb-4">🚂 Tierra del Fuego + Tren del Fin del Mundo + Canal Beagle</h4>
             <div class="bg-teal-50 rounded-xl p-5 border border-teal-200">
               <div class="space-y-2 text-sm text-teal-800 mb-4">
@@ -273,6 +283,7 @@
             <span id="w-2026-04-11" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold inline-block mt-2"></span>
           </div>
           <div class="bg-teal-50 px-5 py-6">
+            <span class="inline-block bg-white text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-200">Sáb 11 abr</span>
             <h4 class="text-xl font-extrabold text-gray-900 mb-4">🚙 Mañana · ✈️ Vuelta a Buenos Aires</h4>
             <div class="bg-orange-50 rounded-xl p-5 border border-orange-200 mb-4">
               <p class="text-base font-extrabold text-orange-800 mb-3">🚙 Tour 4x4 — Lagos Escondido y Fagnano + Estancia La Carmen</p>
@@ -360,6 +371,29 @@
     </div>
     <p class="text-blue-300 text-sm">Hecho con ❤️ para la familia</p>
   </footer>
+
+  <!-- BOTÓN SUBIR ARRIBA -->
+  <button id="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    style="display:none;position:fixed;bottom:24px;right:24px;z-index:100;width:56px;height:56px;border-radius:50%;background:#0d9488;color:white;font-size:1.5rem;line-height:1;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.3);align-items:center;justify-content:center;">↑</button>
+
+  <script>
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('btn-top');
+    if (btn) btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  (function() {
+    const scroll = document.getElementById('nav-sections-scroll');
+    const arrow  = document.getElementById('nav-sections-arrow');
+    if (!scroll || !arrow) return;
+    function checkNavScroll() {
+      const atEnd = scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4;
+      arrow.style.opacity = atEnd ? '0' : '1';
+    }
+    scroll.addEventListener('scroll', checkNavScroll);
+    window.addEventListener('resize', checkNavScroll);
+    checkNavScroll();
+  })();
+  </script>
 
   <script>
   const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';

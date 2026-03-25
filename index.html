@@ -61,6 +61,13 @@
     .nav-sb::-webkit-scrollbar-track { background: transparent; }
     .nav-sb::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius: 4px; }
     #countdown-timer span { display:inline-block; min-width:2.5ch; }
+    /* 1. Glassmorphism nav on scroll */
+    nav { transition: background-color 0.3s; }
+    nav.nav-scrolled { background-color: rgba(30, 58, 95, 0.85) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    /* 3. Header dot pattern */
+    header::before { content: ""; position: absolute; inset: 0; opacity: 0.07; background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0; }
+    /* 4. Timeline separators */
+    .tl-item:not(:last-child)::after { content: ""; display: block; height: 2px; margin: 1.5rem 0; background: linear-gradient(to right, transparent, #e2e8f0 30%, #e2e8f0 70%, transparent); }
   </style>
 </head>
 <body>
@@ -183,7 +190,7 @@
                 <p class="text-sm font-extrabold text-yellow-900">Calle Uruguay 1226, Piso 9, Departamento A</p>
               </div>
 
-              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1] mb-4">
                 <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 28 – 30 marzo</p>
                 <p class="text-lg font-extrabold text-indigo-900 mb-1">Recoleta Small Hotel</p>
                 <p class="text-sm text-indigo-600 mb-1">📮 Talcahuano 1253, Buenos Aires</p>
@@ -243,7 +250,7 @@
               <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Asado familiar</h4>
               <p class="text-base text-gray-600 mb-2">Asado con la familia de Cata, la novia. Primer encuentro con la familia argentina 🇦🇷❤️</p>
               <p class="text-amber-700 text-base font-bold italic mb-4">🥩 "Asadito, corderito, con todo con todo" 🎉</p>
-              <div class="bg-amber-50 rounded-xl p-4 border border-amber-100">
+              <div class="bg-amber-50 rounded-xl p-4 border border-amber-100 border-l-4 border-l-[#f97316]">
                 <div class="space-y-2 text-sm text-amber-800 mb-4">
                   <div class="flex items-center gap-3"><span>🚪</span><span><strong>12:00</strong> — Salida del hotel</span></div>
                   <div class="flex items-center gap-3"><span>🥩</span><span><strong>~13:00</strong> — Comienza el asado</span></div>
@@ -267,24 +274,24 @@
             </div>
             <div class="px-5 py-5">
               <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Lun 30 mar</span>
-              <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ Buenos Aires → Iguazú</h4>
-              <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
+              <h4 class="text-lg font-bold text-gray-900 mb-4"><span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full mr-2 mb-1">VUELO</span>✈️ Buenos Aires → Iguazú</h4>
+              <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800 border-l-4 border-l-[#eab308]">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
               <div class="space-y-3 mb-4">
-                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6]">
                   <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 1 · JA3148</p>
                   <p class="text-lg font-extrabold text-gray-900">AEP → IGR · 06:00 → 07:54</p>
                   <p class="text-sm text-gray-500 mt-1">Carlos · Celia · Paula · Loli · Sebas · Mila</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6]">
                   <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 2 · JA3148</p>
                   <p class="text-lg font-extrabold text-gray-900">AEP → IGR · 06:05 → 07:59</p>
                   <p class="text-sm text-gray-500 mt-1">Piedad · Visi · Víctor · Marta · Celia · Elena · Ángel</p>
                 </div>
               </div>
 
-              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1] mb-4">
                 <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-3">🏨 Alojamiento en Iguazú · 30/03 – 01/04</p>
-                <div class="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-4 text-sm text-green-800">🚐 <strong>Traslados aeropuerto incluidos</strong> — nos recogen a la llegada y nos llevan de vuelta al salir</div>
+                <div class="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-4 text-sm text-green-800 border-l-4 border-l-[#22c55e]">🚐 <strong>Traslados aeropuerto incluidos</strong> — nos recogen a la llegada y nos llevan de vuelta al salir</div>
                 <div class="space-y-4">
                   <div>
                     <p class="text-base font-extrabold text-indigo-900">🏨 Grupo principal — Hotel Bagu Siete Bocas</p>
@@ -304,7 +311,7 @@
 
               <p class="text-base text-gray-700 mb-4 font-semibold">Cataratas del Iguazú 🇦🇷 — <strong>Lado argentino</strong> · Patrimonio Mundial UNESCO · +275 saltos de agua</p>
 
-              <div class="bg-green-50 rounded-xl p-5 border border-green-200 mb-4">
+              <div class="bg-green-50 rounded-xl p-5 border border-green-200 border-l-4 border-l-[#22c55e] mb-4">
                 <p class="text-xs font-bold text-green-600 uppercase tracking-widest mb-3">✅ Incluido en el tour</p>
                 <div class="space-y-3 text-sm text-green-800">
                   <p class="font-bold">🚐 Recogida en el hotel por la mañana</p>
@@ -337,9 +344,9 @@
             </div>
             <div class="px-5 py-5">
               <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Mar 31 mar</span>
-              <h4 class="text-lg font-bold text-gray-900 mb-3">🌊 Iguazú — Lado brasileño</h4>
+              <h4 class="text-lg font-bold text-gray-900 mb-3"><span class="inline-block bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full mr-2 mb-1">ACTIVIDAD</span>🌊 Iguazú — Lado brasileño</h4>
               <p class="text-base text-gray-600 mb-4">Cataratas del Iguazú 🇧🇷 — <strong>Lado brasileño</strong> · Las vistas más amplias y panorámicas de todo el conjunto</p>
-              <div class="bg-green-50 rounded-xl p-5 border border-green-200 mb-4">
+              <div class="bg-green-50 rounded-xl p-5 border border-green-200 border-l-4 border-l-[#22c55e] mb-4">
                 <p class="text-xs font-bold text-green-600 uppercase tracking-widest mb-3">✅ Incluido en el tour</p>
                 <div class="space-y-3 text-sm text-green-800">
                   <p class="font-bold">🚐 Recogida en hotel + cruce de frontera</p>
@@ -372,9 +379,9 @@
             </div>
             <div class="px-5 py-5">
               <span class="inline-block bg-blue-50 text-blue-600 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-blue-100">Mié 1 abr</span>
-              <h4 class="text-lg font-bold text-gray-900 mb-3">🌊 Iguazú → Buenos Aires</h4>
+              <h4 class="text-lg font-bold text-gray-900 mb-3"><span class="inline-block bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full mr-2 mb-1">ACTIVIDAD</span>🌊 Iguazú → Buenos Aires</h4>
               <p class="text-base text-gray-600 mb-4">Último día en Iguazú con actividades por confirmar. Vuelo nocturno de regreso a Buenos Aires.</p>
-              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1] mb-4">
                 <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento en Buenos Aires · 1 – 6 abril</p>
                 <p class="text-lg font-extrabold text-indigo-900 mb-1">Casa Alma</p>
                 <p class="text-sm text-indigo-600 mb-1">📮 Costa Rica 4520, Buenos Aires</p>
@@ -384,14 +391,14 @@
                   <a href="https://www.booking.com/hotel/ar/costa-rica.es.html" target="_blank" class="inline-flex items-center gap-2 bg-blue-500 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-blue-600 transition-colors">🏨 Ver en Booking</a>
                 </div>
               </div>
-              <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
+              <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800 border-l-4 border-l-[#eab308]">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
               <div class="space-y-3">
-                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6]">
                   <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 1 · JA3147</p>
                   <p class="text-lg font-extrabold text-gray-900">IGR → EZE · 22:35 → 00:35 (+1)</p>
                   <p class="text-sm text-gray-500 mt-1">Carlos · Celia · Paula · Loli · Sebas · Mila</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6]">
                   <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 2 · AR1793</p>
                   <p class="text-lg font-extrabold text-gray-900">IGR → AEP · 21:40 → 23:40</p>
                   <p class="text-sm text-gray-500 mt-1">Piedad · Visi · Víctor · Marta · Celia · Elena · Ángel</p>
@@ -421,7 +428,7 @@
                 <p class="text-sm text-pink-600 mb-4">📮 Paraguay 4648, Buenos Aires</p>
                 <a href="https://maps.app.goo.gl/iqCx6wGrvx218C456" target="_blank" class="inline-flex items-center gap-2 bg-pink-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-pink-700 transition-colors">📍 Ver en Google Maps</a>
               </div>
-              <div class="bg-amber-50 rounded-xl p-5 border border-amber-200 mb-4">
+              <div class="bg-amber-50 rounded-xl p-5 border border-amber-200 border-l-4 border-l-[#f97316] mb-4">
                 <p class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-2">🍽️ Almuerzo</p>
                 <p class="text-base font-extrabold text-amber-900 mb-1">El Preferido</p>
                 <p class="text-sm text-amber-700 mb-2">Las milanesas más buenas de Buenos Aires 🥩</p>
@@ -429,7 +436,7 @@
                 <p class="text-sm text-amber-600 mb-4">📮 Jorge Luis Borges 2108, Palermo</p>
                 <a href="https://maps.app.goo.gl/LP5sWgLf9yjZP5Mg9" target="_blank" class="inline-flex items-center gap-2 bg-amber-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-amber-700 transition-colors">📍 Ver en Google Maps</a>
               </div>
-              <div class="bg-pink-50 rounded-xl p-5 border border-pink-200">
+              <div class="bg-pink-50 rounded-xl p-5 border border-pink-200 border-l-4 border-l-[#f97316]">
                 <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🥂</span><p class="text-base font-extrabold text-pink-800">Augusta · Palermo</p></div>
                 <div class="space-y-2 text-sm text-pink-800 mb-4">
                   <div class="flex items-center gap-3"><span>⏰</span><span><strong>21:00</strong> — Desde las 9 de la noche (¡hasta que el cuerpo aguante!)</span></div>
@@ -763,6 +770,7 @@
   // Ocultar nav al hacer scroll hacia abajo, mostrar al subir
   (function() {
     const navTop = document.querySelector('.nav-top');
+    const nav = document.querySelector('nav');
     let lastY = window.scrollY;
     let ticking = false;
     window.addEventListener('scroll', function() {
@@ -772,10 +780,13 @@
         const y = window.scrollY;
         if (y < 60) {
           navTop.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
         } else if (y > lastY + 10) {
           navTop.classList.add('nav-hidden');
+          nav.classList.add('nav-scrolled');
         } else if (y < lastY - 10) {
           navTop.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
         }
         lastY = y;
         ticking = false;

@@ -50,6 +50,13 @@
     .nav-sb::-webkit-scrollbar { height: 4px; }
     .nav-sb::-webkit-scrollbar-track { background: transparent; }
     .nav-sb::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius: 4px; }
+    /* 1. Glassmorphism nav on scroll */
+    nav { transition: background-color 0.3s; }
+    nav.nav-scrolled { background-color: rgba(30, 58, 95, 0.85) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    /* 3. Header dot pattern */
+    header::before { content: ""; position: absolute; inset: 0; opacity: 0.07; background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0; }
+    /* 4. Timeline separators */
+    .tl-item:not(:last-child)::after { content: ""; display: block; height: 2px; margin: 1.5rem 0; background: linear-gradient(to right, transparent, #e2e8f0 30%, #e2e8f0 70%, transparent); }
   </style>
 </head>
 <body>
@@ -118,8 +125,8 @@
           </div>
           <div class="px-5 py-5">
             <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Lun 6 abr</span>
-            <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ Buenos Aires → El Calafate</h4>
-            <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 mb-4">
+            <h4 class="text-lg font-bold text-gray-900 mb-4"><span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full mr-2 mb-1">VUELO</span>✈️ Buenos Aires → El Calafate</h4>
+            <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
               <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo</p>
               <p class="text-lg font-extrabold text-gray-900">EZE → El Calafate · 06:20 → 09:40</p>
             </div>
@@ -132,7 +139,7 @@
               </div>
               <p class="text-sm text-teal-700 italic">Patrimonio Natural UNESCO · Uno de los pocos glaciares en avance del mundo</p>
             </div>
-            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200">
+            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1]">
               <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 6 – 9 abril</p>
               <p class="text-lg font-extrabold text-indigo-900 mb-1">Cerro Calafate Hotel</p>
               <p class="text-sm text-indigo-600 mb-4">📮 Calle 998 N36, El Calafate</p>
@@ -168,7 +175,7 @@
             <div class="bg-indigo-50 rounded-xl p-4 border border-indigo-100 mb-4">
               <p class="text-base font-bold text-indigo-800">🚗 Noche: Viaje a El Chaltén en furgoneta (~3h)</p>
             </div>
-            <div id="sec-chalten" class="bg-indigo-50 rounded-xl p-5 border border-indigo-200">
+            <div id="sec-chalten" class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1]">
               <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento en El Chaltén · 7 – 8 abril</p>
               <p class="text-lg font-extrabold text-indigo-900 mb-1">Patagonia Hostel</p>
               <p class="text-sm text-indigo-600 mb-4">📮 Av. San Martín 376, El Chaltén</p>
@@ -227,14 +234,14 @@
           </div>
           <div class="px-5 py-5">
             <span class="inline-block bg-teal-50 text-teal-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-teal-100">Jue 9 abr</span>
-            <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ El Calafate → Ushuaia</h4>
-            <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 mb-4">
+            <h4 class="text-lg font-bold text-gray-900 mb-4"><span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold px-2 py-0.5 rounded-full mr-2 mb-1">VUELO</span>✈️ El Calafate → Ushuaia</h4>
+            <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
               <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo</p>
               <p class="text-lg font-extrabold text-gray-900">El Calafate → USH · 12:20 → 13:40</p>
             </div>
             <p class="text-base text-gray-700 mb-2">Fin del mundo 🌎 La ciudad más austral del planeta.</p>
             <p class="text-sm text-gray-500 italic mb-4">Actividades pendientes de confirmar</p>
-            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200">
+            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1]">
               <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 9 – 11 abril</p>
               <p class="text-lg font-extrabold text-indigo-900 mb-1">Hostería y Restaurante América</p>
               <p class="text-sm text-indigo-600 mb-4">📮 Gobernador Félix Paz 1665, Ushuaia</p>
@@ -298,7 +305,7 @@
                 <div class="flex items-center gap-3"><span>🌍</span><span>Guía en español, inglés y portugués</span></div>
               </div>
             </div>
-            <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 mb-2">
+            <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-2">
               <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo de regreso</p>
               <p class="text-lg font-extrabold text-gray-900">USH → EZE · 19:30 → 23:00</p>
             </div>
@@ -504,6 +511,7 @@
 
   (function() {
     const navTop = document.querySelector('.nav-top');
+    const nav = document.querySelector('nav');
     let lastY = window.scrollY;
     let ticking = false;
     window.addEventListener('scroll', function() {
@@ -513,10 +521,13 @@
         const y = window.scrollY;
         if (y < 60) {
           navTop.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
         } else if (y > lastY + 10) {
           navTop.classList.add('nav-hidden');
+          nav.classList.add('nav-scrolled');
         } else if (y < lastY - 10) {
           navTop.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
         }
         lastY = y;
         ticking = false;

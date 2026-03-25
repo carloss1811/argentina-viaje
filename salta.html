@@ -50,6 +50,13 @@
     .nav-sb::-webkit-scrollbar { height: 4px; }
     .nav-sb::-webkit-scrollbar-track { background: transparent; }
     .nav-sb::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius: 4px; }
+    /* 1. Glassmorphism nav on scroll */
+    nav { transition: background-color 0.3s; }
+    nav.nav-scrolled { background-color: rgba(30, 58, 95, 0.85) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    /* 3. Header dot pattern */
+    header::before { content: ""; position: absolute; inset: 0; opacity: 0.07; background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0; }
+    /* 4. Timeline separators */
+    .tl-item:not(:last-child)::after { content: ""; display: block; height: 2px; margin: 1.5rem 0; background: linear-gradient(to right, transparent, #e2e8f0 30%, #e2e8f0 70%, transparent); }
   </style>
 </head>
 <body>
@@ -150,13 +157,13 @@
               <span class="inline-block bg-orange-50 text-orange-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-orange-100">Dom 12 abr</span>
               <h4 class="text-lg font-bold text-gray-900 mb-4">📍 Llegada a Salta</h4>
 
-              <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-4">
+              <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
                 <div class="flex items-center gap-2 mb-2"><span class="text-base font-bold text-gray-700">✈️ JetSmart JA3012</span></div>
                 <p class="text-base text-gray-800 font-bold">Llegada a Salta — <strong>09:02</strong></p>
                 <p class="text-sm text-gray-500 mt-1">María Piedad · Visi · Marta</p>
               </div>
 
-              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1] mb-4">
                 <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 12 – 13 abril</p>
                 <p class="text-lg font-extrabold text-indigo-900 mb-1">Hotel Amerian</p>
                 <p class="text-sm text-indigo-600 mb-4">📮 Salta, Argentina</p>
@@ -223,7 +230,7 @@
                 <p class="text-sm text-amber-700">⬇️ <strong>Descenso Cuesta de Lipán</strong> — avistamiento de cóndores 🦅</p>
               </div>
 
-              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200">
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1]">
                 <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 13 – 14 abril</p>
                 <p class="text-lg font-extrabold text-indigo-900 mb-1">Los Olivos Purmamarca - Cabañas Boutique</p>
                 <p class="text-sm text-indigo-600 mb-4">📮 Purmamarca, Jujuy</p>
@@ -262,7 +269,7 @@
                 </div>
               </div>
 
-              <div class="bg-amber-50 rounded-xl p-5 border border-amber-200 mb-4">
+              <div class="bg-amber-50 rounded-xl p-5 border border-amber-200 border-l-4 border-l-[#f97316] mb-4">
                 <p class="text-base font-extrabold text-amber-800 mb-3">🏘️ Humahuaca</p>
                 <div class="space-y-2 text-sm text-amber-800">
                   <div class="flex items-center gap-3"><span>⛪</span><span>Catedral de Humahuaca</span></div>
@@ -281,7 +288,7 @@
                 </div>
               </div>
 
-              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200">
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 border-l-4 border-l-[#6366f1]">
                 <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 14 – 16 abril</p>
                 <p class="text-lg font-extrabold text-indigo-900 mb-1">Hotel Amerian</p>
                 <p class="text-sm text-indigo-600 mb-4">📮 Salta, Argentina</p>
@@ -305,7 +312,7 @@
               <span class="inline-block bg-orange-50 text-orange-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-orange-100">Mié 15 abr</span>
               <h4 class="text-lg font-bold text-gray-900 mb-4">🍷 Cafayate — Valles y Vinos</h4>
 
-              <div class="bg-green-50 rounded-xl p-4 border border-green-100 mb-4">
+              <div class="bg-green-50 rounded-xl p-4 border border-green-100 border-l-4 border-l-[#22c55e] mb-4">
                 <p class="text-base font-bold text-green-800 mb-1">🌿 Valle de Lerma</p>
                 <p class="text-sm text-green-700">Campos de tabaco · Arquitectura colonial</p>
               </div>
@@ -352,7 +359,7 @@
               <span class="inline-block bg-white text-orange-700 text-xs font-bold px-3 py-1 rounded-full mb-3 border border-orange-200">Jue 16 abr</span>
               <h4 class="text-xl font-extrabold text-gray-900 mb-3">☀️ Día libre + regreso a casa</h4>
               <p class="text-base text-gray-600 mb-5">Mañana libre en Salta para explorar, comprar recuerdos o simplemente disfrutar.</p>
-              <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 mb-4">
+              <div class="bg-gray-50 rounded-xl p-4 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
                 <div class="flex items-center gap-2 mb-2"><span class="text-base font-bold text-gray-700">✈️ JetSmart JA3019</span></div>
                 <p class="text-lg font-extrabold text-gray-900">Salida de Salta — <strong>15:10</strong></p>
                 <p class="text-sm text-gray-500 mt-1">María Piedad · Visi · Marta</p>
@@ -574,6 +581,7 @@
 
   (function() {
     const navTop = document.querySelector('.nav-top');
+    const nav = document.querySelector('nav');
     let lastY = window.scrollY;
     let ticking = false;
     window.addEventListener('scroll', function() {
@@ -583,10 +591,13 @@
         const y = window.scrollY;
         if (y < 60) {
           navTop.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
         } else if (y > lastY + 10) {
           navTop.classList.add('nav-hidden');
+          nav.classList.add('nav-scrolled');
         } else if (y < lastY - 10) {
           navTop.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
         }
         lastY = y;
         ticking = false;

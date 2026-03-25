@@ -5,688 +5,586 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#1e3a5f" />
   <title>Argentina 2026 🇦🇷</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
+        fontSize: {
+          'xs':   ['0.875rem', { lineHeight: '1.5' }],
+          'sm':   ['1rem',     { lineHeight: '1.6' }],
+          'base': ['1.125rem', { lineHeight: '1.75' }],
+          'lg':   ['1.25rem',  { lineHeight: '1.75' }],
+          'xl':   ['1.5rem',   { lineHeight: '1.5' }],
+          '2xl':  ['1.75rem',  { lineHeight: '1.4' }],
+          '3xl':  ['2rem',     { lineHeight: '1.35' }],
+          '4xl':  ['2.5rem',   { lineHeight: '1.25' }],
+          '5xl':  ['3rem',     { lineHeight: '1.15' }],
+          '6xl':  ['3.75rem',  { lineHeight: '1.1' }],
+        },
         extend: {
           colors: {
-            patagonia: { 50:'#f0f9ff', 100:'#e0f2fe', 300:'#7dd3fc', 500:'#0ea5e9', 700:'#0369a1', 900:'#0c4a6e' },
-            boda: { 50:'#fefce8', 300:'#fde047', 500:'#eab308', 700:'#a16207' },
+            navy: '#1e3a5f',
+            gold: '#f5a623',
           }
         }
       }
     }
   </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; }
-    .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-    .card-hover:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
-    .gradient-header { background: linear-gradient(135deg, #1e3a5f 0%, #1a6fa8 50%, #0ea5e9 100%); }
-    .gradient-patagonia { background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 40%, #0ea5e9 100%); }
-    .boda-gradient { background: linear-gradient(135deg, #78350f 0%, #a16207 50%, #ca8a04 100%); }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-in-up { animation: fadeInUp 0.5s ease both; }
-    .delay-1 { animation-delay: 0.05s; }
-    .delay-2 { animation-delay: 0.10s; }
-    .delay-3 { animation-delay: 0.15s; }
-    .delay-4 { animation-delay: 0.20s; }
-    .delay-5 { animation-delay: 0.25s; }
-    .delay-6 { animation-delay: 0.30s; }
-    .delay-7 { animation-delay: 0.35s; }
-    .delay-8 { animation-delay: 0.40s; }
-    .delay-9 { animation-delay: 0.45s; }
-    #countdown-timer span { display: inline-block; min-width: 2.5ch; }
-      body { background: white !important; }
-      .card-hover { box-shadow: none !important; border: 1px solid #ddd !important; }
-    }
+    body { font-family: 'Nunito', sans-serif; background: #f9f8f5; color: #1a202c; }
+    .card { transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+    @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .fade-in { animation: fadeInUp 0.55s ease both; }
+    .d1{animation-delay:.05s}.d2{animation-delay:.10s}.d3{animation-delay:.15s}
+    .d4{animation-delay:.20s}.d5{animation-delay:.25s}.d6{animation-delay:.30s}
+    .d7{animation-delay:.35s}.d8{animation-delay:.40s}.d9{animation-delay:.45s}
+    /* Timeline */
+    .timeline { position: relative; padding-left: 3.5rem; }
+    .timeline::before { content:''; position:absolute; left:1.1rem; top:0.5rem; bottom:0.5rem; width:3px; background: linear-gradient(to bottom, #bfdbfe, #3b82f6); border-radius:3px; }
+    .tl-item { position:relative; margin-bottom:2rem; }
+    .tl-dot { position:absolute; left:-3.5rem; top:1rem; width:2.25rem; height:2.25rem; border-radius:50%; background:white; border:3px solid #0369a1; display:flex; align-items:center; justify-content:center; font-size:1rem; z-index:1; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+    /* Nav scrollbar hide */
+    .no-sb::-webkit-scrollbar { display:none; }
+    .no-sb { -ms-overflow-style:none; scrollbar-width:none; }
+    #countdown-timer span { display:inline-block; min-width:2.5ch; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
+
+  <!-- NAV STICKY -->
+  <nav class="bg-[#1e3a5f] sticky top-0 z-50 shadow-xl">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-center justify-between py-3 gap-2">
+        <span class="text-white font-extrabold text-lg shrink-0">🇦🇷 Argentina 2026</span>
+        <div class="flex gap-2 overflow-x-auto no-sb">
+          <a href="index.html" class="bg-white text-[#1e3a5f] font-extrabold px-4 py-2 rounded-xl text-sm whitespace-nowrap">🏙️ Buenos Aires</a>
+          <a href="patagonia.html" class="bg-white/10 text-white font-bold px-4 py-2 rounded-xl text-sm whitespace-nowrap hover:bg-white/20 transition-colors">🏔️ Patagonia</a>
+          <a href="salta.html" class="bg-white/10 text-white font-bold px-4 py-2 rounded-xl text-sm whitespace-nowrap hover:bg-white/20 transition-colors">🌵 Salta</a>
+        </div>
+      </div>
+      <div class="flex gap-1 overflow-x-auto no-sb pb-2 border-t border-white/10 pt-2">
+        <a href="#sec-llegada"     class="text-blue-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">✈️ Llegada</a>
+        <a href="#sec-iguazu"      class="text-blue-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">🌊 Iguazú</a>
+        <a href="#sec-boda"        class="text-blue-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">💒 Boda</a>
+        <a href="#sec-calculadora" class="text-blue-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">🧮 Calculadora</a>
+        <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank" class="text-blue-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">💰 Tricount</a>
+      </div>
+    </div>
+  </nav>
 
   <!-- HEADER -->
-  <header class="gradient-header text-white py-16 px-4 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10" style="background-image: url('https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200'); background-size: cover; background-position: center;"></div>
-    <div class="relative z-10">
-      <!-- Print button -->
-      <div class="text-6xl mb-4">🇦🇷</div>
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-3 tracking-tight">Argentina 2026</h1>
-      <p class="text-xl md:text-2xl font-medium text-blue-100">Viaje de familia</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm">
-        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">📍 Buenos Aires</span>
-        <span class="bg-white/20 backdrop-blur px-4 py-1.5 rounded-full">💒 Boda en Luján</span>
+  <header style="background:linear-gradient(135deg,#1e3a5f 0%,#1a6fa8 55%,#0ea5e9 100%);" class="text-white py-16 px-4 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image:url('https://images.unsplash.com/photo-1589802829985-817e51171b92?w=1200');background-size:cover;background-position:center;"></div>
+    <div class="relative z-10 max-w-3xl mx-auto">
+      <div class="text-6xl mb-5">🇦🇷</div>
+      <h1 class="text-5xl font-extrabold mb-3 tracking-tight">Argentina 2026</h1>
+      <p class="text-2xl font-semibold text-blue-100 mb-6">Viaje de familia</p>
+      <div class="flex flex-wrap justify-center gap-3 mb-5">
+        <span class="bg-white/20 backdrop-blur px-5 py-2 rounded-full font-bold text-base">📍 Buenos Aires</span>
+        <span class="bg-white/20 backdrop-blur px-5 py-2 rounded-full font-bold text-base">💒 Boda en Luján</span>
       </div>
-      <div class="mt-3 flex flex-wrap justify-center gap-2">
-        <span id="hdr-time-es" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🕐 España: --:--</span>
-        <span id="hdr-time-ar" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🕐 Argentina: --:--</span>
+      <div class="flex flex-wrap justify-center gap-3 mb-4">
+        <span id="hdr-time-es" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🕐 España: --:--</span>
+        <span id="hdr-time-ar" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🕐 Argentina: --:--</span>
       </div>
-      <div class="mt-2 flex flex-wrap justify-center gap-2">
-        <span id="hdr-ba" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Buenos Aires ahora · cargando...</span>
-        <span id="hdr-iguazu" class="bg-white/15 backdrop-blur border border-white/25 px-3 py-1 rounded-full text-xs text-blue-100">🌡️ Iguazú ahora · cargando...</span>
+      <div class="flex flex-wrap justify-center gap-3 mb-6">
+        <span id="hdr-ba"     class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🌡️ Buenos Aires · cargando...</span>
+        <span id="hdr-iguazu" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-blue-100">🌡️ Iguazú · cargando...</span>
       </div>
-      <!-- Countdown -->
-      <div class="mt-6 no-print" id="countdown-timer">
-        <p class="text-blue-200 text-xs uppercase tracking-widest mb-1">Salida en</p>
-        <p class="text-2xl font-bold text-white">
-          <span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m
-        </p>
+      <div id="countdown-timer" class="bg-white/15 inline-block px-8 py-4 rounded-2xl backdrop-blur border border-white/20">
+        <p class="text-blue-200 text-sm uppercase tracking-widest mb-2 font-bold">Salida en</p>
+        <p class="text-4xl font-extrabold"><span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m</p>
       </div>
     </div>
   </header>
 
-  <!-- NAV -->
-  <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
-    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex gap-1 overflow-x-auto text-sm font-medium scrollbar-hide">
-        <a href="#sec-llegada"     class="text-gray-600 hover:text-blue-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-blue-50 transition-colors">✈️ Llegada</a>
-        <a href="#sec-iguazu"      class="text-gray-600 hover:text-green-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-green-50 transition-colors">🌊 Iguazú</a>
-        <a href="#sec-boda"        class="text-gray-600 hover:text-amber-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-amber-50 transition-colors">💒 Boda</a>
-        <a href="#sec-calculadora" class="text-gray-600 hover:text-indigo-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-indigo-50 transition-colors">🧮 Calculadora</a>
-        <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank"
-           class="text-gray-600 hover:text-green-700 whitespace-nowrap px-2 py-1 rounded-lg hover:bg-green-50 transition-colors">💰 Tricount</a>
-      </div>
-      <a href="patagonia.html" class="ml-3 flex-shrink-0 bg-cyan-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full hover:bg-cyan-700 transition-colors whitespace-nowrap">
-        🏔️ Patagonia →
-      </a>
-    </div>
-  </nav>
-
   <main class="max-w-3xl mx-auto px-4 py-10">
 
-
     <!-- PREPARATIVOS -->
-    <section class="mb-10">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">🧳 Preparativos del viaje</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div class="bg-red-50 rounded-2xl border border-red-200 p-4 flex gap-3">
-          <span class="text-2xl">🛂</span>
+    <section class="mb-12">
+      <h2 class="text-2xl font-extrabold text-[#1e3a5f] mb-6 flex items-center gap-3 pb-3 border-b-4 border-[#f5a623]">🧳 Preparativos del viaje</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-red-50 rounded-2xl border-2 border-red-200 p-5 flex gap-4 card">
+          <span class="text-3xl flex-shrink-0">🛂</span>
           <div>
-            <p class="text-sm font-bold text-red-800 mb-1">Documentación obligatoria</p>
+            <p class="text-base font-extrabold text-red-800 mb-2">Documentación obligatoria</p>
             <p class="text-sm text-red-700"><strong>Pasaporte en vigor</strong> — imprescindible para entrar a Argentina. Comprobad que no caduca durante el viaje.</p>
           </div>
         </div>
-        <div class="bg-amber-50 rounded-2xl border border-amber-200 p-4 flex gap-3">
-          <span class="text-2xl">💵</span>
+        <div class="bg-amber-50 rounded-2xl border-2 border-amber-200 p-5 flex gap-4 card">
+          <span class="text-3xl flex-shrink-0">💵</span>
           <div>
-            <p class="text-sm font-bold text-amber-800 mb-1">Efectivo recomendado</p>
-            <p class="text-sm text-amber-700">Llevar aproximadamente <strong>200€ en efectivo</strong>. Elina nos recibirá con cambio en USD al mejor tipo de cambio disponible 🙌</p>
+            <p class="text-base font-extrabold text-amber-800 mb-2">Efectivo recomendado</p>
+            <p class="text-sm text-amber-700">Llevar aproximadamente <strong>200€ en efectivo</strong>. Elina nos recibirá con cambio en USD al mejor tipo de cambio 🙌</p>
           </div>
         </div>
-        <div class="bg-blue-50 rounded-2xl border border-blue-200 p-4 flex gap-3">
-          <span class="text-2xl">🧳</span>
+        <div class="bg-blue-50 rounded-2xl border-2 border-blue-200 p-5 flex gap-4 card">
+          <span class="text-3xl flex-shrink-0">🧳</span>
           <div>
-            <p class="text-sm font-bold text-blue-800 mb-1">Peso y dimensiones del equipaje</p>
-            <p class="text-sm text-blue-700">Comprobad el límite de peso y dimensiones permitido para <strong>cada trayecto</strong> — los vuelos internos en Argentina suelen ser más restrictivos que los internacionales.</p>
+            <p class="text-base font-extrabold text-blue-800 mb-2">Peso y dimensiones</p>
+            <p class="text-sm text-blue-700">Comprobad el límite para <strong>cada trayecto</strong> — los vuelos internos en Argentina suelen ser más restrictivos que los internacionales.</p>
           </div>
         </div>
-        <div class="bg-orange-50 rounded-2xl border border-orange-200 p-4 flex gap-3 sm:col-span-2">
-          <span class="text-2xl">⚠️</span>
+        <div class="bg-orange-50 rounded-2xl border-2 border-orange-200 p-5 flex gap-4 card sm:col-span-2">
+          <span class="text-3xl flex-shrink-0">⚠️</span>
           <div>
-            <p class="text-sm font-bold text-orange-800 mb-2">Seguridad en Buenos Aires — perfil bajo</p>
-            <p class="text-sm text-orange-700 mb-1">📵 <strong>Móvil discreto en exteriores</strong> — alta tasa de robos. Usadlo lo justo y guardadlo rápido.</p>
-            <p class="text-sm text-orange-700">💍 <strong>Sin joyas visibles</strong> — nada dorado, que brille, ni pendientes o collares que cuelguen. Mejor dejarlo todo en el hotel.</p>
+            <p class="text-base font-extrabold text-orange-800 mb-2">Seguridad en Buenos Aires — perfil bajo</p>
+            <p class="text-sm text-orange-700 mb-2">📵 <strong>Móvil discreto en exteriores</strong> — alta tasa de robos. Usadlo lo justo y guardadlo rápido.</p>
+            <p class="text-sm text-orange-700">💍 <strong>Sin joyas visibles</strong> — nada dorado, que brille, ni pendientes o collares. Mejor dejarlo en el hotel.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN: EL VIAJE -->
+    <!-- EL VIAJE -->
     <section id="el-viaje">
-      <h2 class="text-2xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-        🗓️ El Viaje
-      </h2>
-      <p class="text-gray-500 mb-8 text-sm">Buenos Aires · Iguazú</p>
+      <h2 class="text-2xl font-extrabold text-[#1e3a5f] mb-2 flex items-center gap-3 pb-3 border-b-4 border-[#f5a623]">🗓️ El Viaje</h2>
+      <p class="text-base text-gray-500 mb-8 font-semibold">Buenos Aires · Iguazú · 28 marzo – 5 abril</p>
 
-      <div class="space-y-4">
+      <div class="timeline">
 
-        <!-- 28 MAR -->
-        <div id="sec-llegada"></div>
-        <div class="card-hover fade-in-up delay-1 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-blue-50 border-b border-blue-100">
-            <span class="text-2xl">✈️</span>
-            <div>
-              <span class="font-bold text-blue-800 text-sm uppercase tracking-wide">Sábado 28 marzo</span>
-              <span class="ml-2 text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Día 1</span> <span id="w-2026-03-28" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+        <!-- DÍA 1 — 28 MAR -->
+        <div id="sec-llegada" class="tl-item fade-in d1">
+          <div class="tl-dot">✈️</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-blue-100">
+            <div class="bg-[#0369a1] text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 1</p><h3 class="text-xl font-extrabold">Sábado 28 marzo</h3></div>
+                <span id="w-2026-03-28" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
+              </div>
             </div>
-          </div>
-          <div class="px-5 py-4">
-                <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Llegada</h3>
-                <p class="text-gray-600 text-sm mt-1">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
-                <div class="mt-3 bg-yellow-50 rounded-xl p-3 border border-yellow-200">
-                  <p class="text-sm font-semibold text-yellow-800 mb-1">☕ Desayuno de bienvenida</p>
-                  <p class="text-xs text-yellow-700 mb-2">Nada más llegar, nos esperan en:</p>
-                  <p class="text-xs font-semibold text-yellow-900">Calle Uruguay 1226, Piso 9, Departamento A</p>
-                </div>
-                
-                <div class="mt-3 bg-indigo-50 rounded-xl p-4 border border-indigo-200">
-                  <p class="text-xs font-bold text-indigo-800 uppercase tracking-wide mb-2">🏨 Alojamiento · 28 marzo – 30 marzo</p>
-                  <p class="text-sm font-semibold text-indigo-900">Recoleta Small Hotel</p>
-                  <p class="text-xs text-indigo-600 mb-1">📮 Talcahuano 1253, Buenos Aires</p>
-                  <p class="text-xs text-red-600 mb-2">🚫 Sin desayuno incluido</p>
-                  <div class="flex gap-2 flex-wrap">
-                    <a href="https://maps.app.goo.gl/GJsn4YVF5UkxiCLr9" target="_blank"
-                       class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
-                      📍 Google Maps
-                    </a>
-                    <a href="https://www.booking.com/hotel/ar/park-chateau-unique.es.html" target="_blank"
-                       class="inline-flex items-center gap-1.5 text-xs bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition-colors">
-                      🏨 Ver en Booking
-                    </a>
-                  </div>
-                </div>
-                <!-- BUS TURÍSTICO -->
-                <div class="mt-3 bg-blue-50 rounded-xl p-4 border border-blue-200">
-                  <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xl">🚌</span>
-                    <p class="font-bold text-blue-800">Bus Turístico Buenos Aires</p>
-                    <span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">✅ Entradas cogidas</span>
-                  </div>
-                  <div class="grid grid-cols-2 gap-2 text-xs mb-3">
-                    <div class="bg-white rounded-lg p-2 border border-blue-100">
-                      <p class="text-gray-500">🕘 Horario</p>
-                      <p class="font-semibold text-gray-800">09:00 – 16:40</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-2 border border-blue-100">
-                      <p class="text-gray-500">📍 Paradas</p>
-                      <p class="font-semibold text-gray-800">26 paradas</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-2 border border-blue-100">
-                      <p class="text-gray-500">💵 Precio</p>
-                      <p class="font-semibold text-gray-800">$32.85 USD / €28.32</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-2 border border-blue-100">
-                      <p class="text-gray-500">⏱️ Ticket válido</p>
-                      <p class="font-semibold text-gray-800">24 horas</p>
-                    </div>
-                  </div>
-                  <p class="text-blue-700 text-xs mb-2">Sube y baja en cualquier parada, el mismo voucher vale para todos los buses del día.</p>
-                  
-                  <div class="bg-yellow-50 border border-yellow-200 rounded-lg px-3 py-2 mb-3 text-xs text-yellow-800">
-                    💳 <strong>Hay que pagarle a Elina María:</strong> $32.85 USD / €28.32 por persona
-                  </div>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-4">📍 Buenos Aires — Llegada</h4>
+              <p class="text-base text-gray-600 mb-4">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
 
-                  <a href="https://www.buenosairesbus.com/seguimiento" target="_blank"
-                     class="inline-flex items-center gap-1.5 text-xs bg-white text-blue-700 border border-blue-300 px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-colors">
-                    🗺️ Ver paradas
-                  </a>
-                </div>
+              <div class="bg-yellow-50 rounded-xl p-4 border border-yellow-200 mb-4">
+                <p class="text-base font-bold text-yellow-800 mb-1">☕ Desayuno de bienvenida</p>
+                <p class="text-sm text-yellow-700 mb-1">Nada más llegar, nos esperan en:</p>
+                <p class="text-sm font-extrabold text-yellow-900">Calle Uruguay 1226, Piso 9, Departamento A</p>
+              </div>
 
-                <!-- TANGO NOCHE -->
-                <div class="mt-3 bg-rose-50 rounded-xl p-4 border border-rose-100">
-                  <p class="text-sm font-bold text-rose-800 mb-3">🌹 Noche: Cena con espectáculo de Tango — El Querandi</p>
-                  <div class="space-y-1.5 text-xs text-rose-700 mb-3">
-                    <div class="flex items-center gap-2"><span>🚌</span><span><strong>19:30</strong> — Recogida en el hotel (o donde indiquéis)</span></div>
-                    <div class="flex items-center gap-2"><span>🍽️</span><span><strong>20:00–20:30</strong> — Comienza la cena</span></div>
-                    <div class="flex items-center gap-2"><span>💃</span><span><strong>22:15</strong> — Comienza el show de tango</span></div>
-                    <div class="flex items-center gap-2"><span>🏨</span><span>Al terminar, traslado de vuelta al hotel</span></div>
-                  </div>
-                  <div class="bg-yellow-50 border border-yellow-200 rounded-lg px-3 py-2 mb-2 text-xs text-yellow-800">
-                    💳 <strong>Marta pagó la mitad</strong>
-                  </div>
-                  <a href="https://maps.app.goo.gl/qFDakUTUP7PNcdAD9" target="_blank"
-                     class="inline-flex items-center gap-1.5 text-xs bg-rose-600 text-white px-3 py-1.5 rounded-lg hover:bg-rose-700 transition-colors">
-                    📍 Ver en Google Maps
-                  </a>
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento · 28 – 30 marzo</p>
+                <p class="text-lg font-extrabold text-indigo-900 mb-1">Recoleta Small Hotel</p>
+                <p class="text-sm text-indigo-600 mb-1">📮 Talcahuano 1253, Buenos Aires</p>
+                <p class="text-sm text-red-600 font-extrabold mb-4">🚫 Sin desayuno incluido</p>
+                <div class="flex gap-3 flex-wrap">
+                  <a href="https://maps.app.goo.gl/GJsn4YVF5UkxiCLr9" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-indigo-700 transition-colors">📍 Google Maps</a>
+                  <a href="https://www.booking.com/hotel/ar/park-chateau-unique.es.html" target="_blank" class="inline-flex items-center gap-2 bg-blue-500 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-blue-600 transition-colors">🏨 Ver en Booking</a>
                 </div>
-          </div>
-        </div>
+              </div>
 
-        <!-- 29 MAR -->
-        <div class="card-hover fade-in-up delay-2 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-amber-50 border-b border-amber-100">
-            <span class="text-2xl">🥩</span>
-            <div>
-              <span class="font-bold text-amber-800 text-sm uppercase tracking-wide">Domingo 29 marzo</span>
-              <span class="ml-2 text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Día 2</span> <span id="w-2026-03-29" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
-            </div>
-          </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Asado familiar</h3>
-            <p class="text-gray-600 text-sm mt-1">Asado con la familia de Cata, la novia. Primer encuentro con la familia argentina 🇦🇷❤️</p>
-            <p class="text-amber-700 text-sm mt-1 font-medium italic">🥩 "Asadito, corderito, con todo con todo" 🎉</p>
-            <div class="mt-3 bg-amber-50 rounded-xl p-3 border border-amber-100">
-              <div class="space-y-1 text-xs text-amber-800">
-                <div class="flex items-center gap-2"><span>🚪</span><span><strong>12:00</strong> — Salida del hotel</span></div>
-                <div class="flex items-center gap-2"><span>🥩</span><span><strong>~13:00</strong> — Comienza el asado</span></div>
-                <div class="flex items-center gap-2"><span>📍</span><span>Fray Justo Sarmiento 2662, Olivos</span></div>
-                <div class="flex items-center gap-2 mt-1">
-                  <a href="https://maps.app.goo.gl/TJYjADfA7oQQazaZ6" target="_blank"
-                     class="inline-flex items-center gap-1.5 text-xs bg-amber-600 text-white px-3 py-1.5 rounded-lg hover:bg-amber-700 transition-colors">
-                    📍 Ver en Google Maps
-                  </a>
+              <div class="bg-blue-50 rounded-xl p-5 border border-blue-200 mb-4">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-2xl">🚌</span>
+                  <div>
+                    <p class="text-base font-extrabold text-blue-800">Bus Turístico Buenos Aires</p>
+                    <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">✅ Entradas cogidas</span>
+                  </div>
                 </div>
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                  <div class="bg-white rounded-xl p-3 border border-blue-100"><p class="text-gray-500 text-xs mb-1">🕘 Horario</p><p class="font-bold text-gray-800 text-sm">09:00 – 16:40</p></div>
+                  <div class="bg-white rounded-xl p-3 border border-blue-100"><p class="text-gray-500 text-xs mb-1">📍 Paradas</p><p class="font-bold text-gray-800 text-sm">26 paradas</p></div>
+                  <div class="bg-white rounded-xl p-3 border border-blue-100"><p class="text-gray-500 text-xs mb-1">💵 Precio</p><p class="font-bold text-gray-800 text-sm">$32.85 USD / €28.32</p></div>
+                  <div class="bg-white rounded-xl p-3 border border-blue-100"><p class="text-gray-500 text-xs mb-1">⏱️ Ticket</p><p class="font-bold text-gray-800 text-sm">Válido 24 horas</p></div>
+                </div>
+                <p class="text-sm text-blue-700 mb-3">Sube y baja en cualquier parada, el mismo voucher vale para todos los buses del día.</p>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3 mb-3 text-sm text-yellow-800">💳 <strong>Hay que pagarle a Elina María:</strong> $32.85 USD / €28.32 por persona</div>
+                <a href="https://www.buenosairesbus.com/seguimiento" target="_blank" class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-300 font-bold px-5 py-3 rounded-xl text-sm hover:bg-blue-50 transition-colors">🗺️ Ver paradas</a>
+              </div>
+
+              <div class="bg-rose-50 rounded-xl p-5 border border-rose-100">
+                <p class="text-base font-extrabold text-rose-800 mb-3">🌹 Noche: Cena con espectáculo de Tango — El Querandi</p>
+                <div class="space-y-2 text-sm text-rose-700 mb-4">
+                  <div class="flex items-center gap-3"><span>🚌</span><span><strong>19:30</strong> — Recogida en el hotel (o donde indiquéis)</span></div>
+                  <div class="flex items-center gap-3"><span>🍽️</span><span><strong>20:00–20:30</strong> — Comienza la cena</span></div>
+                  <div class="flex items-center gap-3"><span>💃</span><span><strong>22:15</strong> — Comienza el show de tango</span></div>
+                  <div class="flex items-center gap-3"><span>🏨</span><span>Al terminar, traslado de vuelta al hotel</span></div>
+                </div>
+                <div class="bg-yellow-50 border border-yellow-200 rounded-xl px-4 py-3 mb-3 text-sm text-yellow-800">💳 <strong>Marta pagó la mitad</strong></div>
+                <a href="https://maps.app.goo.gl/qFDakUTUP7PNcdAD9" target="_blank" class="inline-flex items-center gap-2 bg-rose-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-rose-700 transition-colors">📍 Ver en Google Maps</a>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 30 MAR -->
-        <div id="sec-iguazu"></div>
-        <div class="card-hover fade-in-up delay-3 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
-            <span class="text-2xl">🌊</span>
-            <div>
-              <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Lunes 30 marzo</span>
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 3</span> <span id="w-2026-03-30" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+        <!-- DÍA 2 — 29 MAR -->
+        <div class="tl-item fade-in d2">
+          <div class="tl-dot">🥩</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100">
+            <div class="bg-amber-600 text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 2</p><h3 class="text-xl font-extrabold">Domingo 29 marzo</h3></div>
+                <span id="w-2026-03-29" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
+              </div>
+            </div>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Asado familiar</h4>
+              <p class="text-base text-gray-600 mb-2">Asado con la familia de Cata, la novia. Primer encuentro con la familia argentina 🇦🇷❤️</p>
+              <p class="text-amber-700 text-base font-bold italic mb-4">🥩 "Asadito, corderito, con todo con todo" 🎉</p>
+              <div class="bg-amber-50 rounded-xl p-4 border border-amber-100">
+                <div class="space-y-2 text-sm text-amber-800 mb-4">
+                  <div class="flex items-center gap-3"><span>🚪</span><span><strong>12:00</strong> — Salida del hotel</span></div>
+                  <div class="flex items-center gap-3"><span>🥩</span><span><strong>~13:00</strong> — Comienza el asado</span></div>
+                  <div class="flex items-center gap-3"><span>📍</span><span>Fray Justo Sarmiento 2662, Olivos</span></div>
+                </div>
+                <a href="https://maps.app.goo.gl/TJYjADfA7oQQazaZ6" target="_blank" class="inline-flex items-center gap-2 bg-amber-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-amber-700 transition-colors">📍 Ver en Google Maps</a>
+              </div>
             </div>
           </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">✈️ Buenos Aires → Iguazú</h3>
-            
-            <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-3 mb-3 text-xs text-amber-800">
-              🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong>
-            </div>
+        </div>
 
-            <div class="space-y-2 mt-2">
-              <div class="bg-gray-50 rounded-lg px-4 py-3 text-sm border border-gray-200">
-                <p class="font-semibold text-gray-700 text-xs mb-1">✈️ Vuelo 1</p>
-                <p class="font-bold text-gray-900">AEP → IGR · 06:00 → 07:54</p>
-                <p class="text-xs text-gray-500 mt-1">Carlos · Celia · Paula · Loli · Sebas · Mila</p>
-              </div>
-              <div class="bg-gray-50 rounded-lg px-4 py-3 text-sm border border-gray-200">
-                <p class="font-semibold text-gray-700 text-xs mb-1">✈️ Vuelo 2</p>
-                <p class="font-bold text-gray-900">AEP → IGR · 06:05 → 07:59</p>
-                <p class="text-xs text-gray-500 mt-1">Piedad · Visi · Víctor · Marta · Celia · Elena · Ángel</p>
+        <!-- DÍA 3 — 30 MAR -->
+        <div id="sec-iguazu" class="tl-item fade-in d3">
+          <div class="tl-dot">🌊</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-green-100">
+            <div class="bg-green-700 text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 3</p><h3 class="text-xl font-extrabold">Lunes 30 marzo</h3></div>
+                <span id="w-2026-03-30" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
               </div>
             </div>
-
-            <!-- HOTELES IGUAZÚ -->
-            <div class="mt-3 bg-indigo-50 rounded-xl p-4 border border-indigo-200">
-              <p class="text-xs font-bold text-indigo-800 uppercase tracking-wide mb-2">🏨 Alojamiento en Iguazú (30/03 – 01/04)</p>
-              <div class="bg-green-50 border border-green-200 rounded-lg px-3 py-2 mb-3 text-xs text-green-800">
-                🚐 <strong>Traslados aeropuerto incluidos</strong> — nos recogen a la llegada y nos llevan de vuelta al salir
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-4">✈️ Buenos Aires → Iguazú</h4>
+              <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
+              <div class="space-y-3 mb-4">
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 1</p>
+                  <p class="text-lg font-extrabold text-gray-900">AEP → IGR · 06:00 → 07:54</p>
+                  <p class="text-sm text-gray-500 mt-1">Carlos · Celia · Paula · Loli · Sebas · Mila</p>
+                </div>
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 2</p>
+                  <p class="text-lg font-extrabold text-gray-900">AEP → IGR · 06:05 → 07:59</p>
+                  <p class="text-sm text-gray-500 mt-1">Piedad · Visi · Víctor · Marta · Celia · Elena · Ángel</p>
+                </div>
               </div>
+
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-3">🏨 Alojamiento en Iguazú · 30/03 – 01/04</p>
+                <div class="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-4 text-sm text-green-800">🚐 <strong>Traslados aeropuerto incluidos</strong> — nos recogen a la llegada y nos llevan de vuelta al salir</div>
+                <div class="space-y-4">
+                  <div>
+                    <p class="text-base font-extrabold text-indigo-900">🏨 Grupo principal — Hotel Bagu Siete Bocas</p>
+                    <p class="text-sm text-indigo-600 mb-3">📮 Av. San Martín 384, Puerto Iguazú</p>
+                    <div class="flex gap-3 flex-wrap">
+                      <a href="https://maps.app.goo.gl/ksZWKzAcah6vaY3W9" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-indigo-700 transition-colors">📍 Google Maps</a>
+                      <a href="https://www.booking.com/hotel/ar/bagu-7-bocas.es.html" target="_blank" class="inline-flex items-center gap-2 bg-blue-500 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-blue-600 transition-colors">🏨 Booking</a>
+                    </div>
+                  </div>
+                  <div class="border-t border-indigo-100 pt-4">
+                    <p class="text-base font-extrabold text-indigo-900">🏨 Sebas y Mila — Selva Mia</p>
+                    <p class="text-sm text-indigo-600 mb-3">📮 Gómez Portillo, Puerto Iguazú</p>
+                    <a href="https://maps.app.goo.gl/jAjfm4qR2TRzXiUy9" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-indigo-700 transition-colors">📍 Google Maps</a>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-base text-gray-700 mb-4 font-semibold">Cataratas del Iguazú 🇦🇷 — <strong>Lado argentino</strong> · Patrimonio Mundial UNESCO · +275 saltos de agua</p>
+
+              <div class="bg-green-50 rounded-xl p-5 border border-green-200 mb-4">
+                <p class="text-xs font-bold text-green-600 uppercase tracking-widest mb-3">✅ Incluido en el tour</p>
+                <div class="space-y-3 text-sm text-green-800">
+                  <p class="font-bold">🚐 Recogida en el hotel por la mañana</p>
+                  <div><p class="font-bold">🌊 Circuito Superior</p><p class="text-green-700">Pasarelas elevadas con vistas panorámicas desde arriba de los saltos y arcoíris en la bruma</p></div>
+                  <div><p class="font-bold">🌿 Circuito Inferior</p><p class="text-green-700">Senderos que llegan a la base de los saltos — se siente la fuerza del agua de cerca</p></div>
+                  <div><p class="font-bold">🚂 Garganta del Diablo</p><p class="text-green-700">Tren Ecológico + pasarelas sobre el río → balcón principal: 80 metros de caída libre</p></div>
+                  <p class="text-green-600 italic">🦜 Fauna: coatíes, tucanes, mariposas</p>
+                  <p class="font-bold">🚐 Regreso privado al hotel por la tarde</p>
+                </div>
+              </div>
+
+              <div class="bg-orange-50 rounded-xl p-5 border border-orange-200">
+                <p class="text-base font-extrabold text-orange-800 mb-2">🚤 Gran Aventura</p>
+                <p class="text-sm text-orange-700 mb-3">4x4 por la selva + navegación que se aproxima directamente a los saltos. Mojarse garantizado 💦</p>
+                <div class="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-800">⚠️ <strong>Atención:</strong> Esta actividad no es recomendable para personas con ano contra natura. Consultad con vuestro médico antes de realizarla.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 4 — 31 MAR -->
+        <div class="tl-item fade-in d4">
+          <div class="tl-dot">🇧🇷</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-green-100">
+            <div class="bg-green-600 text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 4</p><h3 class="text-xl font-extrabold">Martes 31 marzo</h3></div>
+                <span id="w-2026-03-31" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
+              </div>
+            </div>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-3">🌊 Iguazú — Lado brasileño</h4>
+              <p class="text-base text-gray-600 mb-4">Cataratas del Iguazú 🇧🇷 — <strong>Lado brasileño</strong> · Las vistas más amplias y panorámicas de todo el conjunto</p>
+              <div class="bg-green-50 rounded-xl p-5 border border-green-200 mb-4">
+                <p class="text-xs font-bold text-green-600 uppercase tracking-widest mb-3">✅ Incluido en el tour</p>
+                <div class="space-y-3 text-sm text-green-800">
+                  <p class="font-bold">🚐 Recogida en hotel + cruce de frontera</p>
+                  <div><p class="font-bold">📸 Pasarelas panorámicas</p><p class="text-green-700">Vistas frontales hacia el lado argentino — las mejores fotos del viaje</p></div>
+                  <div><p class="font-bold">💦 Mirador Salto Floriano</p><p class="text-green-700">El punto final del recorrido — bruma, estruendo y las mejores vistas del conjunto</p></div>
+                  <p class="font-bold">🚐 Regreso privado al hotel</p>
+                </div>
+              </div>
+              <div class="bg-sky-50 rounded-xl p-5 border border-sky-200 mb-4">
+                <p class="text-base font-extrabold text-sky-800 mb-2">🚁 Sobrevuelo en helicóptero</p>
+                <p class="text-sm text-sky-700">10 minutos · Vista aérea panorámica de las cataratas · Salida desde Brasil</p>
+              </div>
+              <div class="bg-emerald-50 rounded-xl p-5 border border-emerald-200">
+                <p class="text-base font-extrabold text-emerald-800 mb-2">🦜 Parque das Aves</p>
+                <p class="text-sm text-emerald-700">Parque de conservación de aves tropicales — tucanes, loros, guacamayos... ideal para ir después del heli</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 5 — 01 ABR -->
+        <div class="tl-item fade-in d5">
+          <div class="tl-dot">🌅</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-green-100">
+            <div class="bg-teal-600 text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 5</p><h3 class="text-xl font-extrabold">Miércoles 1 abril</h3></div>
+                <span id="w-2026-04-01" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
+              </div>
+            </div>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-3">🌊 Iguazú → Buenos Aires</h4>
+              <p class="text-base text-gray-600 mb-4">Último día en Iguazú con actividades por confirmar. Vuelo nocturno de regreso a Buenos Aires.</p>
+              <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-200 mb-4">
+                <p class="text-xs font-bold text-indigo-500 uppercase tracking-widest mb-2">🏨 Alojamiento en Buenos Aires · 1 – 6 abril</p>
+                <p class="text-lg font-extrabold text-indigo-900 mb-1">Casa Alma</p>
+                <p class="text-sm text-indigo-600 mb-1">📮 Costa Rica 4520, Buenos Aires</p>
+                <p class="text-sm text-red-600 font-extrabold mb-4">🚫 Sin desayuno incluido</p>
+                <div class="flex gap-3 flex-wrap">
+                  <a href="https://maps.app.goo.gl/WbbKgk8CntFn54J97" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-indigo-700 transition-colors">📍 Google Maps</a>
+                  <a href="https://www.booking.com/hotel/ar/costa-rica.es.html" target="_blank" class="inline-flex items-center gap-2 bg-blue-500 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-blue-600 transition-colors">🏨 Ver en Booking</a>
+                </div>
+              </div>
+              <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-4 text-sm text-amber-800">🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong></div>
               <div class="space-y-3">
-                <div>
-                  <p class="text-sm font-semibold text-indigo-900">🏨 Grupo principal · <span class="font-normal">Hotel Bagu Siete Bocas</span></p>
-                  <p class="text-xs text-indigo-600 mb-1">📮 Av. San Martín 384, Puerto Iguazú</p>
-                  <div class="flex gap-2 flex-wrap">
-                    <a href="https://maps.app.goo.gl/ksZWKzAcah6vaY3W9" target="_blank"
-                       class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
-                      📍 Google Maps
-                    </a>
-                    <a href="https://www.booking.com/hotel/ar/bagu-7-bocas.es.html" target="_blank"
-                       class="inline-flex items-center gap-1.5 text-xs bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition-colors">
-                      🏨 Ver en Booking
-                    </a>
-                  </div>
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 1</p>
+                  <p class="text-lg font-extrabold text-gray-900">IGR → EZE · 22:35 → 00:35 (+1)</p>
+                  <p class="text-sm text-gray-500 mt-1">Carlos · Celia · Paula · Loli · Sebas · Mila</p>
                 </div>
-                <div>
-                  <p class="text-sm font-semibold text-indigo-900">🏨 Sebas y Mila · <span class="font-normal">Selva Mia</span></p>
-                  <p class="text-xs text-indigo-600 mb-1">📮 Gómez Portillo, Puerto Iguazú</p>
-                  <a href="https://maps.app.goo.gl/jAjfm4qR2TRzXiUy9" target="_blank"
-                     class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
-                    📍 Ver en Google Maps
-                  </a>
+                <div class="bg-gray-50 rounded-xl px-5 py-4 border border-gray-200">
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelo 2</p>
+                  <p class="text-lg font-extrabold text-gray-900">IGR → AEP · 21:40 → 23:40</p>
+                  <p class="text-sm text-gray-500 mt-1">Piedad · Visi · Víctor · Marta · Celia · Elena · Ángel</p>
                 </div>
-              </div>
-            </div>
-
-            <p class="text-gray-600 text-sm mt-3">Cataratas del Iguazú 🇦🇷 — <strong>Lado argentino</strong> · Patrimonio Mundial UNESCO · +275 saltos de agua</p>
-
-            <!-- INCLUIDO -->
-            <div class="mt-3 bg-green-50 rounded-xl p-4 border border-green-200">
-              <p class="text-xs font-bold text-green-800 uppercase tracking-wide mb-2">✅ Incluido en el tour</p>
-              <div class="space-y-2 text-sm text-green-800">
-                <div><p class="font-semibold">🚐 Recogida en el hotel por la mañana</p></div>
-                <div>
-                  <p class="font-semibold">🌊 Circuito Superior</p>
-                  <p class="text-xs text-green-700">Pasarelas elevadas con vistas panorámicas desde arriba de los saltos y arcoíris en la bruma</p>
-                </div>
-                <div>
-                  <p class="font-semibold">🌿 Circuito Inferior</p>
-                  <p class="text-xs text-green-700">Senderos que llegan a la base de los saltos — se siente la fuerza del agua de cerca</p>
-                </div>
-                <div>
-                  <p class="font-semibold">🚂 Garganta del Diablo</p>
-                  <p class="text-xs text-green-700">Tren Ecológico + pasarelas sobre el río → balcón principal: 80 metros de caída libre</p>
-                </div>
-                <p class="text-xs text-green-600 italic">🦜 Fauna: coatíes, tucanes, mariposas</p>
-                <p class="font-semibold">🚐 Regreso privado al hotel por la tarde</p>
-              </div>
-            </div>
-
-            <!-- GRAN AVENTURA -->
-            <div class="mt-3 bg-orange-50 rounded-xl p-4 border border-orange-200">
-              <div class="flex items-center justify-between mb-2">
-                <p class="text-sm font-bold text-orange-800">🚤 Gran Aventura</p>
-                
-              </div>
-              <p class="text-xs text-orange-700">4x4 por la selva + navegación que se aproxima directamente a los saltos. Mojarse garantizado 💦</p>
-              <div class="mt-2 bg-red-50 border border-red-200 rounded-lg px-3 py-2 text-xs text-red-800">
-                ⚠️ <strong>Atención:</strong> Esta actividad no es recomendable para personas con ano contra natura. Consultad con vuestro médico antes de realizarla.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 31 MAR -->
-        <div class="card-hover fade-in-up delay-4 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
-            <span class="text-2xl">🇧🇷</span>
-            <div>
-              <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Martes 31 marzo</span>
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 4</span> <span id="w-2026-03-31" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
+        <!-- DÍA 6 — 02 ABR -->
+        <div id="sec-boda" class="tl-item fade-in d6">
+          <div class="tl-dot" style="border-color:#a16207;">💒</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100">
+            <div class="text-white px-5 py-4" style="background:linear-gradient(135deg,#78350f 0%,#a16207 50%,#ca8a04 100%);">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 6</p><h3 class="text-xl font-extrabold">Jueves 2 abril</h3></div>
+                <span id="w-2026-04-02" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
+              </div>
             </div>
-          </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">🌊 Iguazú — Lado brasileño</h3>
-            <p class="text-gray-600 text-sm mt-1">Cataratas del Iguazú 🇧🇷 — <strong>Lado brasileño</strong> · Las vistas más amplias y panorámicas de todo el conjunto</p>
-
-            <!-- INCLUIDO -->
-            <div class="mt-3 bg-green-50 rounded-xl p-4 border border-green-200">
-              <p class="text-xs font-bold text-green-800 uppercase tracking-wide mb-2">✅ Incluido en el tour</p>
-              <div class="space-y-2 text-sm text-green-800">
-                <p class="font-semibold">🚐 Recogida en hotel + cruce de frontera</p>
-                <div>
-                  <p class="font-semibold">📸 Pasarelas panorámicas</p>
-                  <p class="text-xs text-green-700">Vistas frontales hacia el lado argentino — las mejores fotos del viaje</p>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-4">🎉 Pre-boda de Alberto y Cata</h4>
+              <div class="bg-pink-50 rounded-xl p-5 border border-pink-200 mb-4">
+                <p class="text-xs font-bold text-pink-500 uppercase tracking-widest mb-2">💅 Mañana · Uñas</p>
+                <p class="text-base font-extrabold text-pink-900 mb-1">Sunny Beauty Salon</p>
+                <div class="flex items-center gap-2 text-sm text-pink-800 mb-2"><span>⏰</span><span><strong>10:00</strong> — Cita en el salón</span></div>
+                <p class="text-sm text-pink-600 mb-4">📮 Paraguay 4648, Buenos Aires</p>
+                <a href="https://maps.app.goo.gl/iqCx6wGrvx218C456" target="_blank" class="inline-flex items-center gap-2 bg-pink-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-pink-700 transition-colors">📍 Ver en Google Maps</a>
+              </div>
+              <div class="bg-amber-50 rounded-xl p-5 border border-amber-200 mb-4">
+                <p class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-2">🍽️ Almuerzo</p>
+                <p class="text-base font-extrabold text-amber-900 mb-1">El Preferido</p>
+                <p class="text-sm text-amber-700 mb-2">Las milanesas más buenas de Buenos Aires 🥩</p>
+                <div class="flex items-center gap-2 text-sm text-amber-800 mb-2"><span>⏰</span><span>Reserva a la <strong>1:00 pm</strong></span></div>
+                <p class="text-sm text-amber-600 mb-4">📮 Jorge Luis Borges 2108, Palermo</p>
+                <a href="https://maps.app.goo.gl/LP5sWgLf9yjZP5Mg9" target="_blank" class="inline-flex items-center gap-2 bg-amber-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-amber-700 transition-colors">📍 Ver en Google Maps</a>
+              </div>
+              <div class="bg-pink-50 rounded-xl p-5 border border-pink-200">
+                <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🥂</span><p class="text-base font-extrabold text-pink-800">Augusta · Palermo</p></div>
+                <div class="space-y-2 text-sm text-pink-800 mb-4">
+                  <div class="flex items-center gap-3"><span>⏰</span><span><strong>21:00</strong> — Desde las 9 de la noche (¡hasta que el cuerpo aguante!)</span></div>
+                  <div class="flex items-center gap-3"><span>🍕</span><span>Pizzas a cargo de los novios</span></div>
+                  <div class="flex items-center gap-3"><span>🍹</span><span>2 drinks por persona incluidos</span></div>
+                  <div class="flex items-center gap-3"><span>🪩</span><span>Bailar mucho y disfrutar más</span></div>
                 </div>
-                <div>
-                  <p class="font-semibold">💦 Mirador Salto Floriano</p>
-                  <p class="text-xs text-green-700">El punto final del recorrido — bruma, estruendo y las mejores vistas del conjunto</p>
+                <a href="https://www.google.com/maps/search/Augusta+Palermo+Buenos+Aires" target="_blank" class="inline-flex items-center gap-2 bg-pink-600 text-white font-bold px-5 py-3 rounded-xl text-sm hover:bg-pink-700 transition-colors">📍 Ver en Google Maps</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 7 — 03 ABR -->
+        <div class="tl-item fade-in d7">
+          <div class="tl-dot">🏙️</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-purple-100">
+            <div class="bg-purple-700 text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 7</p><h3 class="text-xl font-extrabold">Viernes 3 abril</h3></div>
+                <span id="w-2026-04-03" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
+              </div>
+            </div>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Día libre</h4>
+              <p class="text-base text-gray-600">Día libre para explorar Buenos Aires o descansar antes del gran día.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DÍA 8 — 04 ABR — BODA ⭐ -->
+        <div class="tl-item fade-in d8">
+          <div class="tl-dot" style="border-color:#ca8a04;background:#fef9c3;">💍</div>
+          <div class="card rounded-2xl shadow-xl overflow-hidden border-4 border-yellow-400">
+            <div class="text-white px-5 py-5" style="background:linear-gradient(135deg,#78350f 0%,#a16207 50%,#ca8a04 100%);">
+              <div class="flex items-center gap-3 mb-1">
+                <span class="text-3xl">💍</span>
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 8 · ⭐ EL DÍA GRANDE</p><h3 class="text-2xl font-extrabold">Sábado 4 abril</h3></div>
+              </div>
+              <span id="w-2026-04-04" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold inline-block mt-2"></span>
+            </div>
+            <div class="bg-amber-50 px-5 py-6">
+              <h4 class="text-xl font-extrabold text-gray-900 mb-3">⭐ Boda de Alberto y Cata</h4>
+              <p class="text-base text-gray-700 mb-5">La celebración que nos reunió a todos. La boda se celebra en <strong>Luján</strong>, cerca de Buenos Aires — famoso por su Basílica y su encanto histórico.</p>
+              <div class="bg-purple-50 rounded-xl p-5 border border-purple-100 mb-4">
+                <p class="text-base font-bold text-purple-800 mb-3">💇 Por la mañana — Pelu y maquillaje</p>
+                <div class="space-y-2 text-sm text-purple-800">
+                  <div class="flex items-center gap-3"><span>🏠</span><span>En el domicilio — que hay que estar perfectas ✨</span></div>
+                  <div class="flex items-center gap-3"><span>🚐</span><span>Nos recoge una <strong>furgoneta privada</strong></span></div>
                 </div>
-                <p class="font-semibold">🚐 Regreso privado al hotel</p>
               </div>
-            </div>
-
-            <!-- HELICÓPTERO -->
-            <div class="mt-3 bg-sky-50 rounded-xl p-4 border border-sky-200">
-              <div class="flex items-center justify-between mb-2">
-                <p class="text-sm font-bold text-sky-800">🚁 Sobrevuelo en helicóptero</p>
-                
+              <div class="bg-amber-100 rounded-xl p-5 border border-amber-200 mb-4">
+                <div class="space-y-2 text-sm text-amber-800">
+                  <div class="flex items-center gap-3"><span>🚐</span><span><strong>13:00–13:30</strong> — Recogida en la casa con la furgoneta</span></div>
+                  <div class="flex items-center gap-3"><span>🚗</span><span>~2 horas de trayecto hasta Luján</span></div>
+                  <div class="flex items-center gap-3"><span>📸</span><span>Tiempo para fotos antes de la ceremonia</span></div>
+                </div>
               </div>
-              <p class="text-xs text-sky-700">10 minutos · Vista aérea panorámica de las cataratas · Salida desde Brasil</p>
-            </div>
-
-            <!-- PARQUE DAS AVES -->
-            <div class="mt-3 bg-emerald-50 rounded-xl p-4 border border-emerald-200">
-              <div class="flex items-center justify-between mb-2">
-                <p class="text-sm font-bold text-emerald-800">🦜 Parque das Aves</p>
-                
-              </div>
-              <p class="text-xs text-emerald-700">Parque de conservación de aves tropicales — tucanes, loros, guacamayos... ideal para ir después del heli</p>
+              <div class="inline-flex items-center gap-2 bg-amber-200 text-amber-900 px-5 py-3 rounded-xl text-base font-bold">📍 Luján, Provincia de Buenos Aires</div>
             </div>
           </div>
         </div>
 
-        <!-- 01 ABR -->
-        <div class="card-hover fade-in-up delay-5 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-green-50 border-b border-green-100">
-            <span class="text-2xl">🌅</span>
-            <div>
-              <span class="font-bold text-green-800 text-sm uppercase tracking-wide">Miércoles 1 abril</span>
-              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Día 5</span> <span id="w-2026-04-01" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
-            </div>
-          </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">🌊 Iguazú → Buenos Aires</h3>
-            <p class="text-gray-600 text-sm mt-1">Último día en Iguazú con actividades por confirmar. Vuelo nocturno de regreso a Buenos Aires.</p>
-
-            <div class="mt-3 bg-indigo-50 rounded-xl p-4 border border-indigo-200">
-              <p class="text-xs font-bold text-indigo-800 uppercase tracking-wide mb-2">🏨 Alojamiento en Buenos Aires · 1 abril – 6 abril</p>
-              <p class="text-sm font-semibold text-indigo-900">Casa Alma</p>
-              <p class="text-xs text-indigo-600 mb-1">📮 Costa Rica 4520, Buenos Aires</p>
-              <p class="text-xs text-red-600 mb-2">🚫 Sin desayuno incluido</p>
-              <div class="flex gap-2 flex-wrap">
-                <a href="https://maps.app.goo.gl/WbbKgk8CntFn54J97" target="_blank"
-                   class="inline-flex items-center gap-1.5 text-xs bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700 transition-colors">
-                  📍 Google Maps
-                </a>
-                <a href="https://www.booking.com/hotel/ar/costa-rica.es.html" target="_blank"
-                   class="inline-flex items-center gap-1.5 text-xs bg-blue-500 text-white px-3 py-1.5 rounded-lg hover:bg-blue-600 transition-colors">
-                  🏨 Ver en Booking
-                </a>
+        <!-- DÍA 9 — 05 ABR -->
+        <div class="tl-item fade-in d9">
+          <div class="tl-dot">😴</div>
+          <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
+            <div class="bg-gray-500 text-white px-5 py-4">
+              <div class="flex items-center justify-between flex-wrap gap-2">
+                <div><p class="text-xs font-bold uppercase tracking-widest opacity-75 mb-1">Día 9</p><h3 class="text-xl font-extrabold">Domingo 5 abril</h3></div>
+                <span id="w-2026-04-05" class="text-sm bg-white/20 px-3 py-1.5 rounded-full font-semibold"></span>
               </div>
             </div>
-
-            <div class="bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mt-3 mb-3 text-xs text-amber-800">
-              🎒 <strong>Equipaje:</strong> Solo mochila, máximo <strong>10 kg</strong>
-            </div>
-
-            <div class="space-y-2 mt-2">
-              <div class="bg-gray-50 rounded-lg px-4 py-3 text-sm border border-gray-200">
-                <p class="font-semibold text-gray-700 text-xs mb-1">✈️ Vuelo 1</p>
-                <p class="font-bold text-gray-900">IGR → EZE · 22:35 → 00:35 (+1)</p>
-                <p class="text-xs text-gray-500 mt-1">Carlos · Celia · Paula · Loli · Sebas · Mila</p>
-              </div>
-              <div class="bg-gray-50 rounded-lg px-4 py-3 text-sm border border-gray-200">
-                <p class="font-semibold text-gray-700 text-xs mb-1">✈️ Vuelo 2</p>
-                <p class="font-bold text-gray-900">IGR → AEP · 21:40 → 23:40</p>
-                <p class="text-xs text-gray-500 mt-1">Piedad · Visi · Víctor · Marta · Celia · Elena · Ángel</p>
-              </div>
+            <div class="px-5 py-5">
+              <h4 class="text-lg font-bold text-gray-900 mb-3">📍 Buenos Aires — Descanso post-boda</h4>
+              <p class="text-base text-gray-600">Merecido descanso tras la celebración. ¡Hasta aquí llega la parte común del viaje para algunos! 👋</p>
             </div>
           </div>
         </div>
 
-        <!-- 02 ABR -->
-        <div id="sec-boda"></div>
-        <div class="card-hover fade-in-up delay-6 bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 boda-gradient text-white">
-            <span class="text-2xl">💒</span>
-            <div>
-              <span class="font-bold text-sm uppercase tracking-wide">Jueves 2 abril</span>
-              <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 6</span> <span id="w-2026-04-02" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
-            </div>
-          </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">🎉 Pre-boda de Alberto y Cata</h3>
-
-            <div class="mt-3 bg-pink-50 rounded-xl p-4 border border-pink-200">
-              <p class="text-xs font-bold text-pink-800 uppercase tracking-wide mb-2">💅 Mañana · Uñas</p>
-              <p class="text-sm font-semibold text-pink-900">Sunny Beauty Salon</p>
-              <div class="flex items-center gap-2 text-xs text-pink-800 mb-2">
-                <span>⏰</span><span><strong>10:00</strong> — Cita en el salón</span>
-              </div>
-              <p class="text-xs text-pink-600 mb-2">📮 Paraguay 4648, Buenos Aires</p>
-              <a href="https://maps.app.goo.gl/iqCx6wGrvx218C456" target="_blank"
-                 class="inline-flex items-center gap-1.5 text-xs bg-pink-600 text-white px-3 py-1.5 rounded-lg hover:bg-pink-700 transition-colors">
-                📍 Ver en Google Maps
-              </a>
-            </div>
-
-            <div class="mt-3 bg-amber-50 rounded-xl p-4 border border-amber-200">
-              <p class="text-xs font-bold text-amber-800 uppercase tracking-wide mb-2">🍽️ Almuerzo</p>
-              <p class="text-sm font-semibold text-amber-900">El Preferido</p>
-              <p class="text-xs text-amber-700 mb-1">Las milanesas más buenas de Buenos Aires 🥩</p>
-              <div class="flex items-center gap-2 text-xs text-amber-800 mb-2">
-                <span>⏰</span><span>Reserva a la <strong>1:00 pm</strong></span>
-              </div>
-              <p class="text-xs text-amber-600 mb-2">📮 Jorge Luis Borges 2108, Palermo</p>
-              <a href="https://maps.app.goo.gl/LP5sWgLf9yjZP5Mg9" target="_blank"
-                 class="inline-flex items-center gap-1.5 text-xs bg-amber-600 text-white px-3 py-1.5 rounded-lg hover:bg-amber-700 transition-colors">
-                📍 Ver en Google Maps
-              </a>
-            </div>
-
-            <div class="mt-3 bg-pink-50 rounded-xl p-4 border border-pink-200">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="text-xl">🥂</span>
-                <p class="font-bold text-pink-800">Augusta · Palermo</p>
-              </div>
-              <div class="space-y-1.5 text-sm text-pink-800 mb-3">
-                <div class="flex items-center gap-2"><span>⏰</span><span><strong>21:00</strong> — Desde las 9 de la noche (¡hasta que el cuerpo aguante!)</span></div>
-                <div class="flex items-center gap-2"><span>🍕</span><span>Pizzas a cargo de los novios</span></div>
-                <div class="flex items-center gap-2"><span>🍹</span><span>2 drinks por persona incluidos</span></div>
-                <div class="flex items-center gap-2"><span>🪩</span><span>Bailar mucho y disfrutar más</span></div>
-              </div>
-              <a href="https://www.google.com/maps/search/Augusta+Palermo+Buenos+Aires" target="_blank"
-                 class="inline-flex items-center gap-1.5 text-xs bg-pink-600 text-white px-3 py-1.5 rounded-lg hover:bg-pink-700 transition-colors">
-                📍 Ver en Google Maps
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 03 ABR -->
-        <div class="card-hover fade-in-up delay-7 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-purple-50 border-b border-purple-100">
-            <span class="text-2xl">🏙️</span>
-            <div>
-              <span class="font-bold text-purple-800 text-sm uppercase tracking-wide">Viernes 3 abril</span>
-              <span class="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Día 7</span> <span id="w-2026-04-03" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
-            </div>
-          </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Día libre</h3>
-            <p class="text-gray-600 text-sm mt-1">Día libre para explorar Buenos Aires o descansar antes del gran día.</p>
-
-          </div>
-        </div>
-
-        <!-- 04 ABR — BODA ⭐ -->
-        <div class="card-hover fade-in-up delay-8 rounded-2xl shadow-lg overflow-hidden border-2 border-yellow-300">
-          <div class="boda-gradient text-white px-5 py-4">
-            <div class="flex items-center gap-3">
-              <span class="text-3xl">💍</span>
-              <div>
-                <span class="font-bold text-sm uppercase tracking-wide">Sábado 4 abril</span>
-                <span class="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full">Día 8 · EL DÍA GRANDE</span> <span id="w-2026-04-04" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
-              </div>
-            </div>
-          </div>
-          <div class="bg-amber-50 px-5 py-5">
-            <h3 class="font-bold text-gray-900 text-xl">⭐ Boda de Alberto y Cata</h3>
-            <p class="text-gray-700 text-sm mt-2">La celebración que nos reunió a todos. La boda se celebra en <strong>Luján</strong>, cerca de Buenos Aires — famoso por su Basílica y su encanto histórico.</p>
-            <div class="mt-3 bg-purple-50 rounded-xl p-3 border border-purple-100">
-              <p class="text-sm font-semibold text-purple-800 mb-2">💇 Por la mañana — Pelu y maquillaje</p>
-              <div class="space-y-1 text-xs text-purple-800">
-                <div class="flex items-center gap-2"><span>🏠</span><span>En el domicilio — que hay que estar perfectas ✨</span></div>
-                <div class="flex items-center gap-2"><span>🚐</span><span>Nos recoge una <strong>furgoneta privada</strong></span></div>
-              </div>
-            </div>
-            <div class="mt-3 bg-amber-50 rounded-xl p-3 border border-amber-100">
-              <div class="space-y-1.5 text-xs text-amber-800">
-                <div class="flex items-center gap-2"><span>🚐</span><span><strong>13:00–13:30</strong> — Recogida en la casa con la furgoneta</span></div>
-                <div class="flex items-center gap-2"><span>🚗</span><span>~2 horas de trayecto hasta Luján</span></div>
-                <div class="flex items-center gap-2"><span>📸</span><span>Tiempo para fotos antes de la ceremonia</span></div>
-              </div>
-            </div>
-            <div class="mt-3 inline-flex items-center gap-2 bg-amber-200 text-amber-900 px-3 py-1.5 rounded-lg text-sm font-medium">
-              📍 Luján, Provincia de Buenos Aires
-            </div>
-          </div>
-        </div>
-
-        <!-- 05 ABR -->
-        <div class="card-hover fade-in-up delay-9 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          <div class="flex items-center gap-3 px-5 py-3 bg-gray-50 border-b border-gray-100">
-            <span class="text-2xl">😴</span>
-            <div>
-              <span class="font-bold text-gray-600 text-sm uppercase tracking-wide">Domingo 5 abril</span>
-              <span class="ml-2 text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full">Día 9</span> <span id="w-2026-04-05" class="ml-1 text-xs bg-white/70 text-gray-600 px-2 py-0.5 rounded-full"></span>
-            </div>
-          </div>
-          <div class="px-5 py-4">
-            <h3 class="font-semibold text-gray-900 text-lg">📍 Buenos Aires — Descanso post-boda</h3>
-            <p class="text-gray-600 text-sm mt-1">Merecido descanso tras la celebración. ¡Hasta aquí llega la parte común del viaje para algunos! 👋</p>
-          </div>
-        </div>
-
-      </div>
+      </div><!-- /timeline -->
     </section>
 
-
-    <!-- INFORMACIÓN ÚTIL -->
+    <!-- INFO ÚTIL -->
     <div id="sec-calculadora"></div>
-    <section class="mt-12 mb-8">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">ℹ️ Información útil</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">💱 Cambio de divisas <span id="fx-updated" class="text-xs font-normal text-gray-400"></span></p>
-          <div id="fx-eur" class="text-sm text-gray-700">1€ ≈ <strong>cargando...</strong></div>
-          <div id="fx-usd" class="text-sm text-gray-700 mt-1">1 USD ≈ <strong>cargando...</strong></div>
-          <p class="text-xs text-gray-400 mt-1">Tipo de cambio oficial en tiempo real</p>
+    <section class="mt-14 mb-8">
+      <h2 class="text-2xl font-extrabold text-[#1e3a5f] mb-6 flex items-center gap-3 pb-3 border-b-4 border-[#f5a623]">ℹ️ Información útil</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
+          <p class="text-lg font-extrabold text-[#1e3a5f] mb-3">💱 Cambio de divisas <span id="fx-updated" class="text-sm font-normal text-gray-400"></span></p>
+          <div id="fx-eur" class="text-base text-gray-700 mb-2">1€ ≈ <strong>cargando...</strong></div>
+          <div id="fx-usd" class="text-base text-gray-700 mb-2">1 USD ≈ <strong>cargando...</strong></div>
+          <p class="text-sm text-gray-400">Tipo de cambio oficial en tiempo real</p>
         </div>
-        <!-- CALCULADORA DIVISAS -->
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 sm:col-span-2">
-          <p class="text-sm font-bold text-gray-800 mb-3">🧮 Calculadora de divisas</p>
-          <div class="grid grid-cols-3 gap-2">
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
+          <p class="text-lg font-extrabold text-[#1e3a5f] mb-3">🌡️ Tiempo actual</p>
+          <div id="info-weather-ba" class="text-base text-gray-700 mb-2">Buenos Aires: <span class="text-gray-400 text-sm">cargando...</span></div>
+          <div id="info-weather-iguazu" class="text-base text-gray-700 mb-2">Iguazú: <span class="text-gray-400 text-sm">cargando...</span></div>
+          <p class="text-sm text-gray-400">Final de verano austral</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 sm:col-span-2">
+          <p class="text-lg font-extrabold text-[#1e3a5f] mb-4">🧮 Calculadora de divisas</p>
+          <div class="grid grid-cols-3 gap-3">
             <div>
-              <label class="text-xs text-gray-500 mb-1 block">Euros (€)</label>
-              <input id="calc-eur" type="number" inputmode="decimal" placeholder="0"
-                class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" oninput="calcFrom('eur')">
+              <label class="text-sm text-gray-600 mb-2 block font-semibold">Euros (€)</label>
+              <input id="calc-eur" type="number" inputmode="decimal" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-400" oninput="calcFrom('eur')">
             </div>
             <div>
-              <label class="text-xs text-gray-500 mb-1 block">Dólares (USD)</label>
-              <input id="calc-usd" type="number" inputmode="decimal" placeholder="0"
-                class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" oninput="calcFrom('usd')">
+              <label class="text-sm text-gray-600 mb-2 block font-semibold">Dólares (USD)</label>
+              <input id="calc-usd" type="number" inputmode="decimal" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-400" oninput="calcFrom('usd')">
             </div>
             <div>
-              <label class="text-xs text-gray-500 mb-1 block">Pesos (ARS)</label>
-              <input id="calc-ars" type="number" inputmode="decimal" placeholder="0"
-                class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300" oninput="calcFrom('ars')">
+              <label class="text-sm text-gray-600 mb-2 block font-semibold">Pesos (ARS)</label>
+              <input id="calc-ars" type="number" inputmode="decimal" placeholder="0" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-400" oninput="calcFrom('ars')">
             </div>
           </div>
         </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">🌡️ Tiempo actual</p>
-          <div id="info-weather-ba" class="text-sm text-gray-700">Buenos Aires: <span class="text-gray-400 text-xs">cargando...</span></div>
-          <div id="info-weather-iguazu" class="text-sm text-gray-700 mt-1">Iguazú: <span class="text-gray-400 text-xs">cargando...</span></div>
-          <p class="text-xs text-gray-400 mt-1">Final de verano austral</p>
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
+          <p class="text-lg font-extrabold text-[#1e3a5f] mb-3">😂 Chiste del viaje</p>
+          <p class="text-base text-gray-700 italic mb-2">— ¿Cómo se llama la app que usan los argentinos para ligar?</p>
+          <p class="text-base font-extrabold text-gray-800">El Buscaminas 💣</p>
         </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">😂 Chiste del viaje</p>
-          <p class="text-sm text-gray-700 italic">— ¿Cómo se llama la app que usan los argentinos para ligar?</p>
-          <p class="text-sm font-semibold text-gray-800 mt-1">El Buscaminas 💣</p>
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
+          <p class="text-lg font-extrabold text-[#1e3a5f] mb-3">📱 Emergencias</p>
+          <p class="text-base text-gray-700 mb-1">Policía: <strong>911</strong></p>
+          <p class="text-base text-gray-700 mb-1">Ambulancia: <strong>107</strong></p>
+          <p class="text-base text-gray-700">Bomberos: <strong>100</strong></p>
         </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <p class="text-sm font-bold text-gray-800 mb-2">📱 Emergencias</p>
-          <p class="text-sm text-gray-700">Policía: <strong>911</strong></p>
-          <p class="text-sm text-gray-700">Ambulancia: <strong>107</strong></p>
-          <p class="text-sm text-gray-700">Bomberos: <strong>100</strong></p>
-        </div>
-        <div class="bg-white rounded-2xl shadow-sm border border-green-200 p-4 sm:col-span-2">
-          <p class="text-sm font-bold text-gray-800 mb-2">💰 Cuentas del grupo — Tricount</p>
-          <p class="text-sm text-gray-600 mb-3">Lleva el control de gastos compartidos y quién le debe a quién.</p>
-          <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank"
-             class="inline-flex items-center gap-2 bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-green-700 transition-colors">
-            💰 Abrir Tricount del viaje
-          </a>
+        <div class="bg-white rounded-2xl shadow-md border-2 border-green-200 p-6 sm:col-span-2">
+          <p class="text-lg font-extrabold text-[#1e3a5f] mb-2">💰 Cuentas del grupo — Tricount</p>
+          <p class="text-base text-gray-600 mb-4">Lleva el control de gastos compartidos y quién le debe a quién.</p>
+          <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white font-extrabold px-6 py-3 rounded-xl text-base hover:bg-green-700 transition-colors">💰 Abrir Tricount del viaje</a>
         </div>
       </div>
     </section>
 
-    <!-- ACCESO PATAGONIA -->
-    <section class="mt-16 mb-4">
-      <a href="patagonia.html" class="block gradient-patagonia rounded-3xl p-8 text-white text-center shadow-xl hover:opacity-90 transition-opacity">
-        <div class="text-5xl mb-4">🏔️🧊🦭🐧</div>
-        <h2 class="text-3xl font-extrabold mb-2">PATAGONIA</h2>
-        <div class="mt-4 inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-sm font-semibold">
-          Ver itinerario Patagonia →
-        </div>
-      </a>
+    <!-- OTRAS PÁGINAS -->
+    <section class="mt-14 mb-4">
+      <h2 class="text-2xl font-extrabold text-[#1e3a5f] mb-6 flex items-center gap-3 pb-3 border-b-4 border-[#f5a623]">🗺️ Más páginas del viaje</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <a href="patagonia.html" class="block rounded-3xl p-8 text-white text-center shadow-xl hover:opacity-90 hover:scale-[1.02] transition-all" style="background:linear-gradient(135deg,#0c4a6e 0%,#0369a1 40%,#0ea5e9 100%);">
+          <div class="text-5xl mb-4">🏔️🧊🦭🐧</div>
+          <h3 class="text-2xl font-extrabold mb-2">PATAGONIA</h3>
+          <p class="text-base text-blue-100 mb-4">6 – 11 abril · El Calafate · Chaltén · Ushuaia</p>
+          <div class="inline-flex items-center gap-2 bg-white/20 px-5 py-3 rounded-full text-base font-bold">Ver itinerario →</div>
+        </a>
+        <a href="salta.html" class="block rounded-3xl p-8 text-white text-center shadow-xl hover:opacity-90 hover:scale-[1.02] transition-all" style="background:linear-gradient(135deg,#7c2d12 0%,#c2410c 45%,#ea580c 100%);">
+          <div class="text-5xl mb-4">🌵🏜️🧂🦅</div>
+          <h3 class="text-2xl font-extrabold mb-2">SALTA &amp; JUJUY</h3>
+          <p class="text-base text-orange-100 mb-4">12 – 16 abril · Salta · Purmamarca · Cafayate</p>
+          <div class="inline-flex items-center gap-2 bg-white/20 px-5 py-3 rounded-full text-base font-bold">Ver itinerario →</div>
+        </a>
+      </div>
     </section>
-
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="mt-16 bg-gray-900 text-white text-center py-10 text-sm">
-    <p class="text-3xl mb-3">🇦🇷</p>
-    <p class="text-lg font-bold text-white mb-1">Argentina 2026</p>
-    <p class="text-gray-400 mb-4">Viaje de familia · 28 marzo – 11 abril</p>
-    <div class="flex flex-wrap justify-center gap-4 text-gray-400 text-xs mb-4">
-      <a href="#el-viaje" class="hover:text-white transition-colors">🗓️ Itinerario</a>
-      <a href="patagonia.html" class="hover:text-white transition-colors">🏔️ Patagonia</a>
+  <footer class="mt-16 bg-[#1e3a5f] text-white text-center py-12">
+    <p class="text-4xl mb-4">🇦🇷</p>
+    <p class="text-xl font-extrabold mb-2">Argentina 2026</p>
+    <p class="text-base text-blue-200 mb-6">Viaje de familia · 28 marzo – 11 abril</p>
+    <div class="flex flex-wrap justify-center gap-4 mb-6">
+      <a href="index.html"     class="text-white font-bold bg-white/10 px-5 py-3 rounded-xl text-base hover:bg-white/20 transition-colors">🏙️ Buenos Aires</a>
+      <a href="patagonia.html" class="text-white font-bold bg-white/10 px-5 py-3 rounded-xl text-base hover:bg-white/20 transition-colors">🏔️ Patagonia</a>
+      <a href="salta.html"     class="text-white font-bold bg-white/10 px-5 py-3 rounded-xl text-base hover:bg-white/20 transition-colors">🌵 Salta</a>
     </div>
-    <p class="text-gray-600 text-xs">Hecho con ❤️ para la familia</p>
+    <p class="text-blue-300 text-sm">Hecho con ❤️ para la familia</p>
   </footer>
 
   <script>
-    // Countdown to March 28, 2026
     function updateCountdown() {
       const departure = new Date('2026-03-27T19:05:00+01:00');
       const now = new Date();
       const diff = departure - now;
       if (diff <= 0) {
-        document.getElementById('countdown-timer').innerHTML = '<p class="text-blue-200 text-sm font-semibold">¡El viaje ha comenzado! 🎉</p>';
+        document.getElementById('countdown-timer').innerHTML = '<p class="text-blue-200 text-base font-extrabold">¡El viaje ha comenzado! 🎉</p>';
         return;
       }
       const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -707,7 +605,7 @@
   async function loadWeather() {
     const locs = {
       ba:     { lat:-34.60, lon:-58.38, label:'Buenos Aires', tz:'America%2FArgentina%2FBuenos_Aires' },
-      iguazu: { lat:-25.60, lon:-54.58, label:'Iguazú', tz:'America%2FArgentina%2FBuenos_Aires' },
+      iguazu: { lat:-25.60, lon:-54.58, label:'Iguazú',       tz:'America%2FArgentina%2FBuenos_Aires' },
     };
     const dayLoc = {
       '2026-03-28':'ba','2026-03-29':'ba',
@@ -746,8 +644,7 @@
   </script>
 
   <script>
-  // Tipo de cambio en tiempo real + calculadora
-  let fxRates = { EUR_ARS: 1700, USD_ARS: 1570, EUR_USD: 1.08 }; // fallback
+  let fxRates = { EUR_ARS: 1700, USD_ARS: 1570, EUR_USD: 1.08 };
 
   async function loadFX() {
     try {

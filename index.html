@@ -47,6 +47,8 @@
     .timeline::before { display: none; }
     .tl-item { position:relative; margin-bottom:2rem; }
     .tl-dot { display: none; }
+    /* Offset para anclas con nav sticky */
+    [id^="sec-"] { scroll-margin-top: 115px; }
     /* Nav scrollbar hide (page tabs) */
     .no-sb::-webkit-scrollbar { display:none; }
     .no-sb { -ms-overflow-style:none; scrollbar-width:none; }

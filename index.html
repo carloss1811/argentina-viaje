@@ -236,7 +236,7 @@
         </div>
 
         <!-- DÍA 2 — 29 MAR -->
-        <div class="tl-item fade-in d2">
+        <div id="sec-d2" class="tl-item fade-in d2">
           <div class="tl-dot">🥩</div>
           <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-amber-100">
             <div class="bg-amber-600 text-white px-5 py-4">
@@ -333,7 +333,7 @@
         </div>
 
         <!-- DÍA 4 — 31 MAR -->
-        <div class="tl-item fade-in d4">
+        <div id="sec-d4" class="tl-item fade-in d4">
           <div class="tl-dot">🇧🇷</div>
           <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-green-100">
             <div class="bg-green-600 text-white px-5 py-4">
@@ -368,7 +368,7 @@
         </div>
 
         <!-- DÍA 5 — 01 ABR -->
-        <div class="tl-item fade-in d5">
+        <div id="sec-d5" class="tl-item fade-in d5">
           <div class="tl-dot">🌅</div>
           <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-green-100">
             <div class="bg-teal-600 text-white px-5 py-4">
@@ -451,7 +451,7 @@
         </div>
 
         <!-- DÍA 7 — 03 ABR -->
-        <div class="tl-item fade-in d7">
+        <div id="sec-d7" class="tl-item fade-in d7">
           <div class="tl-dot">🏙️</div>
           <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-purple-100">
             <div class="bg-purple-700 text-white px-5 py-4">
@@ -469,7 +469,7 @@
         </div>
 
         <!-- DÍA 8 — 04 ABR — BODA ⭐ -->
-        <div class="tl-item fade-in d8">
+        <div id="sec-d8" class="tl-item fade-in d8">
           <div class="tl-dot" style="border-color:#ca8a04;background:#fef9c3;">💍</div>
           <div class="card rounded-2xl shadow-xl overflow-hidden border-4 border-yellow-400">
             <div class="text-white px-5 py-5" style="background:linear-gradient(135deg,#78350f 0%,#a16207 50%,#ca8a04 100%);">
@@ -503,7 +503,7 @@
         </div>
 
         <!-- DÍA 9 — 05 ABR -->
-        <div class="tl-item fade-in d9">
+        <div id="sec-d9" class="tl-item fade-in d9">
           <div class="tl-dot">😴</div>
           <div class="card bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
             <div class="bg-gray-500 text-white px-5 py-4">
@@ -614,8 +614,9 @@
       const departure = new Date('2026-03-27T19:05:00+01:00');
       const now = new Date();
       const diff = departure - now;
+      const timer = document.getElementById('countdown-timer');
       if (diff <= 0) {
-        document.getElementById('countdown-timer').innerHTML = '<p class="text-blue-200 text-base font-extrabold">¡El viaje ha comenzado! 🎉</p>';
+        if (timer) timer.style.display = 'none';
         return;
       }
       const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -766,6 +767,29 @@
   }
   fixScrollMargin();
   window.addEventListener('resize', fixScrollMargin);
+
+  // Auto-scroll al día actual (o ?fecha=YYYY-MM-DD para testear)
+  (function() {
+    const dateMap = {
+      '2026-03-28': 'sec-llegada',
+      '2026-03-29': 'sec-d2',
+      '2026-03-30': 'sec-iguazu',
+      '2026-03-31': 'sec-d4',
+      '2026-04-01': 'sec-d5',
+      '2026-04-02': 'sec-boda',
+      '2026-04-03': 'sec-d7',
+      '2026-04-04': 'sec-d8',
+      '2026-04-05': 'sec-d9',
+    };
+    const params = new URLSearchParams(window.location.search);
+    const testDate = params.get('fecha');
+    const today = testDate || new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires' });
+    const secId = dateMap[today];
+    if (secId) {
+      const el = document.getElementById(secId);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
+    }
+  })();
 
   // Ocultar nav al hacer scroll hacia abajo, mostrar al subir
   (function() {

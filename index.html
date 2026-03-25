@@ -741,5 +741,19 @@
   updateClock();
   setInterval(updateClock, 30000);
   </script>
+
+  <script>
+  // Scroll-margin-top dinámico: mide el nav real y lo aplica a todas las secciones
+  function fixScrollMargin() {
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+    const h = nav.getBoundingClientRect().height + 8;
+    document.querySelectorAll('[id^="sec-"]').forEach(el => {
+      el.style.scrollMarginTop = h + 'px';
+    });
+  }
+  fixScrollMargin();
+  window.addEventListener('resize', fixScrollMargin);
+  </script>
 </body>
 </html>

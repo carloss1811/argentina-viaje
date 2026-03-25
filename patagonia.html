@@ -485,5 +485,18 @@
   }
   loadFX();
   </script>
+
+  <script>
+  function fixScrollMargin() {
+    const nav = document.querySelector('nav');
+    if (!nav) return;
+    const h = nav.getBoundingClientRect().height + 8;
+    document.querySelectorAll('[id^="sec-"]').forEach(el => {
+      el.style.scrollMarginTop = h + 'px';
+    });
+  }
+  fixScrollMargin();
+  window.addEventListener('resize', fixScrollMargin);
+  </script>
 </body>
 </html>

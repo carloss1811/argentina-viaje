@@ -43,7 +43,6 @@
     .tl-dot { position:absolute; left:-3.5rem; top:1rem; width:2.25rem; height:2.25rem; border-radius:50%; background:white; border:3px solid #c2410c; display:flex; align-items:center; justify-content:center; font-size:1rem; z-index:1; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
     .no-sb::-webkit-scrollbar { display:none; }
     .no-sb { -ms-overflow-style:none; scrollbar-width:none; }
-    #countdown-timer span { display:inline-block; min-width:2.5ch; }
   </style>
 </head>
 <body>
@@ -59,12 +58,16 @@
           <a href="salta.html"     class="bg-white text-[#1e3a5f] font-extrabold px-4 py-2 rounded-xl text-sm whitespace-nowrap">🌵 Salta</a>
         </div>
       </div>
-      <div class="flex gap-1 overflow-x-auto no-sb pb-2 border-t border-white/10 pt-2">
-        <a href="#sec-llegada"    class="text-orange-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">✈️ Llegada</a>
-        <a href="#sec-salinas"   class="text-orange-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">🧂 Salinas</a>
-        <a href="#sec-quebrada"  class="text-orange-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">🏔️ Quebrada</a>
-        <a href="#sec-cafayate"  class="text-orange-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">🍷 Cafayate</a>
-        <a href="#sec-info-salta" class="text-orange-200 hover:text-white whitespace-nowrap px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors text-sm font-semibold">🧮 Calculadora</a>
+      <div class="relative">
+        <div class="flex gap-2 overflow-x-auto no-sb py-2 border-t border-white/10">
+          <a href="#sec-llegada"    class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">✈️ Llegada</a>
+          <a href="#sec-salinas"   class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🧂 Salinas</a>
+          <a href="#sec-quebrada"  class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🏔️ Quebrada</a>
+          <a href="#sec-cafayate"  class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🍷 Cafayate</a>
+          <a href="#sec-info-salta" class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">🧮 Calculadora</a>
+          <a href="https://tricount.com/tnzRcnMMRGJODnnNhG" target="_blank" class="text-white bg-white/20 hover:bg-white/35 whitespace-nowrap px-4 py-2.5 rounded-lg transition-colors text-base font-semibold flex-shrink-0">💰 Tricount</a>
+        </div>
+        <div class="absolute right-0 top-0 bottom-0 w-10 pointer-events-none" style="background:linear-gradient(to left,#1e3a5f,transparent)"></div>
       </div>
     </div>
   </nav>
@@ -87,10 +90,6 @@
       <div class="flex flex-wrap justify-center gap-3 mb-6">
         <span id="hdr-salta"      class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-orange-100">🌡️ Salta · cargando...</span>
         <span id="hdr-purmamarca" class="bg-white/15 border border-white/25 px-4 py-2 rounded-full text-sm text-orange-100">🌡️ Purmamarca · cargando...</span>
-      </div>
-      <div id="countdown-timer" class="bg-white/15 inline-block px-8 py-4 rounded-2xl backdrop-blur border border-white/20">
-        <p class="text-orange-200 text-sm uppercase tracking-widest mb-2 font-bold">Salida a Salta en</p>
-        <p class="text-4xl font-extrabold"><span id="cd-days">--</span>d <span id="cd-hours">--</span>h <span id="cd-mins">--</span>m</p>
       </div>
     </div>
   </header>
@@ -420,26 +419,6 @@
     </div>
     <p class="text-blue-300 text-sm">Hecho con ❤️ para la familia</p>
   </footer>
-
-  <script>
-  function updateCountdown() {
-    const departure = new Date('2026-04-12T09:02:00-03:00');
-    const now = new Date();
-    const diff = departure - now;
-    if (diff <= 0) {
-      document.getElementById('countdown-timer').innerHTML = '<p class="text-orange-200 text-base font-extrabold">¡El viaje ha comenzado! 🎉</p>';
-      return;
-    }
-    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    document.getElementById('cd-days').textContent  = days;
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 30000);
-  </script>
 
   <script>
   const wmoIcon = c => c===0?'☀️':c<=2?'⛅':c<=3?'☁️':c<=48?'🌫️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌦️':c<=95?'⛈️':'🌩️';

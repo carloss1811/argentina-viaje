@@ -768,28 +768,7 @@
   fixScrollMargin();
   window.addEventListener('resize', fixScrollMargin);
 
-  // Auto-scroll al día actual (o ?fecha=YYYY-MM-DD para testear)
-  (function() {
-    const dateMap = {
-      '2026-03-28': 'sec-llegada',
-      '2026-03-29': 'sec-d2',
-      '2026-03-30': 'sec-iguazu',
-      '2026-03-31': 'sec-d4',
-      '2026-04-01': 'sec-d5',
-      '2026-04-02': 'sec-boda',
-      '2026-04-03': 'sec-d7',
-      '2026-04-04': 'sec-d8',
-      '2026-04-05': 'sec-d9',
-    };
-    const params = new URLSearchParams(window.location.search);
-    const testDate = params.get('fecha');
-    const today = testDate || new Date().toLocaleDateString('sv-SE', { timeZone: 'America/Argentina/Buenos_Aires' });
-    const secId = dateMap[today];
-    if (secId) {
-      const el = document.getElementById(secId);
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 400);
-    }
-  })();
+
 
   // Ocultar nav al hacer scroll hacia abajo, mostrar al subir
   (function() {

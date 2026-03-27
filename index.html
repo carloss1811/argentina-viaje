@@ -868,9 +868,8 @@
         if (btn) { btn.classList.remove('hidden'); if (fr24url) btn.href = fr24url; }
       }
       bar.style.width = pct + '%';
-      const barWidth = el.querySelector('.relative').offsetWidth || 300;
-      const planePos = Math.max(0, Math.min(barWidth - 20, barWidth * pct / 100 - 10));
-      plane.style.left = planePos + 'px';
+      // Posicionar el planeíto en % para que funcione en cualquier ancho de pantalla
+      plane.style.left = `calc(${Math.min(pct, 96)}% - 0.6em)`;
       if (status) status.textContent = txt;
     });
   }

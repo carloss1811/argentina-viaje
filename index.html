@@ -184,6 +184,11 @@
               <h4 class="text-lg font-bold text-gray-900 mb-4">📍 Buenos Aires — Llegada</h4>
               <p class="text-base text-gray-600 mb-4">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
 
+              <div id="flight-summary" class="hidden flex items-center gap-3 bg-blue-600 text-white rounded-xl px-4 py-3 mb-3 text-sm font-bold">
+                <span class="text-xl">✈️</span>
+                <span id="flight-summary-text"></span>
+              </div>
+
               <div id="flight-block" class="bg-gray-50 rounded-xl p-3 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4" style="display:none">
                 <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelos desde España</p>
                 <div class="space-y-2">
@@ -875,11 +880,39 @@
   function checkFlightBlock() {
     const now = Math.floor(Date.now() / 1000);
     const block = document.getElementById('flight-block');
+    const summary = document.getElementById('flight-summary');
+    const summaryText = document.getElementById('flight-summary-text');
     if (!block) return;
-    if (now >= FIRST_DEP - 3600 && now <= LAST_ARR + 7200) {
-      block.style.display = '';
-    } else {
-      block.style.display = 'none';
+    const inWindow = now >= FIRST_DEP - 3600 && now <= LAST_ARR + 7200;
+    block.style.display = inWindow ? '' : 'none';
+
+    // Resumen: buscar el vuelo activo más relevante
+    const flights = [
+      {num:'IB0105', dep:1774597500, arr:1774643100},
+      {num:'AR1133', dep:1774634700, arr:1774681800},
+      {num:'IB0105', dep:1774683900, arr:1774729500, day:'28 mar'},
+    ];
+    let txt = null;
+    for (const fl of flights) {
+      if (now >= fl.dep && now < fl.arr) {
+        const m = Math.round((fl.arr - now) / 60);
+        const eta = m > 90 ? `${Math.floor(m/60)}h ${m%60}m` : `${m} min`;
+        txt = `${fl.num}${fl.day?' ('+fl.day+')':''} en vuelo · aterriza en ${eta}`;
+        break;
+      }
+      if (now < fl.dep && now >= fl.dep - 3600) {
+        const m = Math.round((fl.dep - now) / 60);
+        txt = `${fl.num} sale en ${m} min`;
+        break;
+      }
+    }
+    if (summary && summaryText) {
+      if (txt && inWindow) {
+        summaryText.textContent = txt;
+        summary.classList.remove('hidden');
+      } else {
+        summary.classList.add('hidden');
+      }
     }
   }
   updateFlightTrackers();

@@ -869,8 +869,16 @@
       if (status) status.textContent = txt;
     });
   }
+  // Ocultar bloque entero 2h después del último vuelo (IB0105 28 mar arr + 2h)
+  function checkHideFlightBlock() {
+    if (Math.floor(Date.now() / 1000) > 1774736700) {
+      const block = document.querySelector('.flight-tracker')?.closest('.bg-gray-50');
+      if (block) block.style.display = 'none';
+    }
+  }
   updateFlightTrackers();
-  setInterval(updateFlightTrackers, 60000);
+  checkHideFlightBlock();
+  setInterval(() => { updateFlightTrackers(); checkHideFlightBlock(); }, 60000);
 
   function fixScrollMargin() {
     const nav = document.querySelector('nav');

@@ -184,7 +184,7 @@
               <h4 class="text-lg font-bold text-gray-900 mb-4">📍 Buenos Aires — Llegada</h4>
               <p class="text-base text-gray-600 mb-4">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
 
-              <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
+              <div id="flight-block" class="bg-gray-50 rounded-xl p-3 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4" style="display:none">
                 <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelos desde España</p>
                 <div class="space-y-2">
 
@@ -869,16 +869,22 @@
       if (status) status.textContent = txt;
     });
   }
-  // Ocultar bloque entero 2h después del último vuelo (IB0105 28 mar arr + 2h)
-  function checkHideFlightBlock() {
-    if (Math.floor(Date.now() / 1000) > 1774736700) {
-      const block = document.querySelector('.flight-tracker')?.closest('.bg-gray-50');
-      if (block) block.style.display = 'none';
+  // Mostrar/ocultar bloque vuelos: aparece 1h antes del primer vuelo, desaparece 2h después del último
+  const FIRST_DEP = 1774597500; // IB0105 27 mar
+  const LAST_ARR  = 1774729500; // IB0105 28 mar
+  function checkFlightBlock() {
+    const now = Math.floor(Date.now() / 1000);
+    const block = document.getElementById('flight-block');
+    if (!block) return;
+    if (now >= FIRST_DEP - 3600 && now <= LAST_ARR + 7200) {
+      block.style.display = '';
+    } else {
+      block.style.display = 'none';
     }
   }
   updateFlightTrackers();
-  checkHideFlightBlock();
-  setInterval(() => { updateFlightTrackers(); checkHideFlightBlock(); }, 60000);
+  checkFlightBlock();
+  setInterval(() => { updateFlightTrackers(); checkFlightBlock(); }, 60000);
 
   function fixScrollMargin() {
     const nav = document.querySelector('nav');

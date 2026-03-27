@@ -184,53 +184,65 @@
               <h4 class="text-lg font-bold text-gray-900 mb-4">📍 Buenos Aires — Llegada</h4>
               <p class="text-base text-gray-600 mb-4">Llegada a Buenos Aires, check-in en el alojamiento y preparación para la noche.</p>
 
-              <div class="bg-gray-50 rounded-xl p-5 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
-                <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">✈️ Vuelos desde España</p>
-                <div class="space-y-4">
+              <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 border-l-4 border-l-[#3b82f6] mb-4">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">✈️ Vuelos desde España</p>
+                <div class="space-y-2">
 
-                  <!-- Vuelo 1 -->
-                  <div class="bg-white rounded-xl px-4 py-3 border border-gray-200">
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Vuelo 1 · IB0105 · Vie 27 mar</p>
-                    <p class="text-lg font-extrabold text-gray-900 mb-2">MAD → EZE · 08:45 → 17:25 🇦🇷</p>
-                    <div class="flight-tracker" data-dep="1774597500" data-arr="1774643100">
-                      <div class="flex justify-between text-xs text-gray-400 mb-1"><span>🛫 MAD</span><span>EZE 🛬</span></div>
-                      <div class="relative h-7 bg-gray-100 rounded-full">
-                        <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
-                        <span class="tracker-plane absolute top-1/2 -translate-y-1/2 text-lg leading-none transition-all duration-700" style="left:0px">✈️</span>
+                  <!-- Vuelo 1: IB0105 27 mar dep=1774597500 arr=1774643100 fr24=https://www.flightradar24.com/IBE0105/3eef84d5 -->
+                  <div class="bg-white rounded-lg px-3 py-2 border border-gray-200">
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                      <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">IB0105 · Vie 27 mar</p>
+                        <p class="text-sm font-extrabold text-gray-900">MAD → EZE · 08:45 → 17:25 🇦🇷</p>
                       </div>
-                      <p class="tracker-status text-xs text-center text-gray-500 mt-1"></p>
+                      <a href="https://www.flightradar24.com/IBE0105/3eef84d5" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                     </div>
-                    <a href="https://www.flightradar24.com/IBE0105/3eef84d5" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition-colors mt-3">📡 FlightRadar24</a>
+                    <div class="flight-tracker mt-2" data-dep="1774597500" data-arr="1774643100" data-fr24="https://www.flightradar24.com/IBE0105/3eef84d5">
+                      <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>MAD</span><span>EZE</span></div>
+                      <div class="relative h-5 bg-gray-100 rounded-full">
+                        <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
+                        <span class="tracker-plane absolute top-1/2 -translate-y-1/2 text-sm leading-none transition-all duration-700" style="left:0px">✈️</span>
+                      </div>
+                      <p class="tracker-status text-xs text-center text-gray-400 mt-0.5"></p>
+                    </div>
                   </div>
 
-                  <!-- Vuelo 2 -->
-                  <div class="bg-white rounded-xl px-4 py-3 border border-gray-200">
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Vuelo 2 · AR1133 · Vie 27 mar</p>
-                    <p class="text-lg font-extrabold text-gray-900 mb-2">MAD → EZE · 19:05 → 04:10 🇦🇷 (+1)</p>
-                    <div class="flight-tracker" data-dep="1774634700" data-arr="1774681800">
-                      <div class="flex justify-between text-xs text-gray-400 mb-1"><span>🛫 MAD</span><span>EZE 🛬</span></div>
-                      <div class="relative h-7 bg-gray-100 rounded-full">
-                        <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
-                        <span class="tracker-plane absolute top-1/2 -translate-y-1/2 text-lg leading-none transition-all duration-700" style="left:0px">✈️</span>
+                  <!-- Vuelo 2: AR1133 27 mar dep=1774634700 arr=1774681800 fr24=https://www.flightradar24.com/ARG1133 -->
+                  <div class="bg-white rounded-lg px-3 py-2 border border-gray-200">
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                      <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">AR1133 · Vie 27 mar</p>
+                        <p class="text-sm font-extrabold text-gray-900">MAD → EZE · 19:05 → 04:10 🇦🇷 (+1)</p>
                       </div>
-                      <p class="tracker-status text-xs text-center text-gray-500 mt-1"></p>
+                      <a href="https://www.flightradar24.com/ARG1133" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                     </div>
-                    <a href="https://www.flightaware.com/live/flight/ARG1133" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition-colors mt-3">📡 FlightRadar24</a>
+                    <div class="flight-tracker mt-2" data-dep="1774634700" data-arr="1774681800" data-fr24="https://www.flightradar24.com/ARG1133">
+                      <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>MAD</span><span>EZE</span></div>
+                      <div class="relative h-5 bg-gray-100 rounded-full">
+                        <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
+                        <span class="tracker-plane absolute top-1/2 -translate-y-1/2 text-sm leading-none transition-all duration-700" style="left:0px">✈️</span>
+                      </div>
+                      <p class="tracker-status text-xs text-center text-gray-400 mt-0.5"></p>
+                    </div>
                   </div>
 
-                  <!-- Vuelo 3 -->
-                  <div class="bg-white rounded-xl px-4 py-3 border border-gray-200">
-                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Vuelo 3 · IB0105 · Sáb 28 mar</p>
-                    <p class="text-lg font-extrabold text-gray-900 mb-2">MAD → EZE · 08:45 → 17:25 🇦🇷</p>
-                    <div class="flight-tracker" data-dep="1774683900" data-arr="1774729500">
-                      <div class="flex justify-between text-xs text-gray-400 mb-1"><span>🛫 MAD</span><span>EZE 🛬</span></div>
-                      <div class="relative h-7 bg-gray-100 rounded-full">
-                        <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
-                        <span class="tracker-plane absolute top-1/2 -translate-y-1/2 text-lg leading-none transition-all duration-700" style="left:0px">✈️</span>
+                  <!-- Vuelo 3: IB0105 28 mar dep=1774683900 arr=1774729500 fr24=https://www.flightradar24.com/data/flights/ibe0105 -->
+                  <div class="bg-white rounded-lg px-3 py-2 border border-gray-200">
+                    <div class="flex items-center justify-between gap-2 flex-wrap">
+                      <div>
+                        <p class="text-xs font-bold text-gray-400 uppercase">IB0105 · Sáb 28 mar</p>
+                        <p class="text-sm font-extrabold text-gray-900">MAD → EZE · 08:45 → 17:25 🇦🇷</p>
                       </div>
-                      <p class="tracker-status text-xs text-center text-gray-500 mt-1"></p>
+                      <a href="https://www.flightradar24.com/data/flights/ibe0105" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                     </div>
-                    <a href="https://www.flightradar24.com/data/flights/ibe0105" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white font-bold px-4 py-2 rounded-lg text-xs hover:bg-blue-700 transition-colors mt-3">📡 FlightRadar24</a>
+                    <div class="flight-tracker mt-2" data-dep="1774683900" data-arr="1774729500" data-fr24="https://www.flightradar24.com/data/flights/ibe0105">
+                      <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>MAD</span><span>EZE</span></div>
+                      <div class="relative h-5 bg-gray-100 rounded-full">
+                        <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
+                        <span class="tracker-plane absolute top-1/2 -translate-y-1/2 text-sm leading-none transition-all duration-700" style="left:0px">✈️</span>
+                      </div>
+                      <p class="tracker-status text-xs text-center text-gray-400 mt-0.5"></p>
+                    </div>
                   </div>
 
                 </div>
@@ -828,25 +840,31 @@
     document.querySelectorAll('.flight-tracker').forEach(el => {
       const dep = parseInt(el.dataset.dep);
       const arr = parseInt(el.dataset.arr);
+      const fr24url = el.dataset.fr24;
       const bar = el.querySelector('.tracker-bar');
       const plane = el.querySelector('.tracker-plane');
       const status = el.querySelector('.tracker-status');
+      // Botón en el div padre del tracker
+      const btn = el.closest('.bg-white')?.querySelector('.fr24-btn');
       let pct = 0, txt = '';
       if (now < dep) {
         pct = 0;
         const m = Math.round((dep - now) / 60);
         txt = m > 90 ? `Sale en ${Math.floor(m/60)}h ${m%60}m` : `Sale en ${m} min`;
+        if (btn) btn.classList.add('hidden');
       } else if (now >= arr) {
         pct = 100;
         txt = '✅ Aterrizó';
+        if (btn) btn.classList.add('hidden');
       } else {
         pct = Math.round((now - dep) / (arr - dep) * 100);
         const m = Math.round((arr - now) / 60);
         txt = '✈️ En vuelo · ' + (m > 90 ? `Aterriza en ${Math.floor(m/60)}h ${m%60}m` : `Aterriza en ${m} min`);
+        if (btn) { btn.classList.remove('hidden'); if (fr24url) btn.href = fr24url; }
       }
       bar.style.width = pct + '%';
       const barWidth = el.querySelector('.relative').offsetWidth || 300;
-      const planePos = Math.max(0, Math.min(barWidth - 24, barWidth * pct / 100 - 12));
+      const planePos = Math.max(0, Math.min(barWidth - 20, barWidth * pct / 100 - 10));
       plane.style.left = planePos + 'px';
       if (status) status.textContent = txt;
     });

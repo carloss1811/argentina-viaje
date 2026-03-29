@@ -585,7 +585,7 @@
   
   // Cabify: abre la app si está instalada, si no cae al navegador
   function openCabify(lat, lon, name) {
-    const app = `cabify://cabify.com/ride?destination[0][loc]=${lat},${lon}&destination[0][name]=${encodeURIComponent(name)}`;
+    const app = `cabify://cabify.com/ride?drop[0][name]=${encodeURIComponent(name)}&drop[0][loc]=${lat},${lon}`;
     const web = `https://cabify.com/ride?drop[0][name]=${encodeURIComponent(name)}&drop[0][loc]=${lat},${lon}`;
     const t = setTimeout(() => { window.open(web, '_blank'); }, 1200);
     window.location = app;

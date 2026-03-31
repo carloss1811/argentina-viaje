@@ -919,6 +919,11 @@
       const status = el.querySelector('.tracker-status');
       // Botón en el div padre del tracker
       const btn = el.closest('.bg-white')?.querySelector('.fr24-btn');
+
+      // Ocultar la tarjeta 2h después del aterrizaje
+      const card = el.closest('.bg-white.rounded-lg');
+      if (card && now > arr + 7200) { card.style.display = 'none'; return; }
+
       let pct = 0, txt = '';
       if (now < dep) {
         pct = 0;

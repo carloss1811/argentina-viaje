@@ -139,7 +139,7 @@
                     </div>
                     <a href="https://www.flightradar24.com" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                   </div>
-                  <div class="flight-tracker mt-2" data-dep="1775467200" data-arr="1775479200" data-fr24="https://www.flightradar24.com">
+                  <div class="flight-tracker mt-2" style="display:none" data-dep="1775467200" data-arr="1775479200" data-fr24="https://www.flightradar24.com">
                     <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>EZE</span><span>FTE</span></div>
                     <div class="relative h-5 bg-gray-100 rounded-full">
                       <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
@@ -265,7 +265,7 @@
                     </div>
                     <a href="https://www.flightradar24.com" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                   </div>
-                  <div class="flight-tracker mt-2" data-dep="1775748000" data-arr="1775752800" data-fr24="https://www.flightradar24.com">
+                  <div class="flight-tracker mt-2" style="display:none" data-dep="1775748000" data-arr="1775752800" data-fr24="https://www.flightradar24.com">
                     <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>FTE</span><span>USH</span></div>
                     <div class="relative h-5 bg-gray-100 rounded-full">
                       <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
@@ -351,7 +351,7 @@
                     </div>
                     <a href="https://www.flightradar24.com" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                   </div>
-                  <div class="flight-tracker mt-2" data-dep="1775946600" data-arr="1775959200" data-fr24="https://www.flightradar24.com">
+                  <div class="flight-tracker mt-2" style="display:none" data-dep="1775946600" data-arr="1775959200" data-fr24="https://www.flightradar24.com">
                     <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>USH</span><span>EZE</span></div>
                     <div class="relative h-5 bg-gray-100 rounded-full">
                       <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
@@ -620,16 +620,27 @@
   function updateFlightTrackers() {
     const now = Math.floor(Date.now() / 1000);
     document.querySelectorAll('.flight-tracker').forEach(el => {
+      // Saltar los que están dentro del bloque especial España (tienen su propia lógica)
+      if (el.closest('#flight-block')) return;
+
       const dep = parseInt(el.dataset.dep);
       const arr = parseInt(el.dataset.arr);
       const fr24url = el.dataset.fr24;
       const bar = el.querySelector('.tracker-bar');
       const plane = el.querySelector('.tracker-plane');
       const status = el.querySelector('.tracker-status');
-      const btn = el.closest('.bg-white')?.querySelector('.fr24-btn');
-      // Ocultar la tarjeta 2h después del aterrizaje
       const card = el.closest('.bg-white.rounded-lg');
-      if (card && now > arr + 7200) { card.style.display = 'none'; return; }
+      const btn = card?.querySelector('.fr24-btn');
+
+      // Ventana de visibilidad: 1h antes del vuelo → 2h después del aterrizaje
+      const inWindow = now >= dep - 3600 && now <= arr + 7200;
+      el.style.display = inWindow ? '' : 'none';
+
+      // Ocultar la tarjeta entera 2h después del aterrizaje
+      if (card) card.style.display = (now > arr + 7200) ? 'none' : '';
+
+      if (!inWindow) return;
+
       let pct = 0, txt = '';
       if (now < dep) {
         pct = 0;

@@ -172,7 +172,7 @@
                     </div>
                     <a href="https://www.flightradar24.com" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                   </div>
-                  <div class="flight-tracker mt-2" data-dep="1775988000" data-arr="1775995320" data-fr24="https://www.flightradar24.com">
+                  <div class="flight-tracker mt-2" style="display:none" data-dep="1775988000" data-arr="1775995320" data-fr24="https://www.flightradar24.com">
                     <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>EZE</span><span>SLA</span></div>
                     <div class="relative h-5 bg-gray-100 rounded-full">
                       <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
@@ -400,7 +400,7 @@
                     </div>
                     <a href="https://www.flightradar24.com" target="_blank" class="fr24-btn hidden text-xs bg-blue-600 text-white font-bold px-3 py-1.5 rounded-lg hover:bg-blue-700">📡 Seguir</a>
                   </div>
-                  <div class="flight-tracker mt-2" data-dep="1776363000" data-arr="1776370200" data-fr24="https://www.flightradar24.com">
+                  <div class="flight-tracker mt-2" style="display:none" data-dep="1776363000" data-arr="1776370200" data-fr24="https://www.flightradar24.com">
                     <div class="flex justify-between text-xs text-gray-300 mb-0.5"><span>SLA</span><span>EZE</span></div>
                     <div class="relative h-5 bg-gray-100 rounded-full">
                       <div class="h-full bg-blue-300 rounded-full tracker-bar transition-all duration-700" style="width:0%"></div>
@@ -681,7 +681,47 @@
       });
     }, { passive: true });
   })();
-  </script>
+  
+  // Flight trackers
+  function updateFlightTrackers() {
+    const now = Math.floor(Date.now() / 1000);
+    document.querySelectorAll('.flight-tracker').forEach(el => {
+      if (el.closest('#flight-block')) return;
+      const dep = parseInt(el.dataset.dep);
+      const arr = parseInt(el.dataset.arr);
+      const fr24url = el.dataset.fr24;
+      const bar = el.querySelector('.tracker-bar');
+      const plane = el.querySelector('.tracker-plane');
+      const status = el.querySelector('.tracker-status');
+      const card = el.closest('.bg-white.rounded-lg');
+      const btn = card?.querySelector('.fr24-btn');
+      const inWindow = now >= dep - 3600 && now <= arr + 7200;
+      el.style.display = inWindow ? '' : 'none';
+      if (card) card.style.display = (now > arr + 7200) ? 'none' : '';
+      if (!inWindow) return;
+      let pct = 0, txt = '';
+      if (now < dep) {
+        pct = 0;
+        const m = Math.round((dep - now) / 60);
+        txt = m > 90 ? `Sale en ${Math.floor(m/60)}h ${m%60}m` : `Sale en ${m} min`;
+        if (btn) btn.classList.add('hidden');
+      } else if (now >= arr) {
+        pct = 100; txt = '\u2705 Aterrizó';
+        if (btn) btn.classList.add('hidden');
+      } else {
+        pct = Math.round((now - dep) / (arr - dep) * 100);
+        const m = Math.round((arr - now) / 60);
+        txt = '\u2708\uFE0F En vuelo · ' + (m > 90 ? `Aterriza en ${Math.floor(m/60)}h ${m%60}m` : `Aterriza en ${m} min`);
+        if (btn) { btn.classList.remove('hidden'); if (fr24url) btn.href = fr24url; }
+      }
+      bar.style.width = pct + '%';
+      plane.style.left = `calc(${Math.min(pct, 96)}% - 0.6em)`;
+      if (status) status.textContent = txt;
+    });
+  }
+  updateFlightTrackers();
+  setInterval(updateFlightTrackers, 60000);
+</script>
 
 </body>
 </html>

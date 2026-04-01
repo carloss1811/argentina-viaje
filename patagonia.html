@@ -406,7 +406,7 @@
           <p class="text-lg font-extrabold text-[#1e3a5f] mb-3">💱 Cambio de divisas <span id="fx-updated" class="text-sm font-normal text-gray-400"></span></p>
           <div id="fx-eur" class="text-base text-gray-700 mb-2">1€ ≈ <strong>cargando...</strong></div>
           <div id="fx-usd" class="text-base text-gray-700 mb-2">1 USD ≈ <strong>cargando...</strong></div>
-          <p class="text-sm text-gray-400">Tipo de cambio oficial en tiempo real</p>
+          <p class="text-sm text-gray-400">💱 Cambio con Elina · 1€ = <strong>1.638 ARS</strong></p>
         </div>
         <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-6">
           <p class="text-lg font-extrabold text-[#1e3a5f] mb-3">🌡️ Tiempo en Patagonia</p>
@@ -536,21 +536,22 @@
   </script>
 
   <script>
-  let fxRates = { EUR_ARS: 1700, USD_ARS: 1570, EUR_USD: 1.08 };
+  let fxRates = { EUR_ARS: 1638, USD_ARS: 1570, EUR_USD: 1.08 };
 
   async function loadFX() {
     try {
       const r = await fetch('https://open.er-api.com/v6/latest/EUR');
       const d = await r.json();
       if (d.result === 'success') {
-        fxRates.EUR_ARS = d.rates.ARS;
+        // EUR_ARS fijo: tipo de cambio Elina
+        fxRates.EUR_ARS = 1638;
         fxRates.USD_ARS = d.rates.ARS / d.rates.USD;
         fxRates.EUR_USD = d.rates.USD;
         const fmt = n => Math.round(n).toLocaleString('es-ES');
         const el_eur = document.getElementById('fx-eur');
         const el_usd = document.getElementById('fx-usd');
         const el_upd = document.getElementById('fx-updated');
-        if (el_eur) el_eur.innerHTML = `1€ ≈ <strong>${fmt(fxRates.EUR_ARS)} ARS</strong>`;
+        if (el_eur) el_eur.innerHTML = `1€ = <strong>1.638 ARS</strong> <span class='text-gray-400 text-sm'>(cambio Elina)</span>`;
         if (el_usd) el_usd.innerHTML = `1 USD ≈ <strong>${fmt(fxRates.USD_ARS)} ARS</strong>`;
         if (el_upd) el_upd.textContent = '· actualizado';
       }
